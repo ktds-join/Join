@@ -39,41 +39,7 @@
          }
       });
       //]]>
-      function createKakaoLogin(){
-			$("#kakao-logged-group .kakao-logout-btn,#kakao-logged-group .kakao-login-btn").remove();
-			var loginBtn = $("<a/>",{"class":"kakao-login-btn","text":"로그인"});
-			loginBtn.click(function(){
-				Kakao.Auth.login({
-					persistAccessToken: true,
-					persistRefreshToken: true,
-					success: function(authObj) {
-						getKakaoUserProfile();
-						createKakaoLogout();
-					},
-					fail: function(err) {
-						console.log(err);
-					}
-				});
-			});
-			$("#kakao-logged-group").prepend(loginBtn)
-		}
-		function createKakaoLogout(){
-			$("#kakao-logged-group .kakao-logout-btn,#kakao-logged-group .kakao-login-btn").remove();
-			var logoutBtn = $("<a/>",{"class":"kakao-logout-btn","text":"로그아웃"});
-			logoutBtn.click(function(){
-				Kakao.Auth.logout();
-				createKakaoLogin();
-				$("#kakao-profile").text("");
-			});
-			$("#kakao-logged-group").prepend(logoutBtn);
-		}
-		if(Kakao.Auth.getRefreshToken()!=undefined&&Kakao.Auth.getRefreshToken().replace(/ /gi,"")!=""){
-			createKakaoLogout();
-			getKakaotalkUserProfile();
-		}else{
-			createKakaoLogin();
-		}
-	});
+     
 </script>
 </head>
 <body>

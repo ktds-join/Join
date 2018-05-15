@@ -22,5 +22,4 @@ public class KakaoVO {
 		this.properties = properties;
 	}
 	
-	
 }
