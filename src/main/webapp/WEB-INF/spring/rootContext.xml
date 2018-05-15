@@ -11,8 +11,8 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="JOINDB" />
-		<property name="password" value="joindb" />
+		<property name="username" value="JOIN" />
+		<property name="password" value="join" />
 	</bean>
 	<!-- MyBatis 설정 -->
 	<!-- MyBatis가 DB에 접속할 수 있도록 도와주는 설정 -->

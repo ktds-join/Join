@@ -17,5 +17,12 @@ public class MainController {
 	public String viewMain() {
 		return "main/main";
 	}
-	
+	@RequestMapping("/index")
+	public String viewIndex() {
+		return "main/index";
+	}
+	@RequestMapping("/yourStatus")
+	public String viewStartPage() {
+		return "main/startPage";
+	}
 }
