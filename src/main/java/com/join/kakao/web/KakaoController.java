@@ -1,16 +1,16 @@
 package com.join.kakao.web;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@Controller
 public class KakaoController {
 	
 	@RequestMapping(value="/oauth/kakao" , method=RequestMethod.GET) 
-	public String viewKakaoLoginPage(HttpServletRequest request) {
+	public String viewKakaoLoginPage() {
 		
-		return "main/kakaotest";
+		return "main/kakao";
 	}
 	
 }
