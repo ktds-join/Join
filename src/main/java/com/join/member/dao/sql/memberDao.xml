@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDao">
+	<select id="selectMember" parameterType="MemberVO" resultType="MemberVO">
+		SELECT	MEMBER_ID
+				,MEMBER_EMAIL
+				,MEMBER_NICKNAME
+				,MEMBER_NAME
+				,MEMBER_SEX
+				,MEMBER_REGIST_DATE
+				,MEMBER_PROFILE_NAME
+				,MEMBER_STYLE_1
+				,MEMBER_STYLE_2
+				,MEMBER_STYLE_3
+				,MEMBER_STYLE_4
+				,MEMBER_STYLE_5
+		FROM	MEMBER
+		WHERE	EMAIL = #{email}
+		AND		PASSWORD = #{password}
+	</select>
+	
+	<insert id="insertMember" parameterType="MemberVO">
+		INSERT	INTO MEMBER (
+			MEMBER_ID
+			,MEMBER_EMAIL
+			,MEMBER_PASSWORD
+			,MEMBER_NICKNAME
+			,MEMBER_NAME
+			,MEMBER_SEX
+			,MEMBER_REGIST_DATE
+			,MEMBER_PROFILE_NAME
+		)
+		VALUES (
+			MEMBER_MEMBER_ID_SEQ.NEXTVAL
+			, #{memberEmail}
+			, #{memberPassword}
+			, #{memberNickname}
+			, #{memberName}
+			, #{memberSex}
+			, SYSDATE+9/24
+			, #{memberProfileName}
+		)
+	</insert>
+	
+	<delete id="deleteMember" parameterType="_int">
+		DELETE
+		FROM	MEMBER
+		WHERE	MEMBER_ID = #{memberId} 
+	</delete>
+	
+	<update id="updateMember" parameterType="MemberVO">
+		UPDATE	MEMBER
+		SET		MEMBER_NICKNAME = #{memberNickname}
+				,MEMBER_PROFILE_NAME = #{memberProfileName}
+		WHERE	MEMBER_ID = #{memberId}
+	</update>
+	
+	<update id="updateMemberStyle" parameterType="MemberVO">
+		UPDATE	MEMBER
+		SET		MEMBER_STYLE_1 = #{memberStyle1}
+				,MEMBER_STYLE_2 = #{memberStyle2}
+				,MEMBER_STYLE_3 = #{memberStyle3}
+				,MEMBER_STYLE_4 = #{memberStyle4}
+				,MEMBER_STYLE_5 = #{memberStyle5}
+		WHERE 	MEMBER_ID = #{memberId}
+	</update>
+	
+</mapper>
