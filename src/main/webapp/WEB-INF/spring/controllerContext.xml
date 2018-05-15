@@ -7,12 +7,13 @@
 		<property name="mainService" ref="mainService"/>
 	</bean>
 	
-<<<<<<< HEAD
+
 	<bean id="kakaoController" class="com.join.kakao.web.KakaoController">
+	</bean>
 		
-=======
+
 	<bean id = "memberController" class="com.join.member.web.MemberController">
 		<property name="memberService" ref="memberService"/>
->>>>>>> 443c68acd684ca6524caef4e880b321ed0e86f53
+
 	</bean>
 </beans>
