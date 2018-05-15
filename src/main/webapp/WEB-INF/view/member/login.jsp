@@ -66,14 +66,14 @@
 						</p>
 					</div>	
 					<div class="body">
-						<!-- <dl>
+						<dl>
 							<dt><label for="email">아이디 (이메일)</label></dt>
 							<dd><input type="text" class="text" id="email" name="email"/></dd>
 							<div id="errorId" style="display: none;">아이디를 입력하세요!</div>
 							<dt><label for="password">비밀번호</label></dt>
 							<dd><input type="password" class="text" id="password" name="password"/></dd>
 							<div id="errorPassword" style="display: none;">비밀번호를 입력하세요!</div>
-						</dl> -->
+						</dl>
 						<div class="btn">
 							<p><button type="submit" id="loginBtn" class="btn_submit">로그인</button></p>
 						</div>
