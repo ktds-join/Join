@@ -2,6 +2,7 @@ package com.join.main.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.join.main.service.MainService;
 
@@ -17,5 +18,6 @@ public class MainController {
 	public String viewMain() {
 		return "main/main";
 	}
+	
 	
 }
