@@ -93,7 +93,7 @@
     </div>
   </section><!-- #intro -->
 
-
+	<jsp:include page="/WEB-INF/view/template/footer.jsp" />
   
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>

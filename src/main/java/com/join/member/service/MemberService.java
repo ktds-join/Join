@@ -6,12 +6,6 @@ public interface MemberService {
 	
 	public MemberVO readMember(MemberVO memberVO);
 	
-	public boolean readCountMemberEmail(String email);
-	
-	public boolean readCountMemberNickname(String nickname);
-	
 	public boolean createMember(MemberVO memberVO);
-	
-	public boolean removeMember(int userId);
 	
 }
