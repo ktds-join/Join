@@ -24,6 +24,9 @@ body{
     line-height: 1;
 }
 
+.snsLogin{
+	display:inline-block;
+}
 .head{
 	background-color: #ddd;
 }
@@ -149,8 +152,8 @@ body{
 
 .btn .btn_submit{
 	padding: 10px 40px !important;
-    background-color: #3c9;
-    border: 1px solid #3c9;
+    background-color: #18d26e;
+    border: 1px solid #18d26e;
     color: #fff;
     cursor: pointer;
     font-weight: bold;

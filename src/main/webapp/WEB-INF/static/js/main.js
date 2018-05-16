@@ -119,7 +119,7 @@ jQuery(document).ready(function( $ ) {
     $(this).children('.carousel-background').remove();
   });
 
-  $(".carousel").swipe({
+/*  $(".carousel").swipe({
     swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
       if (direction == 'left') $(this).carousel('next');
       if (direction == 'right') $(this).carousel('prev');
@@ -169,19 +169,6 @@ jQuery(document).ready(function( $ ) {
     loop: true,
     items: 1
   });
-  // ========================================================================= //
-  //  Typed Js
-  // ========================================================================= //
-
-  var typed = $(".typed");
-
-  $(function() {
-    typed.typed({
-      strings: ["Alex Smith.", "Designer.", "Developer.", "Freelancer.", "Photographer"],
-      typeSpeed: 100,
-      loop: true,
-    });
-  });
-
+ */
 
 });
