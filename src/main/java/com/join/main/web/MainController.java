@@ -15,7 +15,7 @@ public class MainController {
 	
 	@RequestMapping("/main")
 	public String viewMain() {
-		return "main/main";
+		return "main/testFB";
 	}
 	
 }
