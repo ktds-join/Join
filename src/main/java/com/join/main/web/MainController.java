@@ -1,9 +1,12 @@
 package com.join.main.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.join.main.service.MainService;
+import com.join.member.constants.Member;
 
 @Controller
 public class MainController {
@@ -14,7 +17,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main")
-	public String viewMain() {
+	public String viewMain(HttpSession session) {
 		return "main/main";
 	}
 	@RequestMapping("/index")

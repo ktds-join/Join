@@ -61,17 +61,17 @@
 					<div class="header">
 						<strong>로그인</strong>
 						<p class="rememberme">
-							<input type="checkbox" id="rememberme" name="rememberme" value="on">
+							<input type="checkbox" id="rememberme" name="maintainSession" value="true">
 							<label for="rememberme">로그인 상태 유지</label>
 						</p>
 					</div>	
 					<div class="body">
 						<dl>
 							<dt><label for="email">아이디 (이메일)</label></dt>
-							<dd><input type="text" class="text" id="email" name="email"/></dd>
+							<dd><input type="text" class="text" id="email" name="memberEmail"/></dd>
 							<div id="errorId" style="display: none;">아이디를 입력하세요!</div>
 							<dt><label for="password">비밀번호</label></dt>
-							<dd><input type="password" class="text" id="password" name="password"/></dd>
+							<dd><input type="password" class="text" id="password" name="memberPassword"/></dd>
 							<div id="errorPassword" style="display: none;">비밀번호를 입력하세요!</div>
 						</dl>
 						<div class="btn">

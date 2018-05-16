@@ -18,6 +18,8 @@ public class MemberVO {
 	private int memberStyle4;
 	private int memberStyle5;
 
+	private boolean maintainSession;
+	
 	private String salt;
 
 	public int getMemberId() {
@@ -123,6 +125,14 @@ public class MemberVO {
 	public void setMemberStyle5(int memberStyle5) {
 		this.memberStyle5 = memberStyle5;
 	}
+	
+	public boolean isMaintainSession() {
+		return maintainSession;
+	}
+
+	public void setMaintainSession(boolean maintainSession) {
+		this.maintainSession = maintainSession;
+	}
 
 	public String getSalt() {
 		return salt;
@@ -131,5 +141,5 @@ public class MemberVO {
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-
+	
 }

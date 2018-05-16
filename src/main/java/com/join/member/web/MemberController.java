@@ -1,13 +1,19 @@
 package com.join.member.web;
 
+import java.sql.Date;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.WebUtils;
 
 import com.join.member.constants.Member;
 import com.join.member.service.MemberService;
@@ -32,25 +38,61 @@ public class MemberController {
 	} 
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String doLoginAction(@ModelAttribute("loginForm")@Valid MemberVO memberVO, HttpServletRequest request) {
+	public String doLoginAction(@ModelAttribute("loginForm") @Valid MemberVO memberVO, Errors errors, 
+								HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		
-		HttpSession session = request.getSession();
+		String returnURL = "";
 		
 		MemberVO loginMember =  memberService.readMember(memberVO);
+		loginMember.setMaintainSession(memberVO.isMaintainSession());
 			
-		if( loginMember != null ) {
+		if ( loginMember != null ) {
 			
 			session.setAttribute(Member.MEMBER, loginMember);
-			return "redirect:/main";
+			returnURL = "redirect:/main";
+			
+			if ( loginMember.isMaintainSession() ) {
+				
+				Cookie cookie = new Cookie("loginCookie", session.getId());
+				cookie.setPath("/");
+				
+				int timeAmount = 60*60*6;
+				cookie.setMaxAge(timeAmount);
+				
+				response.addCookie(cookie);
+				
+				Date sessionLimit = new Date(
+							System.currentTimeMillis() + (1000*timeAmount));
+				memberService.keepLogin(memberVO.getMemberId(),
+										session.getId(), sessionLimit);
+			}
 		}
-		return "redirect:/login";	
+		returnURL = "redirect:/main";
+		return returnURL;	
 	}	
 	
 	@RequestMapping("/logout")
-	public String doLogoutAction(HttpSession session) {
+	public String doLogoutAction(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		
-		session.invalidate();
-		return "redirect:/main";
-	}
+		MemberVO memberVO = (MemberVO) session.getAttribute(Member.MEMBER);
+        
+		if ( memberVO != null ) {
+            session.removeAttribute(Member.MEMBER);
+            session.invalidate();
+            Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+            
+            if ( loginCookie != null ){
+                loginCookie.setPath("/");
+                loginCookie.setMaxAge(0);
+                response.addCookie(loginCookie);
+                 
+                Date date = new Date(System.currentTimeMillis());
+                memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
+            }
+        }
+        return "redirect:/main";
+    }
+
+
 	
 }

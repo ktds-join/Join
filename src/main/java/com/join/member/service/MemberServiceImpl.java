@@ -1,5 +1,7 @@
 package com.join.member.service;
 
+import java.sql.Date;
+
 import com.join.member.dao.MemberDao;
 import com.join.member.vo.MemberVO;
 
@@ -14,6 +16,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO readMember(MemberVO memberVO) {
 		return memberDao.selectMember(memberVO);
+	}
+	
+	@Override
+	public void keepLogin(int memberId, String sessionId, Date next) {
+		memberDao.keepLogin(memberId, sessionId, next);
+	}
+	
+	@Override
+	public MemberVO checkMemberWithSessionKey(String sessionId) {
+		return memberDao.checkMemberWithSessionKey(sessionId);
 	}
 
 	@Override

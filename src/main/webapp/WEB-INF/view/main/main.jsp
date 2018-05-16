@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- <link rel="stylesheet" type="text/css" href="<c:url value="/static/css/alert.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/static/css/alert.css"/>"/>
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
- -->
+
 
  <!-- Google Fonts -->
   <link href="<c:url value="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"/>" rel="stylesheet">
@@ -50,11 +50,13 @@ body {
 					<div>마이페이지 관련 정보 입력 </div></li>
 			</ul>
 		</nav>
-		
+		<span>${sessionScope.__MEMBER__.memberEmail}님 반갑습니다</span>
+		<a href="<c:url value="/logout"/>">[로그아웃]</a>
+		<a href="<c:url value="/login"/>">[로그인]</a>
 	</header>
 
 
   <!-- Template Main Javascript File -->
-  <script src="<c:url value="js/main.js"/>"></script>
-</body>
+<%--   <script src="<c:url value="js/main.js"/>"></script>
+ --%></body>
 </html>
