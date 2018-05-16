@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.join.main.service.MainService;
-<<<<<<< HEAD
 import com.join.member.constants.Member;
-=======
 import com.join.main.vo.StyleVO;
->>>>>>> tendency-sol
 
 @Controller
 public class MainController {
@@ -22,7 +19,6 @@ public class MainController {
 		this.mainService = mainService;
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping("/main")
 	public String viewMain(HttpSession session) {
 		return "main/main";
@@ -35,7 +31,6 @@ public class MainController {
 	public String viewStartPage() {
 		return "main/startPage";
 	}
-=======
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public String viewMain() {
@@ -43,9 +38,4 @@ public class MainController {
 		return "main/main";
 	}
 	
-	
-	
-	
-	
->>>>>>> tendency-sol
 }
