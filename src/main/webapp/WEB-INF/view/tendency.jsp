@@ -1,139 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>>
 <html>
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TEST::tendency matching</title>
 <style>
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto';
-  padding: 60px 20px;
-  background-color:#fafafa;
-}
-h1 { margin-top:100px; text-align:center;}
-@media (min-width: 600px) {
-
-body { padding: 60px; }
-}
-
-.preBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
-}
-
-#preBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
-}
-
-.nextBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
-}
-
-#nextBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
-}
-
-
-
-.range-slider { margin: 60px 0 0 0%; }
-
-.range-slider { width: 100%; }
-
-.range-slider__range {
-  -webkit-appearance: none;
- width: calc(100% - (73px));
-  height: 10px;
-  border-radius: 5px;
-  background: #d7dcdf;
-  outline: none;
-  padding: 0;
-  margin: 0;
-}
-.range-slider__range::-webkit-slider-thumb {
- -webkit-appearance: none;
- appearance: none;
- width: 20px;
- height: 20px;
- border-radius: 50%;
- background: #2c3e50;
- cursor: pointer;
- -webkit-transition: background .15s ease-in-out;
- transition: background .15s ease-in-out;
-}
-.range-slider__range::-webkit-slider-thumb:hover {
- background: #1abc9c;
-}
-.range-slider__range:active::-webkit-slider-thumb {
- background: #1abc9c;
-}
-.range-slider__range::-moz-range-thumb {
- width: 20px;
- height: 20px;
- border: 0;
- border-radius: 50%;
- background: #2c3e50;
- cursor: pointer;
- -webkit-transition: background .15s ease-in-out;
- transition: background .15s ease-in-out;
-}
-.range-slider__range::-moz-range-thumb:hover {
- background: #1abc9c;
-}
-.range-slider__range:active::-moz-range-thumb {
- background: #1abc9c;
-}
-.range-slider__range:focus::-webkit-slider-thumb {
- -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1abc9c;
- box-shadow: 0 0 0 3px #fff, 0 0 0 6px #1abc9c;
-}
-
-.range-slider__value {
-  display: inline-block;
-  position: relative;
-  width: 60px;
-  color: #fff;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 3px;
-  background: #2c3e50;
-  padding: 5px 10px;
-  margin-left: 8px;
-}
-
-.range-slider__value:after {
-  position: absolute;
-  top: 8px;
-  left: -7px;
-  width: 0;
-  height: 0;
-  border-top: 7px solid transparent;
-  border-right: 7px solid #2c3e50;
-  border-bottom: 7px solid transparent;
-  content: '';
-}
-
-::-moz-range-track {
- background: #d7dcdf;
- border: 0;
-}
- input::-moz-focus-inner, input::-moz-focus-outer {
- border: 0;
-}
 </style>
+
 </head>
 
 <body>
@@ -185,7 +61,9 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 
   
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+		crossorigin="anonymous"></script> 
 <script>
 
 var rangeSlider = function(){
@@ -208,6 +86,7 @@ var rangeSlider = function(){
 
 rangeSlider();
 </script>
+<!--
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -221,11 +100,13 @@ rangeSlider();
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-</script>
+</script>-->
+
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
+  
   <script type="text/javascript">
   $().ready(function(){
 	  console.log("ready");

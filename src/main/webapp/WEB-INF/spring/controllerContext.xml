@@ -5,5 +5,7 @@
 
 	<bean id = "mainController" class="com.join.main.web.MainController">
 		<property name="mainService" ref="mainService"/>
+		
+		
 	</bean>
 </beans>
