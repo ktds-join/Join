@@ -8,4 +8,8 @@ public interface MemberDao {
 	
 	public int insertMember(MemberVO memberVO);
 	
+	public int selectCountMemberEmail(String memberEmail);
+	
+	public int selectCountMemberNickname(String memberNickname);
+	
 }

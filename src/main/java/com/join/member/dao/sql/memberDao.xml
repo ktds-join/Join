@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,MEMBER_PROFILE_NAME
 		)
 		VALUES (
-			MEMBER_MEMBER_ID_SEQ.NEXTVAL
+			MEMBER_ID_SEQ.NEXTVAL
 			, #{memberEmail}
 			, #{memberPassword}
 			, #{memberNickname}
@@ -43,6 +43,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{memberProfileName}
 		)
 	</insert>
+	
+	<select id="selectCountMemberEmail" parameterType="string" resultType="_int">
+		SELECT	COUNT(MEMBER_ID)
+		FROM	MEMBER
+		WHERE	MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	<select id="selectCountMemberNickname" parameterType="string" resultType="_int">
+		SELECT	COUNT(MEMBER_ID)
+		FROM	MEMBER
+		WHERE	MEMBER_NICKNAME = #{memberNickname}
+	</select>
 	
 	<delete id="deleteMember" parameterType="_int">
 		DELETE
