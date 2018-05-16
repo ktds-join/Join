@@ -1,14 +1,11 @@
 package com.join.member.web;
 
-<<<<<<< HEAD
 import java.sql.Date;
 
 import javax.servlet.http.Cookie;
-=======
 import java.util.HashMap;
 import java.util.Map;
 
->>>>>>> 02162b993447b6085bee3338416b0bc9dea665e5
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,12 +16,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-<<<<<<< HEAD
 import org.springframework.web.util.WebUtils;
-=======
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
->>>>>>> 02162b993447b6085bee3338416b0bc9dea665e5
 
 import com.join.member.constants.Member;
 import com.join.member.service.MemberService;
