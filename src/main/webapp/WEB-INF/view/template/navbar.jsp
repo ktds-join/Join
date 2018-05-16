@@ -1,12 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<style>
+#header {
+  padding: 20px 0;
+  height: 72px;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.9);
+  left: 0;
+  top: 0;
+  right: 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+</style>
+ <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid">
 
-</body>
-</html>
+      <div id="logo" class="pull-left">
+        <h1><a href="#intro" class="scrollto">JOIN</a></h1>
+      </div>
+
+      <nav id="nav-menu-container"> 
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="#intro">Home</a></li>
+          <li class="menu"><a href="/Join/login">Login</a>
+          <li class="menu-has-children"><a href="">Mypage</a>
+            <ul>
+              <li>
+              <div style ="background-color:red;height:400px;width:180px"><a href="#">it gonna be DIV</a></div>
+              </li> 
+            </ul>
+          </li>
+          <li><a href="/epi">Epilogue</a></li>
+          
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->

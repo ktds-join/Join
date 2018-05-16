@@ -28,14 +28,26 @@
   <!-- Main Stylesheet File -->
   <link href="<c:url value="static/css/style.css"/>" rel="stylesheet">
 
+<!-- 제이쿼리 -->
+<script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<script type="text/javascript">
+$().ready(function(){	
+	$(".btn-get-started").click(function(){
+		$(".btn-get-started").hide();
+		$("#locationStatus").show();
+		
+	});
+	
+});
+</script>
+
 </head>
 
 <body>
-
-  <!--==========================
+<!--==========================
     Header
   ============================-->
-  <header id="header">
+  <header id="header" style="position:fixed">
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
@@ -45,6 +57,7 @@
       <nav id="nav-menu-container"> 
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Home</a></li>
+          <li class="menu"><a href="/Join/login">Login</a>
           <li class="menu-has-children"><a href="">Mypage</a>
             <ul>
               <li>
@@ -59,7 +72,6 @@
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
-
   <!--==========================
     Intro Section
   ============================-->
@@ -74,25 +86,28 @@
           <div class="carousel-item active">
             <div class="carousel-background"><img src="<c:url value="static/img/intro/beach.jpg"/>" alt=""></div>
             <div class="carousel-container">
-              <div class="carousel-content">
-              
-              <h1>we can find <span class="typed"></span></h1>
-        		<p>your mate, your location, your dream</p>
-              
+              <div class="carousel-content">            
                 <h2>FIND YOUR TRAVEL MATE!</h2>
                 <p>We provide a trip that suits your travel preferences</p>
-                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
                 
+                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                <!-- 이 밑으로 어펜드가 될꺼야 -->
+                <div id ="locationStatus" style ="display:none;">
+                	
+                	<div id ="locationExist" style ="display:inline-block;"><a href ="#">있음</a></div>
+                	<div id ="locationNotExist" style ="display:inline-block;"><a href ="#">없음</a></div>
+                	
+                
+                </div>             
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </section><!-- #intro -->
 
+<!-- footer -->
 	<jsp:include page="/WEB-INF/view/template/footer.jsp" />
   
 

@@ -80,7 +80,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 997;
 }
 
-#header.header-scrolled {
+ 
+ #header.header-scrolled {
   background: rgba(0, 0, 0, 0.9);
   padding: 20px 0;
   height: 72px;
