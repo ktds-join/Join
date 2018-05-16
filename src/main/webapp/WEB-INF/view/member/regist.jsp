@@ -12,145 +12,181 @@
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		console.log($("#email").val()=="");
-		$("#email").keyup(function() {
+		
+		$("#memberEmail").keyup(function() {
 			var value = $(this).val();
-			if (value != "") {
-				$.post("<c:url value="/api/exists/email" />", {
-					email : value
+			if ( value != "" ) {
+				$.post("<c:url value="/api/exists/memberEmail"/>", {
+					memberEmail : value
 				}, function(response) {
-					console.log(response.response);
-					if (response.response) {
-						$("#email").removeClass("valid");
-						$("#email").addClass("invalid");
+					if ( response.response ) {
+						$("#memberEmail").removeClass("valid");
+						$("#memberEmail").addClass("invalid");
 					} else {
-						$("#email").removeClass("invalid");
-						$("#email").addClass("valid");
+						$("#memberEmail").removeClass("invalid");
+						$("#memberEmail").addClass("valid");
 					}
 				});
-				$(this).removeClass("invalid");
-				$(this).addClass("valid");
 			} else {
 				$(this).removeClass("valid");
 				$(this).addClass("invalid");
 			}
 		});
 
-		$("#nickname").keyup(function() {
+		$("#memberPassword").keyup(function() {
 			var value = $(this).val();
-			if (value != "") {
-				$.post("<c:url value="/api/exists/nickname" />", {
-					nickname : value
+			if ( value != "" ) {
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+			} else {
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+			}
+
+			var password = $("#passwordConfirm").val();
+
+			if ( value != password ) {
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+				$("#passwordConfirm").removeClass("valid");
+				$("#passwordConfirm").addClass("invalid");
+			} else {
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+				$("#passwordConfirm").removeClass("invalid");
+				$("#passwordConfirm").addClass("valid");
+			}
+		});
+
+		$("#passwordConfirm").keyup(function() {
+			var value = $(this).val();
+			var password = $("#memberPassword").val();
+
+			if ( value != password ) {
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");
+				$("#memberPassword").removeClass("valid");
+				$("#memberPassword").addClass("invalid");
+			} else {
+				$(this).removeClass("invalid");
+				$(this).addClass("valid");
+				$("#memberPassword").removeClass("invalid");
+				$("#memberPassword").addClass("valid");
+
+			}
+		});
+		
+		$("#memberName").keyup(function() {
+			var value = $(this).val();
+			console.log(value);
+			if ( value != "" ) {
+				$("#memberName").removeClass("invalid");
+				$("#memberName").addClass("valid");
+			} else {
+				$("#memberName").removeClass("valid");
+				$("#memberName").addClass("invalid");
+			}
+		});
+		
+		$("#memberNickname").keyup(function() {
+			var value = $(this).val();
+			if ( value != "" ) {
+				$.post("<c:url value="/api/exists/memberNickname"/>", {
+					memberNickname : value
 				}, function(response) {
 					console.log(response.response)
-
-					if (response.response) {
-						$("#nickname").removeClass("valid");
-						$("#nickname").addClass("invalid");
+					if ( response.response ) {
+						$("#memberNickname").removeClass("valid");
+						$("#memberNickname").addClass("invalid");
 					} else {
-						$("#nickname").removeClass("invalid");
-						$("#nickname").addClass("valid");
+						$("#memberNickname").removeClass("invalid");
+						$("#memberNickname").addClass("valid");
 					}
 				});
-				$(this).removeClass("invalid");
-				$(this).addClass("valid");
 			} else {
 				$(this).removeClass("valid");
 				$(this).addClass("invalid");
 			}
 		});
-
-		$("#password").keyup(function() {
-			var value = $(this).val();
-			if (value != "") {
-
-				$(this).removeClass("invalid");
-				$(this).addClass("valid");
-
-			} else {
-
-				$(this).removeClass("valid");
-				$(this).addClass("invalid");
-			}
-
-			var password = $("#password-confirm").val();
-
-			if (value != password) {
-				$(this).removeClass("valid");
-				$(this).addClass("invalid");
-				$("#password-confirm").removeClass("valid");
-				$("#password-confirm").addClass("invalid");
-			} else {
-				$(this).removeClass("invalid");
-				$(this).addClass("valid");
-				$("#password-confirm").removeClass("invalid");
-				$("#password-confirm").addClass("valid");
-			}
-		});
-
-		$("#password-confirm").keyup(function() {
-			var value = $(this).val();
-			var password = $("#password").val();
-
-			if (value != password) {
-				$(this).removeClass("valid");
-				$(this).addClass("invalid");
-				$("#password").removeClass("valid");
-				$("#password").addClass("invalid");
-			} else {
-				$(this).removeClass("invalid");
-				$(this).addClass("valid");
-				$("#password").removeClass("invalid");
-				$("#password").addClass("valid");
-
-			}
-		})
 
 		$("#registBtn").click(function() {
 
-			if ($("#email").val() == "") {
-				alert("email을 입력하세요");
-				$("#email").focus();
-				$("#email").addClass("invalid");
+			if ( $("#memberEmail").val() == "" ) {
+				alert("이메일을 입력하세요");
+				$("#memberEmail").focus();
+				$("#memberEmail").addClass("invalid");
 				return false;
 			}
 
-			if ($("#email").hasClass("invalid")) {
+			if ( $("#memberEmail").hasClass("invalid") ) {
 				alert("작성한 이메일은 사용할수 없습니다.");
-				$("#email").focus();
+				$("#memberEmail").focus();
 				return false;
-			}
+			} else {
+				$.post("<c:url value="/api/exists/memberEmail"/>", {
+						memberEmail : $("#memberEmail").val()
+					}, function(response) {
 
-			else {
-
-				$.post("<c:url value="/api/exists/email"/>", { email : $("#email").val() }, function(response) {
-
-					if (response.response) {
+					if ( response.response ) {
 						alert("작성한 이메일은 사용할수 없습니다.");
-						$("#email").removeClass("valid");
-						$("#email").addClass("invalid");
-						$("#email").focus();
+						$("#memberEmail").removeClass("valid");
+						$("#memberEmail").addClass("invalid");
+						$("#memberEmail").focus();
 						return false;
 					}
 
-					if ($("#nickname").val() == "") {
-						alert("nickname을 입력하세요");
-						$("#nickname").focus();
-						$("#nickname").addClass("invalid");
+					if ( $("#memberPassword").val() == "" ) {
+						alert("비밀번호를 입력하세요");
+						$("#memberPassword").focus();
+						$("#memberPassword").addClass("invalid");
 						return false;
 					}
-
-					if ($("#password").val() == "") {
-						alert("password을 입력하세요");
-						$("#password").focus();
-						$("#password").addClass("invalid");
+					
+					if ( $("#passwordConfirm").val() == "" ) {
+						alert("비밀번호 확인을 입력하세요");
+						$("#memberPassword").focus();
+						$("#memberPassword").addClass("invalid");
 						return false;
 					}
-
-					$("#registForm").attr({
-						"method" : "post",
-						"action" : "<c:url value="/regist"/>"
-					}).submit();
+					
+					if ( $("#memberName").val() == "" ) {
+						alert("이름을 입력하세요");
+						$("#memberName").focus();
+						$("#memberName").addClass("invalid");
+						return false;
+					}
+					
+					if ( $("#memberNickname").val() == "" ) {
+						alert("닉네임을 입력하세요");
+						$("#memberNickname").focus();
+						$("#memberNickname").addClass("invalid");
+						return false;
+					}
+					
+					if ( $("#memberNickname").hasClass("invalid") ) {
+						alert("작성한 닉네임은 사용할 수 없습니다.");
+						$("#memberNickname").focus();
+						return false;
+					}
+					else {
+						$.post("<c:url value="/api/exists/memberNickname"/>", {
+							memberNickname: $("memberNickname").val()
+						}, function(response) {
+							if( response.response ) {
+								$("#memberNickname").removeClass("valid");
+								$("#memberNicknamee").addClass("invalid");
+							}
+							else {
+								$("#memberNickname").removeClass("invalid");
+								$("#memberNickname").addClass("valid");
+								
+								$("#registForm").attr({
+									"method" : "post",
+									"action" : "<c:url value="/regist"/>"
+								}).submit();
+							}
+						})
+					}
 
 				});
 
@@ -178,26 +214,42 @@
 		</div>
 		<div id="cols">
 			<div id="wrapper">		
-				<form id="registForm">
+				<form:form modelAttribute="registForm">
 					<div class="header">
 						<strong>회원가입</strong>
 					</div>
 					<div class="body">
 						<dl>
-							<dt><label for="email">아이디 (이메일)</label></dt>
-							<dd><input type="text" class="text" id="email" name="email" /></dd>
-							<dt><label for="nickname">닉네임</label></dt>
-							<dd><input type="text" class="text" id="nickname" name="nickname" /></dd>
-							<dt><label for="password">비밀번호</label></dt>
-							<dd><input type="password" class="text" id="password" name="password"/></dd>
-							<dt><label for="password_confirm">비밀번호 확인</label></dt>
-							<dd><input type="password" class="text" id="password-confirm" name="password-confirm"/></dd>
+							<dt><label for="memberEmail">아이디 (이메일)</label></dt>
+							<dd><input type="text" class="text" id="memberEmail" name="memberEmail"
+									   value="${registForm.memberEmail}"/></dd>
+									   
+							<dt><label for="memberPassword">비밀번호</label></dt>
+							<dd><input type="password" class="text" id="memberPassword" name="memberPassword"
+									   value="${registForm.memberPassword}"/></dd>
+							
+							<dt><label for="passwordConfirm">비밀번호 확인</label></dt>
+							<dd><input type="password" class="text" id="passwordConfirm" name="passwordConfirm"/></dd>
+							
+							<dt><label for="memberName">이름</label></dt>
+							<dd><input type="text" class="text" id="memberName" name="memberName"
+									   value="${registForm.memberName}"/></dd>
+									   
+							<dt><label for="memberNickname">닉네임</label></dt>
+							<dd><input type="text" class="text" id="memberNickname" name="memberNickname"
+									   value="${registForm.memberNickname}"/></dd>
+									   
+							<dt><label for="memberSex">성별</label></dt>
+							<dd>
+								<input type="radio" id="memberSexM" name="memberSex" value="M" checked="checked">남
+								<input type="radio" id="memberSexF" name="memberSex" value="F">여
+							</dd>
 						</dl>
 						<div class="btn">
 							<p><button type="submit" id="registBtn" class="btn_submit">회원가입</button></p>
 						</div>
 					</div>
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</div>

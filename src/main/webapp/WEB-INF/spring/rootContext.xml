@@ -10,7 +10,7 @@
 	<!-- 디비연결 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.201.24:1521:XE" />
 		<property name="username" value="JOIN" />
 		<property name="password" value="JOIN" />
 	</bean>

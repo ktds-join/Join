@@ -1,12 +1,18 @@
 package com.join.member.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 public class MemberVO {
 
 	private int memberId;
 
+	@NotEmpty(message="이메일을 입력해주세요!")
 	private String memberEmail;
+	@NotEmpty(message="비밀번호를 입력해주세요!")
 	private String memberPassword;
+	@NotEmpty(message="닉네임을 입력해주세요!")
 	private String memberNickname;
+	@NotEmpty(message="이름을 입력해주세요!")
 	private String memberName;
 	private String memberSex;
 	private String memberProfileName;
@@ -71,6 +77,9 @@ public class MemberVO {
 	}
 
 	public String getMemberProfileName() {
+		if ( memberProfileName == null ) {
+			memberProfileName = "";
+		}
 		return memberProfileName;
 	}
 

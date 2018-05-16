@@ -33,4 +33,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.insertMember(memberVO) > 0;
 	}
 
+	@Override
+	public boolean readCountMemberEmail(String memberEmail) {
+		return memberDao.selectCountMemberEmail(memberEmail) > 0;
+	}
+
+	@Override
+	public boolean readCountMemberNickname(String memberNickname) {
+		return memberDao.selectCountMemberNickname(memberNickname) > 0;
+	}
+
 }
