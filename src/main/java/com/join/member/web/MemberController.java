@@ -85,6 +85,7 @@ public class MemberController {
             session.removeAttribute(Member.MEMBER);
             session.invalidate();
             Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+            System.out.println(1);
             
             if ( loginCookie != null ){
                 loginCookie.setPath("/");
@@ -93,8 +94,10 @@ public class MemberController {
                  
                 Date date = new Date(System.currentTimeMillis());
                 memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
+                System.out.println(2);
             }
         }
+		System.out.println(3);
         return "redirect:/main";
     }
 
