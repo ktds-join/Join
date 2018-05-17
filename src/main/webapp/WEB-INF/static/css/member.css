@@ -13,21 +13,21 @@ footer, header, hgroup{
     display: block;
 }
 
-button, input, textarea{
+/* button, input, textarea{
     font-family: NanumGothic,sans-serif;
 }
-
-body{
+ */
+/* body{
     font-family: NanumGothic,sans-serif;
     font-size: .75em;
     color: #666;
     line-height: 1;
-}
+} */
 
 .snsLogin{
 	display:inline-block;
 }
-.head{
+/* .head{
 	background-color: #ddd;
 }
 
@@ -76,7 +76,7 @@ body{
     display: block;
     overflow: hidden;
     text-decoration: none;
-}
+} */
 
 #cols{
 	padding-top: 100px;
@@ -163,6 +163,27 @@ body{
 	margin: 10px 0;
     text-align: center;
 	}
+/* regist.css */
+.body input.invalid{
+	background-color: #ecb9d1;
+	color: #000040;
+}
+
+.body input.valid{
+	background-color: #a2eca7;
+	color: #74a879;
+}
+
+input.invalid{
+	background-color: #ecb9d1;
+	color: #000040;
+}
+
+input.valid{
+	background-color: #a2eca7;
+	color: #74a879;
+}
+/* regist.css */
 
 .footer{
 	border-top: 1px solid #ccc;

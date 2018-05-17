@@ -263,6 +263,14 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
   color: #18d26e;
 }
+/* intro 추가 부분 */
+#locationStatus{
+	display:none;
+}
+#locationExist, #locationNotExist{
+	display:inline-block;
+}
+
 
 /*--------------------------------------------------------------
 # Navigation Menu

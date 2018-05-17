@@ -5,21 +5,13 @@
 	box-sizing: border-box;
 }
 
-body {
-	font-family: 'Roboto';
-	padding: 60px 20px;
-	background-color: #fafafa;
-}
-
 h1 {
 	margin-top: 100px;
 	text-align: center;
 }
 
-@media ( min-width : 600px) {
-	body {
-		padding: 60px;
-	}
+#styleForm{
+	padding:100px;
 }
 
 .preBtn {
