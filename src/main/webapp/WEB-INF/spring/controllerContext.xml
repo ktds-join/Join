@@ -7,7 +7,6 @@
 		<property name="mainService" ref="mainService"/>	
 	</bean>
 	
-	
 	<bean id = "memberController" class="com.join.member.web.MemberController">
 		<property name="memberService" ref="memberService"/>
 	</bean>

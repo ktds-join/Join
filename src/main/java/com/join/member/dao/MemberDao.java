@@ -20,4 +20,6 @@ public interface MemberDao {
 	
 	public String selectSalt(String memberEmail);
 	
+	public int updateMemberStyle(MemberVO memberVO);
+	
 }

@@ -57,7 +57,7 @@ public class MemberController {
 			
 			if ( loginMember.isMaintainSession() ) {
 				
-				Cookie cookie = new Cookie("loginCookie", session.getId());
+				Cookie cookie = new Cookie(Member.COOKIE, session.getId());
 				cookie.setPath("/");
 				
 				int timeAmount = 60*60*6;
@@ -73,6 +73,10 @@ public class MemberController {
 			
 			return "redirect:/main";
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 9c4617e3ce8e9837fc5d5b4d0ae598ce543eea5b
 		return "member/login";	
 	}	
 	
@@ -84,15 +88,18 @@ public class MemberController {
 		if ( memberVO != null ) {
             session.removeAttribute(Member.MEMBER);
             session.invalidate();
-            Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+            Cookie loginCookie = WebUtils.getCookie(request, Member.COOKIE);
+            System.out.println(loginCookie);
             
             if ( loginCookie != null ){
+            	System.out.println("loginCookie is not null");
                 loginCookie.setPath("/");
                 loginCookie.setMaxAge(0);
                 response.addCookie(loginCookie);
                  
                 Date date = new Date(System.currentTimeMillis());
                 memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
+                System.out.println(2);
             }
         }
         return "redirect:/main1";
@@ -147,31 +154,16 @@ public class MemberController {
 	@RequestMapping(value="/tendency", method=RequestMethod.GET)
 	public String viewTendency() {
 		
-		System.out.println("call tendency get");
-//
-//		if ( session.getAttribute(Member.MEMBER) != null ) {
-//			return "redirect:/tendency";
-//		}
 		return "member/tendency";
 	}
 	
-
-	// 세션 set해서 받아오,get해서 vo에 넣어주기
 	@RequestMapping(value="/tendency", method=RequestMethod.POST)
-	public String doTendency(MemberVO memberVO,
-									 HttpSession session) {
-		System.out.println("call tendency post");
-		
+	public String doTendency(MemberVO memberVO, HttpSession session) {
 		
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
-		
 		memberVO.setMemberId(member.getMemberId());
 	
-		boolean isSuccess = memberService.createMember(memberVO);
-		if(isSuccess) {
-			return "redirect:/main1";
-		}
-		//memberService.
+		memberService.updateMemberStyle(memberVO);
 		
 		System.out.println(memberVO.getMemberStyle1());
 		System.out.println(memberVO.getMemberStyle2());
@@ -183,18 +175,6 @@ public class MemberController {
 		// 매칭하는room으로 이동 test : login
 		return "redirect:/main";
 	}
-
-	
-//	@RequestMapping(value = "/regist", method = RequestMethod.POST)
-//	public String doRegistAction(@ModelAttribute("registForm")
-//								  @Valid MemberVO memberVO, Errors errors,
-//								  HttpServletRequest request,
-//								  Model model) {
-//		if ( errors.hasErrors() ) {
-//			return "member/regist";
-//		}
-//		
-	
 	
 //	마이페이지
 

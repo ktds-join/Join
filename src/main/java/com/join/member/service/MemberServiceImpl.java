@@ -66,4 +66,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.selectCountMemberNickname(memberNickname) > 0;
 	}
 
+	@Override
+	public boolean updateMemberStyle(MemberVO memberVO) {
+		return memberDao.updateMemberStyle(memberVO) > 0;
+	}
+
 }
