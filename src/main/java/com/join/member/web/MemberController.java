@@ -54,10 +54,6 @@ public class MemberController {
 			
 			loginMember.setMaintainSession(memberVO.isMaintainSession());
 			session.setAttribute(Member.MEMBER, loginMember);
-<<<<<<< HEAD
-			returnURL = "redirect:/main1";
-=======
->>>>>>> 6f9df7475d217a7b9f9011e2c63dd9c6bb472558
 			
 			if ( loginMember.isMaintainSession() ) {
 				
@@ -77,13 +73,8 @@ public class MemberController {
 			
 			return "redirect:/main";
 		}
-<<<<<<< HEAD
-		returnURL = "redirect:/main1";
-		return returnURL;	
-=======
 		
 		return "member/login";	
->>>>>>> 6f9df7475d217a7b9f9011e2c63dd9c6bb472558
 	}	
 	
 	@RequestMapping("/logout")
@@ -160,31 +151,16 @@ public class MemberController {
 	@RequestMapping(value="/tendency", method=RequestMethod.GET)
 	public String viewTendency() {
 		
-		System.out.println("call tendency get");
-//
-//		if ( session.getAttribute(Member.MEMBER) != null ) {
-//			return "redirect:/tendency";
-//		}
 		return "member/tendency";
 	}
 	
-
-	// 세션 set해서 받아오,get해서 vo에 넣어주기
 	@RequestMapping(value="/tendency", method=RequestMethod.POST)
-	public String doTendency(MemberVO memberVO,
-									 HttpSession session) {
-		System.out.println("call tendency post");
-		
+	public String doTendency(MemberVO memberVO, HttpSession session) {
 		
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
-		
 		memberVO.setMemberId(member.getMemberId());
 	
-		boolean isSuccess = memberService.createMember(memberVO);
-		if(isSuccess) {
-			return "redirect:/main1";
-		}
-		//memberService.
+		memberService.updateMemberStyle(memberVO);
 		
 		System.out.println(memberVO.getMemberStyle1());
 		System.out.println(memberVO.getMemberStyle2());
@@ -196,18 +172,6 @@ public class MemberController {
 		// 매칭하는room으로 이동 test : login
 		return "redirect:/main";
 	}
-
-	
-//	@RequestMapping(value = "/regist", method = RequestMethod.POST)
-//	public String doRegistAction(@ModelAttribute("registForm")
-//								  @Valid MemberVO memberVO, Errors errors,
-//								  HttpServletRequest request,
-//								  Model model) {
-//		if ( errors.hasErrors() ) {
-//			return "member/regist";
-//		}
-//		
-	
 	
 //	마이페이지
 
