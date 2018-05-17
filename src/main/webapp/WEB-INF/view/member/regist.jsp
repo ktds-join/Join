@@ -95,7 +95,6 @@
 		
 		$("#memberName").keyup(function() {
 			var value = $(this).val();
-			console.log(value);
 			if ( value != "" ) {
 				$("#memberName").removeClass("invalid");
 				$("#memberName").addClass("valid");
@@ -111,7 +110,6 @@
 				$.post("<c:url value="/api/exists/memberNickname"/>", {
 					memberNickname : value
 				}, function(response) {
-					console.log(response.response)
 					if ( response.response ) {
 						$("#memberNickname").removeClass("valid");
 						$("#memberNickname").addClass("invalid");

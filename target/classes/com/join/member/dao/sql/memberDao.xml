@@ -5,16 +5,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="MemberDao">
 	<select id="selectMember" parameterType="MemberVO" resultType="MemberVO">
 		SELECT	MEMBER_ID memberId
-				,MEMBER_EMAIL memberEmail
-				,MEMBER_NICKNAME memberNickname
-				,MEMBER_NAME memberName
-				,MEMBER_SEX memberSex
-				,MEMBER_PROFILE_NAME memberProfileName
-				,MEMBER_STYLE_1 memberStyle1
-				,MEMBER_STYLE_2 memberStyle2
-				,MEMBER_STYLE_3 memberStyle3
-				,MEMBER_STYLE_4 memberStyle4
-				,MEMBER_STYLE_5 memberStyle5
+				, MEMBER_EMAIL memberEmail
+				, MEMBER_NICKNAME memberNickname
+				, MEMBER_NAME memberName
+				, MEMBER_SEX memberSex
+				, MEMBER_PROFILE_NAME memberProfileName
+				, MEMBER_STYLE_1 memberStyle1
+				, MEMBER_STYLE_2 memberStyle2
+				, MEMBER_STYLE_3 memberStyle3
+				, MEMBER_STYLE_4 memberStyle4
+				, MEMBER_STYLE_5 memberStyle5
+				, SALT
 		FROM	MEMBER
 		WHERE	MEMBER_EMAIL = #{memberEmail}
 		AND		MEMBER_PASSWORD = #{memberPassword}
@@ -22,17 +23,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="checkMemberWithSessionKey" parameterType="MemberVO" resultType="MemberVO">
 		SELECT	MEMBER_ID
-				,MEMBER_EMAIL
-				,MEMBER_NICKNAME
-				,MEMBER_NAME
-				,MEMBER_SEX
-				,MEMBER_REGIST_DATE
-				,MEMBER_PROFILE_NAME
-				,MEMBER_STYLE_1
-				,MEMBER_STYLE_2
-				,MEMBER_STYLE_3
-				,MEMBER_STYLE_4
-				,MEMBER_STYLE_5
+				, MEMBER_EMAIL
+				, MEMBER_NICKNAME
+				, MEMBER_NAME
+				, MEMBER_SEX
+				, MEMBER_REGIST_DATE
+				, MEMBER_PROFILE_NAME
+				, MEMBER_STYLE_1
+				, MEMBER_STYLE_2
+				, MEMBER_STYLE_3
+				, MEMBER_STYLE_4
+				, MEMBER_STYLE_5
 		FROM	MEMBER
 		WHERE	SESSION_KEY = #{sessionId}
 		AND		SESSION_LIMIT > SYSDATE+9/24
@@ -41,13 +42,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertMember" parameterType="MemberVO">
 		INSERT	INTO MEMBER (
 			MEMBER_ID
-			,MEMBER_EMAIL
-			,MEMBER_PASSWORD
-			,MEMBER_NICKNAME
-			,MEMBER_NAME
-			,MEMBER_SEX
-			,MEMBER_REGIST_DATE
-			,MEMBER_PROFILE_NAME
+			, MEMBER_EMAIL
+			, MEMBER_PASSWORD
+			, MEMBER_NICKNAME
+			, MEMBER_NAME
+			, MEMBER_SEX
+			, MEMBER_REGIST_DATE
+			, MEMBER_PROFILE_NAME
+			, SALT
 		)
 		VALUES (
 			MEMBER_ID_SEQ.NEXTVAL
@@ -58,6 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{memberSex}
 			, SYSDATE+9/24
 			, #{memberProfileName}
+			, #{salt}
 		)
 	</insert>
 	
@@ -71,6 +74,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT	COUNT(MEMBER_ID)
 		FROM	MEMBER
 		WHERE	MEMBER_NICKNAME = #{memberNickname}
+	</select>
+	
+	<select id="selectSalt" parameterType="string" resultType="string">
+		SELECT	NVL(SALT, '')
+		FROM	MEMBER
+		WHERE	MEMBER_EMAIL = #{memberEmail}
 	</select>
 	
 	<delete id="deleteMember" parameterType="_int">

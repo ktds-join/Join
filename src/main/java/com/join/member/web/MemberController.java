@@ -45,16 +45,13 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String doLoginAction(@ModelAttribute("loginForm") @Valid MemberVO memberVO, Errors errors, 
 								HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-		
-		String returnURL = "";
-		
+				
 		MemberVO loginMember =  memberService.readMember(memberVO);
-		loginMember.setMaintainSession(memberVO.isMaintainSession());
 			
 		if ( loginMember != null ) {
 			
+			loginMember.setMaintainSession(memberVO.isMaintainSession());
 			session.setAttribute(Member.MEMBER, loginMember);
-			returnURL = "redirect:/main";
 			
 			if ( loginMember.isMaintainSession() ) {
 				
@@ -71,9 +68,11 @@ public class MemberController {
 				memberService.keepLogin(memberVO.getMemberId(),
 										session.getId(), sessionLimit);
 			}
+			
+			return "redirect:/main";
 		}
-		returnURL = "redirect:/main";
-		return returnURL;	
+		
+		return "member/login";	
 	}	
 	
 	@RequestMapping("/logout")
