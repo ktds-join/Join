@@ -104,11 +104,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateMemberStyle" parameterType="MemberVO">
 		UPDATE	MEMBER
-		SET		MEMBER_STYLE_1 = #{memberStyle1}
-				,MEMBER_STYLE_2 = #{memberStyle2}
-				,MEMBER_STYLE_3 = #{memberStyle3}
-				,MEMBER_STYLE_4 = #{memberStyle4}
-				,MEMBER_STYLE_5 = #{memberStyle5}
+		SET		MEMBER_STYLE_1 = #{style1}
+				,MEMBER_STYLE_2 = #{style2}
+				,MEMBER_STYLE_3 = #{style3}
+				,MEMBER_STYLE_4 = #{style4}
+				,MEMBER_STYLE_5 = #{style5}
 		WHERE 	MEMBER_ID = #{memberId}
 	</update>
 	

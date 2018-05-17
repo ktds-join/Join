@@ -14,9 +14,10 @@ public interface MemberService {
 	
 	public boolean createMember(MemberVO memberVO);
 
-	
 	public boolean readCountMemberEmail(String memberEmail);
 	
 	public boolean readCountMemberNickname(String memberNickname);
+	
+	public boolean updateMemberStyle(MemberVO memberVO);
 	
 }

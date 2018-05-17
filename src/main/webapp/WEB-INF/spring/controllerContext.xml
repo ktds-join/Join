@@ -7,7 +7,9 @@
 		<property name="mainService" ref="mainService"/>	
 	</bean>
 	
-	<bean id = "tendencyController" class="com.join.main.web.TendencyController"></bean>
+	<bean id = "tendencyController" class="com.join.member.web.TendencyController">
+		<property name="memberService" ref="memberService"/>
+	</bean>
 	
 	<bean id = "memberController" class="com.join.member.web.MemberController">
 		<property name="memberService" ref="memberService"/>
