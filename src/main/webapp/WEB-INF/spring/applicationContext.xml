@@ -11,6 +11,7 @@
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
+            <mvc:mapping path="/member/tendency"/>
             <mvc:mapping path="/member/regist"/>
             <bean id="authenticationInterceptor" class="com.join.interceptors.AuthenticationInterceptor"/>
         </mvc:interceptor>

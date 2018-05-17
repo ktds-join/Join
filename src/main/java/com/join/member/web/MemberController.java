@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.WebUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.join.member.constants.Member;
 import com.join.member.service.MemberService;
@@ -37,7 +39,7 @@ public class MemberController {
 	public String viewLoginPage(HttpSession session) {
 		
 		if ( session.getAttribute(Member.MEMBER) != null ) {
-			return "redirect:/main";
+			return "redirect:/main1";
 		}
 		return "member/login";
 	} 
@@ -52,6 +54,10 @@ public class MemberController {
 			
 			loginMember.setMaintainSession(memberVO.isMaintainSession());
 			session.setAttribute(Member.MEMBER, loginMember);
+<<<<<<< HEAD
+			returnURL = "redirect:/main1";
+=======
+>>>>>>> 6f9df7475d217a7b9f9011e2c63dd9c6bb472558
 			
 			if ( loginMember.isMaintainSession() ) {
 				
@@ -71,8 +77,13 @@ public class MemberController {
 			
 			return "redirect:/main";
 		}
+<<<<<<< HEAD
+		returnURL = "redirect:/main1";
+		return returnURL;	
+=======
 		
 		return "member/login";	
+>>>>>>> 6f9df7475d217a7b9f9011e2c63dd9c6bb472558
 	}	
 	
 	@RequestMapping("/logout")
@@ -97,7 +108,7 @@ public class MemberController {
                 System.out.println(2);
             }
         }
-        return "redirect:/main";
+        return "redirect:/main1";
     }
 
 
@@ -144,6 +155,59 @@ public class MemberController {
 		
 		return response;
 	}
+	
+	
+	@RequestMapping(value="/tendency", method=RequestMethod.GET)
+	public String viewTendency() {
+		
+		System.out.println("call tendency get");
+//
+//		if ( session.getAttribute(Member.MEMBER) != null ) {
+//			return "redirect:/tendency";
+//		}
+		return "member/tendency";
+	}
+	
+
+	// 세션 set해서 받아오,get해서 vo에 넣어주기
+	@RequestMapping(value="/tendency", method=RequestMethod.POST)
+	public String doTendency(MemberVO memberVO,
+									 HttpSession session) {
+		System.out.println("call tendency post");
+		
+		
+		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
+		
+		memberVO.setMemberId(member.getMemberId());
+	
+		boolean isSuccess = memberService.createMember(memberVO);
+		if(isSuccess) {
+			return "redirect:/main1";
+		}
+		//memberService.
+		
+		System.out.println(memberVO.getMemberStyle1());
+		System.out.println(memberVO.getMemberStyle2());
+		System.out.println(memberVO.getMemberStyle3());
+		System.out.println(memberVO.getMemberStyle4());
+		System.out.println(memberVO.getMemberStyle5());
+		
+		
+		// 매칭하는room으로 이동 test : login
+		return "redirect:/main";
+	}
+
+	
+//	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+//	public String doRegistAction(@ModelAttribute("registForm")
+//								  @Valid MemberVO memberVO, Errors errors,
+//								  HttpServletRequest request,
+//								  Model model) {
+//		if ( errors.hasErrors() ) {
+//			return "member/regist";
+//		}
+//		
+	
 	
 //	마이페이지
 
