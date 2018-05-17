@@ -107,7 +107,7 @@ $().ready(function(){
           <c:if test="${empty sessionScope.__MEMBER__}">
           <li class="menu"><a href="/Join/login">Login</a></li>
           </c:if>
-          <c:if test="${sessionScope.__MEMBER__}">
+          <c:if test="${not empty sessionScope.__MEMBER__}">
           <li class="menu-has-children"><a href="">Mypage</a>
           
             <ul>
