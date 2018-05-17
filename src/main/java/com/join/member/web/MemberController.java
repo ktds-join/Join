@@ -54,10 +54,6 @@ public class MemberController {
 			
 			loginMember.setMaintainSession(memberVO.isMaintainSession());
 			session.setAttribute(Member.MEMBER, loginMember);
-<<<<<<< HEAD
-			returnURL = "redirect:/main1";
-=======
->>>>>>> 6f9df7475d217a7b9f9011e2c63dd9c6bb472558
 			
 			if ( loginMember.isMaintainSession() ) {
 				
@@ -77,13 +73,7 @@ public class MemberController {
 			
 			return "redirect:/main";
 		}
-<<<<<<< HEAD
-		returnURL = "redirect:/main1";
-		return returnURL;	
-=======
-		
 		return "member/login";	
->>>>>>> 6f9df7475d217a7b9f9011e2c63dd9c6bb472558
 	}	
 	
 	@RequestMapping("/logout")
