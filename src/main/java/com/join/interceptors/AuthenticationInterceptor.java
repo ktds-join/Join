@@ -17,20 +17,22 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	MemberService memberService;
      
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object controller)
             throws Exception {
          
     	HttpSession session = request.getSession();
         Object obj = session.getAttribute(Member.MEMBER);
         
         if ( obj == null ) {
-        	Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+        	
+        	Cookie loginCookie = WebUtils.getCookie(request, Member.COOKIE);
+        	
         	if ( loginCookie != null ) {
         		String sessionId = loginCookie.getValue();
         		MemberVO memberVO = memberService.checkMemberWithSessionKey(sessionId);
                  
 		        if ( memberVO != null ) { 
-		        	session.setAttribute("login", memberVO);
+		        	session.setAttribute(Member.MEMBER, memberVO);
 		            return true;
 		        }
 		    }

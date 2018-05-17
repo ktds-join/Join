@@ -9,21 +9,21 @@
 
 	<mvc:resources location="/WEB-INF/static/" mapping="/static/**" />
 	
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
             <mvc:mapping path="/member/regist"/>
-            <mvc:mapping path="/member/modify"/>
-            <mvc:mapping path="/member/modifyStyle"/>
-            <mvc:mapping path="/member/delete"/>
             <bean id="authenticationInterceptor" class="com.join.interceptors.AuthenticationInterceptor"/>
         </mvc:interceptor>
         
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<mvc:mapping path="/static/**" />
-			<bean>세션인터셉터</bean>
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/regist" />
+			<mvc:exclude-mapping path="/main" />
+			<mvc:exclude-mapping path="/static/**" />
+			<bean id="sessionInterceptor" class="com.join.interceptors.SessionInterceptor"/>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 
 	<!-- 스프링 유효성검사
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" /> -->

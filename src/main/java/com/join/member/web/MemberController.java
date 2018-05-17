@@ -58,7 +58,7 @@ public class MemberController {
 			
 			if ( loginMember.isMaintainSession() ) {
 				
-				Cookie cookie = new Cookie("loginCookie", session.getId());
+				Cookie cookie = new Cookie(Member.COOKIE, session.getId());
 				cookie.setPath("/");
 				
 				int timeAmount = 60*60*6;
@@ -84,10 +84,11 @@ public class MemberController {
 		if ( memberVO != null ) {
             session.removeAttribute(Member.MEMBER);
             session.invalidate();
-            Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-            System.out.println(1);
+            Cookie loginCookie = WebUtils.getCookie(request, Member.COOKIE);
+            System.out.println(loginCookie);
             
             if ( loginCookie != null ){
+            	System.out.println("loginCookie is not null");
                 loginCookie.setPath("/");
                 loginCookie.setMaxAge(0);
                 response.addCookie(loginCookie);
@@ -97,7 +98,6 @@ public class MemberController {
                 System.out.println(2);
             }
         }
-		System.out.println(3);
         return "redirect:/main";
     }
 
