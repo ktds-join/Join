@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.WebUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.join.member.constants.Member;
 import com.join.member.service.MemberService;
@@ -142,5 +143,27 @@ public class MemberController {
 		
 		return response;
 	}
+	
+	@RequestMapping(value="/tendency", method=RequestMethod.GET)
+	public String viewTendency() {
+		System.out.println("call main get");
+		return "member/tendency";
+	}
+	
+	// 세션 set해서 받아오,get해서 vo에 넣어주기
+	@RequestMapping(value="/tendency", method=RequestMethod.POST)
+	public ModelAndView doTendency(MemberVO memberVO) {
+		System.out.println("call main post");
+		
+		System.out.println(memberVO.getMemberStyle1());
+		System.out.println(memberVO.getMemberStyle2());
+		System.out.println(memberVO.getMemberStyle3());
+		System.out.println(memberVO.getMemberStyle4());
+		System.out.println(memberVO.getMemberStyle5());
+		
+		// 매칭하는room으로 이동 test : login
+		return new ModelAndView("redirect:member/login");
+	}
+	
 	
 }
