@@ -17,7 +17,7 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="/Join/yourStatus">Home</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
@@ -27,11 +27,13 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              ktds university <br>
+              Seoul<br>
+              South Korea<br>
+              <strong>Phone:</strong> +82 1234 5678 90 <br>
+              <strong>Email:</strong> info@join.com<br>
+              <strong>GitHub:</strong> travel-mate.github.io<br>
+              
             </p>
 
             <div class="social-links">

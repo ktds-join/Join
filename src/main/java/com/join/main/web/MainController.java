@@ -20,19 +20,17 @@ public class MainController {
 	public String viewMain(HttpSession session) {
 		return "main/main";
 	}
-	@RequestMapping("/index")
-	public String viewIndex() {
-		return "main/index";
-	}
+
+	
 	@RequestMapping("/yourStatus")
 	public String viewStartPage() {
 		return "main/startPage";
 	}
 	
-	@RequestMapping(value="/main", method=RequestMethod.GET)
+	@RequestMapping(value="/main1", method=RequestMethod.GET)
 	public String viewMain() {
 
-		return "main/main";
+		return "main/main1";
 	}
 	
 }

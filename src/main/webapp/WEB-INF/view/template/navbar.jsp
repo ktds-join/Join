@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 #header {
   padding: 20px 0;
@@ -26,7 +27,10 @@
       <nav id="nav-menu-container"> 
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Home</a></li>
-          <li class="menu"><a href="/Join/login">Login</a>
+          <c:if test="${empty sessionScope.__MEMBER__}">
+          <li class="menu"><a href="/Join/login">Login</a></li>
+          </c:if>
+          <c:if test="${sessionScope.__MEMBER__}">
           <li class="menu-has-children"><a href="">Mypage</a>
             <ul>
               <li>
@@ -34,6 +38,7 @@
               </li> 
             </ul>
           </li>
+          </c:if>
           <li><a href="/epi">Epilogue</a></li>
           
         </ul>
