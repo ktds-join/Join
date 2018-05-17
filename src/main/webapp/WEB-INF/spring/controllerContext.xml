@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id = "mainController" class="com.join.main.web.MainController">
-		<property name="mainService" ref="mainService"/>
-		
-		
+		<property name="mainService" ref="mainService"/>	
 	</bean>
+	
+	<bean id = "tendencyController" class="com.join.main.web.TendencyController"></bean>
 	
 	<bean id = "memberController" class="com.join.member.web.MemberController">
 		<property name="memberService" ref="memberService"/>

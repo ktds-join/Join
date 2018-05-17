@@ -146,4 +146,10 @@ public class MemberController {
 		return response;
 	}
 	
+//	마이페이지
+
+	@RequestMapping("/mypage")
+	public String viewMypage(HttpSession session) {
+		return "member/mypage";
+	}
 }
