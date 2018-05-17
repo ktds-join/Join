@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,7 @@ public class MemberController {
 	public String viewLoginPage(HttpSession session) {
 		
 		if ( session.getAttribute(Member.MEMBER) != null ) {
-			return "redirect:/main";
+			return "redirect:/main1";
 		}
 		return "member/login";
 	} 
@@ -55,7 +56,7 @@ public class MemberController {
 		if ( loginMember != null ) {
 			
 			session.setAttribute(Member.MEMBER, loginMember);
-			returnURL = "redirect:/main";
+			returnURL = "redirect:/main1";
 			
 			if ( loginMember.isMaintainSession() ) {
 				
@@ -73,7 +74,7 @@ public class MemberController {
 										session.getId(), sessionLimit);
 			}
 		}
-		returnURL = "redirect:/main";
+		returnURL = "redirect:/main1";
 		return returnURL;	
 	}	
 	
@@ -96,7 +97,7 @@ public class MemberController {
                 memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
             }
         }
-        return "redirect:/main";
+        return "redirect:/main1";
     }
 
 
@@ -144,16 +145,35 @@ public class MemberController {
 		return response;
 	}
 	
+	
 	@RequestMapping(value="/tendency", method=RequestMethod.GET)
 	public String viewTendency() {
-		System.out.println("call main get");
+		
+		System.out.println("call tendency get");
+//
+//		if ( session.getAttribute(Member.MEMBER) != null ) {
+//			return "redirect:/tendency";
+//		}
 		return "member/tendency";
 	}
 	
+
 	// 세션 set해서 받아오,get해서 vo에 넣어주기
 	@RequestMapping(value="/tendency", method=RequestMethod.POST)
-	public ModelAndView doTendency(MemberVO memberVO) {
-		System.out.println("call main post");
+	public String doTendency(MemberVO memberVO,
+									 HttpSession session) {
+		System.out.println("call tendency post");
+		
+		
+		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
+		
+		memberVO.setMemberId(member.getMemberId());
+	
+		boolean isSuccess = memberService.createMember(memberVO);
+		if(isSuccess) {
+			return "redirect:/main1";
+		}
+		//memberService.
 		
 		System.out.println(memberVO.getMemberStyle1());
 		System.out.println(memberVO.getMemberStyle2());
@@ -161,9 +181,27 @@ public class MemberController {
 		System.out.println(memberVO.getMemberStyle4());
 		System.out.println(memberVO.getMemberStyle5());
 		
+		
 		// 매칭하는room으로 이동 test : login
-		return new ModelAndView("redirect:member/login");
+		return "redirect:/main";
 	}
+
+	
+//	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+//	public String doRegistAction(@ModelAttribute("registForm")
+//								  @Valid MemberVO memberVO, Errors errors,
+//								  HttpServletRequest request,
+//								  Model model) {
+//		if ( errors.hasErrors() ) {
+//			return "member/regist";
+//		}
+//		
 	
 	
+//	마이페이지
+
+	@RequestMapping("/mypage")
+	public String viewMypage(HttpSession session) {
+		return "member/mypage";
+	}
 }

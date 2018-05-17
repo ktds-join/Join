@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인 페이지</title>
+<title>마이 페이지</title>
 <link rel="stylesheet" type="text/css"
 		href="<c:url value="/static/css/member.css"/>" />
 <!-- 추가 -->
@@ -30,70 +30,21 @@
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		$("#loginBtn").click(function() {
-			
-			if ($("#email").val() == "") {
-				$("#errorId").slideDown(300);
-				$("#email").focus();
-				return false;
-			} else {
-				$("#errorId").slideUp(300);
-			}
-
-			if ($("#password").val() == "") {
-				$("#errorPassword").slideDown(300);
-				$("#password").focus();
-				return false;
-			} else {
-				$("#errorPassword").slideUp(300);
-			}
-			
-			$("#loginForm").attr({
-				"action" : "<c:url value = "/login"/>",
-				"method" : "post"
-			}).submit();
-		});
+		
 	});
 </script>
 </head>
 <body>
-<br><br><br><br><!-- 나중에 수정해야됨.... -->
 <!-- header :: navbar 부분 -->
 	<jsp:include page="/WEB-INF/view/template/navbar.jsp" />
 	
-	<div id="whole_wrapper">
-		<div id="cols">
-			<div id="wrapper">
-				<form:form modelAttribute="loginForm">
-					<div class="header">
-						<strong>로그인</strong>
-						<p class="rememberme">
-							<input type="checkbox" id="rememberme" name="maintainSession" value="true">
-							<label for="rememberme">로그인 상태 유지</label>
-						</p>
-					</div>	
-					<div class="body">
-						<dl>
-							<dt><label for="email">아이디 (이메일)</label></dt>
-							<dd><input type="text" class="text" id="email" name="memberEmail"/></dd>
-							<div id="errorId" style="display: none;">아이디를 입력하세요!</div>
-							<dt><label for="password">비밀번호</label></dt>
-							<dd><input type="password" class="text" id="password" name="memberPassword"/></dd>
-							<div id="errorPassword" style="display: none;">비밀번호를 입력하세요!</div>
-						</dl>
-						<div class="btn">
-							<p><button type="submit" id="loginBtn" class="btn_submit">로그인</button></p>
-						</div>
-					</div>
-					<div class="footer">
-						<a href="#">비밀번호 찾기</a>
-						&nbsp | &nbsp 
-						<a href="<c:url value="/regist"/>">회원가입</a>
-					</div>
-				</form:form>
-			</div>
+	<br><br><br><br><!-- 나중에 수정해야됨.... -->
+	
+		<div id="wrapper">
+			wrapper 얼마난지 보기
 		</div>
-	</div>
+		
+		
 	<!-- 일단은 br로 사이 띄어놓겠음 -->
 	<br><br><br><br><br>
 	<!-- footer -->
