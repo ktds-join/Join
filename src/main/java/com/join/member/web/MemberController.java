@@ -73,10 +73,7 @@ public class MemberController {
 			
 			return "redirect:/main";
 		}
-<<<<<<< HEAD
-=======
 		
->>>>>>> 9c4617e3ce8e9837fc5d5b4d0ae598ce543eea5b
 		return "member/login";	
 	}	
 	
@@ -163,7 +160,6 @@ public class MemberController {
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
 		memberVO.setMemberId(member.getMemberId());
 	
-		memberService.updateMemberStyle(memberVO);
 		
 		System.out.println(memberVO.getMemberStyle1());
 		System.out.println(memberVO.getMemberStyle2());
@@ -171,13 +167,16 @@ public class MemberController {
 		System.out.println(memberVO.getMemberStyle4());
 		System.out.println(memberVO.getMemberStyle5());
 		
+		memberService.updateMemberStyle(memberVO);
 		
-		// 매칭하는room으로 이동 test : login
+		// 매칭하는room으로 이동 test : main
 		return "redirect:/main";
+		
 	}
 	
-//	마이페이지
 
+	
+	//	마이페이지
 	@RequestMapping("/mypage")
 	public String viewMypage(HttpSession session) {
 		return "member/mypage";
