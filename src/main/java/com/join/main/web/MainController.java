@@ -21,8 +21,13 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main")
+<<<<<<< HEAD
 	public String viewMain(HttpSession session) {
 		return "main/main";
+=======
+	public String viewMain() {
+		return "main/testFB";
+>>>>>>> 2dfaff059b74627f826eb8be19005a60846d8c7e
 	}
 
 	
