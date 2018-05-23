@@ -124,9 +124,10 @@ body {
 												<!-- TODO : 여기에 프로필 사진 및 회원 정보 추가 -->
 												<!-- Btn click -> modal -->
 												<!-- Modal -->
+												<img src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/>
 												<div class="container">
 												<!-- Trigger the modal with a button -->
- 											   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sol Modal</button>
+ 											   		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sol Modal</button>
 												</div>
 									</div>
 								</li>
