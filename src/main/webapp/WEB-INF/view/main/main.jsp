@@ -100,7 +100,6 @@ body {
 	<!--==========================
     Header :: 시작페이지에선 구분 안하려고 함
   ============================-->
-<<<<<<< HEAD
 	<header id="header" style="position: fixed">
 		<div class="container-fluid">
 
