@@ -120,14 +120,14 @@ body {
 							<ul>
 								<li>
 									<div style="background-color: red; height: 400px; width: 180px">
-										<a href="<c:url value="#"/>"> it gonna beDIV </a>
+										<a href="<c:url value="#"/>"> it gonna be DIV </a>
 												<!-- TODO : 여기에 프로필 사진 및 회원 정보 추가 -->
 												<!-- Btn click -> modal -->
 												<!-- Modal -->
 												<div class="container">
 												<!-- Trigger the modal with a button -->
  											   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sol Modal</button>
-												</div>
+											</div>
 									</div>
 								</li>
 							</ul>
