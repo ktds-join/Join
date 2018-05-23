@@ -1,5 +1,6 @@
 package com.join.member.web;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 
 import javax.servlet.http.Cookie;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.join.member.constants.Member;
 import com.join.member.service.MemberService;
 import com.join.member.vo.MemberVO;
+import com.join.util.DownloadUtil;
 
 @Controller
 public class MemberController {
@@ -114,10 +116,12 @@ public class MemberController {
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public String doRegistAction(@ModelAttribute("registForm")
 								 @Valid MemberVO memberVO, Errors errors) {
-		
+
 		if ( errors.hasErrors() ) {
 			return "member/regist";
 		}
+		
+		memberVO.save();
 		
 		boolean isSuccess = memberService.createMember(memberVO);
 		if ( isSuccess ) {
@@ -149,6 +153,20 @@ public class MemberController {
 		return response;
 	}
 	
+	@RequestMapping("/profile/{memberId}")
+	public void viewProfileAction(@PathVariable int memberId,
+								   HttpServletRequest request,
+								   HttpServletResponse response) {
+		MemberVO loginMember = memberService.readMemberById(memberId);
+		String memberProfileName = loginMember.getMemberProfileName();
+		DownloadUtil downloadUtil = new DownloadUtil("D:/uploadProfiles/" + memberProfileName);
+		
+		try {
+			downloadUtil.download(request, response, memberProfileName);
+		} catch (UnsupportedEncodingException uee) {
+			throw new RuntimeException(uee.getMessage(), uee);
+		}
+	}
 	
 	@RequestMapping(value="/tendency", method=RequestMethod.GET)
 	public String viewTendency() {
@@ -162,6 +180,7 @@ public class MemberController {
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
 		memberVO.setMemberId(member.getMemberId());
 	
+		memberService.updateMemberStyle(memberVO);
 		
 		System.out.println(memberVO.getMemberStyle1());
 		System.out.println(memberVO.getMemberStyle2());
@@ -169,16 +188,13 @@ public class MemberController {
 		System.out.println(memberVO.getMemberStyle4());
 		System.out.println(memberVO.getMemberStyle5());
 		
-		memberService.updateMemberStyle(memberVO);
 		
-		// 매칭하는room으로 이동 test : main
+		// 매칭하는room으로 이동 test : login
 		return "redirect:/main";
-		
 	}
 	
+//	마이페이지
 
-	
-	//	마이페이지
 	@RequestMapping("/mypage")
 	public String viewMypage(HttpSession session) {
 		return "member/mypage";
