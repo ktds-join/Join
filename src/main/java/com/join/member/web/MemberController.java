@@ -156,22 +156,12 @@ public class MemberController {
 		
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
 		memberVO.setMemberId(member.getMemberId());
-	
-		
-		System.out.println(memberVO.getMemberStyle1());
-		System.out.println(memberVO.getMemberStyle2());
-		System.out.println(memberVO.getMemberStyle3());
-		System.out.println(memberVO.getMemberStyle4());
-		System.out.println(memberVO.getMemberStyle5());
 		
 		memberService.updateMemberStyle(memberVO);
 		
-		// 매칭하는room으로 이동 test : main
-		return "redirect:/main";
+		return "redirect:/list";
 		
 	}
-	
-
 	
 	//	마이페이지
 	@RequestMapping("/mypage")
