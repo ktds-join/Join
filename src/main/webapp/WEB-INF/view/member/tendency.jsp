@@ -7,8 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>TEST::tendency matching</title>
+<title></title>
 <!-- 삭제하지마셈  추가 -->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
@@ -25,51 +24,56 @@
   <link href="<c:url value="static/lib/animate/animate.min.css"/>" rel="stylesheet">
   <!-- Main Stylesheet File -->
   <link href="<c:url value="static/css/style.css"/>" rel="stylesheet">
-<!-- 삭제하지마셈  추가 -->
+  <!-- 삭제하지마셈  추가 -->
  <link href="<c:url value="static/css/tendency.css"/>" rel="stylesheet">
+ 
 </head>
+<style>
 
+</style>
 <body>
 <!-- header :: navbar 부분 -->
 	<jsp:include page="/WEB-INF/view/template/navbar.jsp" />
 
-<h1>당신이 선호하는 여행 스타일은?</h1>
 
-
-
+<div class="container">
 	<div id="wrapper">
 		<form id="styleForm">
-		  <div class="range-slider">
-			  <input id="memberStyle1" name="memberStyle1" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="memberStyle1" class="range-slider__value">0</span> 
+			<h2>선호하는 여행 스타일을 선택해주세요!</h2>
+		
+			  
+		 
+		   <div class="range-slider">
+		  	<input id="memberStyle1" name="memberStyle2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
 		  </div>
 		 
 		   <div class="range-slider">
 		  	<input id="memberStyle2" name="memberStyle2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-		  	<span id="memberStyle2" class="range-slider__value">0</span> 
 		  </div>
 		  
 		  <div class="range-slider">
 			  <input id="memberStyle3" name="memberStyle3" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="memberStyle3" class="range-slider__value">0</span> 
 		  </div>
 		  
 		  <div class="range-slider">
 			  <input id="memberStyle4" name="memberStyle4" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="memberStyle4" class="range-slider__value">0</span> 
 		  </div>
 		  
 		  <div class="range-slider">
 			  <input id="memberStyle5" name="memberStyle5" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="memberStyle5" class="range-slider__value">0</span> 
+		<!--  <span id="memberStyle5" class="range-slider__value">0</span> --> 
 		  </div> 
+		  
 		  </form>
 		  
-		  <!-- TODO: url 보내기 -->  
-		  <button type="button" class="preBtn" id="preBtn">이전으로</button>
-		  <button type="button" class="nextBtn" id="nextBtn">매칭하기</button>
-	</div>
-  
+			  <div class="button-1">
+			    <a href="<c:url value="/mapPage"/>"> 뒤로가기 </a>
+			    <a id="nextBtn"> 매칭하기 </a>
+		  <!-- <button type="button" class="preBtn" id="preBtn">이전으로</button>
+		  <button type="button" class="nextBtn" id="nextBtn">매칭하기</button> -->
+		</div>
+  	</div>
+ </div>
 <!-- 삭제하지마셈 추가 -->
 <!-- 일단은 br로 사이 띄어놓겠음 -->
 	<br><br><br><br><br>
@@ -86,8 +90,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
 		crossorigin="anonymous"></script> 
-<script>
 
+<script>
 var rangeSlider = function(){
   var slider = $('.range-slider'),
       range = $('.range-slider__range'),
@@ -118,9 +122,8 @@ rangeSlider();
   
   <script type="text/javascript">
   	$().ready(function(){
-	 
-	  
 	  $("#nextBtn").click(function(){
+		 
 		  console.log("click");
 		  var style1 = $("#styleInput1").val($("#style1").text());
 		  var style2 = $("#styleInput2").val($("#style2").text());
@@ -135,13 +138,18 @@ rangeSlider();
 		  console.log(style5);
 		 
 		
-		 
+		  var result = confirm('매칭하시겠습니까?');
+		  if (result) {
+			  
+		  
 		   $("#styleForm").attr({
 			  "method" : "post",
 			  "action" : "<c:url value="/tendency"/>"
 		  }).submit(); 
-	  });
+		  }
+		  });
   });
   </script>
+  
 </body>
 </html>
