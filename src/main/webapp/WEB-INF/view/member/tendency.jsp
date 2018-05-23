@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TEST::tendency matching</title>
+<title></title>
 <!-- 삭제하지마셈  추가 -->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
@@ -24,62 +24,56 @@
   <link href="<c:url value="static/lib/animate/animate.min.css"/>" rel="stylesheet">
   <!-- Main Stylesheet File -->
   <link href="<c:url value="static/css/style.css"/>" rel="stylesheet">
-<!-- 삭제하지마셈  추가 -->
+  <!-- 삭제하지마셈  추가 -->
  <link href="<c:url value="static/css/tendency.css"/>" rel="stylesheet">
+ 
 </head>
+<style>
 
+</style>
 <body>
 <!-- header :: navbar 부분 -->
 	<jsp:include page="/WEB-INF/view/template/navbar.jsp" />
 
-<h1>당신이 선호하는 여행 스타일은?</h1>
-<!-- <div class="jquery-script-ads" style="margin-top:30px" align="center">
-<script type="text/javascript">
-<!--
-google_ad_client = "ca-pub-2783044520727903";
-/* jQuery_demo */
-google_ad_slot = "2780937993";
-google_ad_width = 728;
-google_ad_height = 90;
-//
-</script>
-<script type="text/javascript"
-src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-</div> -->
 
-
+<div class="container">
+	<div id="wrapper">
 		<form id="styleForm">
-		  <div class="range-slider">
-			  <input id="styleInput1" name="style1" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="style1" class="range-slider__value">0</span> 
+			<h2>선호하는 여행 스타일을 선택해주세요!</h2>
+		
+			  
+		 
+		   <div class="range-slider">
+		  	<input id="memberStyle1" name="memberStyle2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
 		  </div>
 		 
-		  <div class="range-slider">
-		  	<input id="styleInput2" name="style2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-		  	<span id="style2" class="range-slider__value">0</span> 
+		   <div class="range-slider">
+		  	<input id="memberStyle2" name="memberStyle2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
 		  </div>
 		  
 		  <div class="range-slider">
-			  <input id="styleInput3" name="style3" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="style3" class="range-slider__value">0</span> 
+			  <input id="memberStyle3" name="memberStyle3" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
 		  </div>
 		  
 		  <div class="range-slider">
-			  <input id="styleInput4" name="style4" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="style4" class="range-slider__value">0</span> 
+			  <input id="memberStyle4" name="memberStyle4" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
 		  </div>
 		  
 		  <div class="range-slider">
-			  <input id="styleInput5" name="style5" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-			  <span id="style5" class="range-slider__value">0</span> 
-		  </div>
+			  <input id="memberStyle5" name="memberStyle5" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
+		<!--  <span id="memberStyle5" class="range-slider__value">0</span> --> 
+		  </div> 
+		  
 		  </form>
-		  <!-- TODO: url 보내기 -->  
-		  <button type="button" class="preBtn" id="preBtn">이전으로</button>
-		  <button type="button" class="nextBtn" id="nextBtn">매칭하기</button>
-		
-  
+		  
+			  <div class="button-1">
+			    <a href="<c:url value="/mapPage"/>"> 뒤로가기 </a>
+			    <a id="nextBtn"> 매칭하기 </a>
+		  <!-- <button type="button" class="preBtn" id="preBtn">이전으로</button>
+		  <button type="button" class="nextBtn" id="nextBtn">매칭하기</button> -->
+		</div>
+  	</div>
+ </div>
 <!-- 삭제하지마셈 추가 -->
 <!-- 일단은 br로 사이 띄어놓겠음 -->
 	<br><br><br><br><br>
@@ -96,8 +90,8 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
 		crossorigin="anonymous"></script> 
-<script>
 
+<script>
 var rangeSlider = function(){
   var slider = $('.range-slider'),
       range = $('.range-slider__range'),
@@ -117,53 +111,45 @@ var rangeSlider = function(){
 };
 
 rangeSlider();
+
 </script>
-<!--
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>-->
 
 <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+	  src="https://code.jquery.com/jquery-3.3.1.js"
+	  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	  crossorigin="anonymous">
+</script>
   
   <script type="text/javascript">
-  $().ready(function(){
-	  console.log("ready");
-	  var value = $("#style1").text();
-	  console.log(value);
-	  
-	  $("#preBtn").click(function(){
-		  console.log("click");
-		  $("#styleInput1").val($("#style1").text());
-		  console.log($("#styleInput1").val());
-	  })
-	  
+  	$().ready(function(){
 	  $("#nextBtn").click(function(){
+		 
 		  console.log("click");
-		  $("#styleInput1").val($("#style1").text());
-		  $("#styleInput2").val($("#style2").text());
-		  $("#styleInput3").val($("#style3").text());
-		  $("#styleInput4").val($("#style4").text());
-		  $("#styleInput5").val($("#style5").text());
-		  $("#style").attr({
+		  var style1 = $("#styleInput1").val($("#style1").text());
+		  var style2 = $("#styleInput2").val($("#style2").text());
+		  var style3 = $("#styleInput3").val($("#style3").text());
+		  var style4 = $("#styleInput4").val($("#style4").text());
+		  var style5 = $("#styleInput5").val($("#style5").text());
+		  
+		  console.log(style1);
+		  console.log(style2);
+		  console.log(style3);
+		  console.log(style4);
+		  console.log(style5);
+		 
+		
+		  var result = confirm('매칭하시겠습니까?');
+		  if (result) {
+			  
+		  
+		   $("#styleForm").attr({
 			  "method" : "post",
-			  "action" : "<c:url value="/main"/>"
-		  }).submit();
-	  })
-  })
+			  "action" : "<c:url value="/tendency"/>"
+		  }).submit(); 
+		  }
+		  });
+  });
   </script>
+  
 </body>
 </html>

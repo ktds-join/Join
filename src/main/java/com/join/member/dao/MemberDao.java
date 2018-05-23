@@ -13,10 +13,13 @@ public interface MemberDao {
 	public MemberVO checkMemberWithSessionKey(String sessionId);
 	
 	public int insertMember(MemberVO memberVO);
-
 	
 	public int selectCountMemberEmail(String memberEmail);
 	
 	public int selectCountMemberNickname(String memberNickname);
+	
+	public String selectSalt(String memberEmail);
+	
+	public int updateMemberStyle(MemberVO memberVO);
 	
 }

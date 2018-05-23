@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import com.join.member.dao.MemberDao;
 import com.join.member.vo.MemberVO;
+import com.join.util.SHA256Util;
 
 public class MemberServiceImpl implements MemberService {
 
@@ -15,6 +16,18 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public MemberVO readMember(MemberVO memberVO) {
+		
+		// 1. MemberVO : memberEmail로 SALT 가져오기
+		String salt = memberDao.selectSalt(memberVO.getMemberEmail());
+		if ( salt == null ) {
+			salt = "";
+		}
+		
+		// 2. SALT로 암호화
+		String password = memberVO.getMemberPassword();
+		password = SHA256Util.getEncrypt(password, salt);
+		memberVO.setMemberPassword(password);
+		
 		return memberDao.selectMember(memberVO);
 	}
 	
@@ -30,6 +43,16 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean createMember(MemberVO memberVO) {
+		
+		// SALT 생성
+		String salt = SHA256Util.generateSalt();
+		memberVO.setSalt(salt);
+		String password = memberVO.getMemberPassword();
+		
+		// 비밀번호 암호화
+		password = SHA256Util.getEncrypt(password, salt);
+		memberVO.setMemberPassword(password);
+		
 		return memberDao.insertMember(memberVO) > 0;
 	}
 
@@ -41,6 +64,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean readCountMemberNickname(String memberNickname) {
 		return memberDao.selectCountMemberNickname(memberNickname) > 0;
+	}
+
+	@Override
+	public boolean updateMemberStyle(MemberVO memberVO) {
+		return memberDao.updateMemberStyle(memberVO) > 0;
 	}
 
 }

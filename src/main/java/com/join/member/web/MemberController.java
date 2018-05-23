@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.WebUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.join.member.constants.Member;
 import com.join.member.service.MemberService;
@@ -37,7 +39,7 @@ public class MemberController {
 	public String viewLoginPage(HttpSession session) {
 		
 		if ( session.getAttribute(Member.MEMBER) != null ) {
-			return "redirect:/main";
+			return "redirect:/main1";
 		}
 		return "member/login";
 	} 
@@ -45,20 +47,17 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String doLoginAction(@ModelAttribute("loginForm") @Valid MemberVO memberVO, Errors errors, 
 								HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-		
-		String returnURL = "";
-		
+				
 		MemberVO loginMember =  memberService.readMember(memberVO);
-		loginMember.setMaintainSession(memberVO.isMaintainSession());
 			
 		if ( loginMember != null ) {
 			
+			loginMember.setMaintainSession(memberVO.isMaintainSession());
 			session.setAttribute(Member.MEMBER, loginMember);
-			returnURL = "redirect:/main";
 			
 			if ( loginMember.isMaintainSession() ) {
 				
-				Cookie cookie = new Cookie("loginCookie", session.getId());
+				Cookie cookie = new Cookie(Member.COOKIE, session.getId());
 				cookie.setPath("/");
 				
 				int timeAmount = 60*60*6;
@@ -71,9 +70,11 @@ public class MemberController {
 				memberService.keepLogin(memberVO.getMemberId(),
 										session.getId(), sessionLimit);
 			}
+			
+			return "redirect:/main";
 		}
-		returnURL = "redirect:/main";
-		return returnURL;	
+		
+		return "member/login";	
 	}	
 	
 	@RequestMapping("/logout")
@@ -84,18 +85,21 @@ public class MemberController {
 		if ( memberVO != null ) {
             session.removeAttribute(Member.MEMBER);
             session.invalidate();
-            Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+            Cookie loginCookie = WebUtils.getCookie(request, Member.COOKIE);
+            System.out.println(loginCookie);
             
             if ( loginCookie != null ){
+            	System.out.println("loginCookie is not null");
                 loginCookie.setPath("/");
                 loginCookie.setMaxAge(0);
                 response.addCookie(loginCookie);
                  
                 Date date = new Date(System.currentTimeMillis());
                 memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
+                System.out.println(2);
             }
         }
-        return "redirect:/main";
+        return "redirect:/main1";
     }
 
 
@@ -143,8 +147,36 @@ public class MemberController {
 		return response;
 	}
 	
-//	마이페이지
+	
+	@RequestMapping(value="/tendency", method=RequestMethod.GET)
+	public String viewTendency() {
+		
+		return "member/tendency";
+	}
+	
+	@RequestMapping(value="/tendency", method=RequestMethod.POST)
+	public String doTendency(MemberVO memberVO, HttpSession session) {
+		
+		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
+		memberVO.setMemberId(member.getMemberId());
+	
+		
+		System.out.println(memberVO.getMemberStyle1());
+		System.out.println(memberVO.getMemberStyle2());
+		System.out.println(memberVO.getMemberStyle3());
+		System.out.println(memberVO.getMemberStyle4());
+		System.out.println(memberVO.getMemberStyle5());
+		
+		memberService.updateMemberStyle(memberVO);
+		
+		// 매칭하는room으로 이동 test : main
+		return "redirect:/main";
+		
+	}
+	
 
+	
+	//	마이페이지
 	@RequestMapping("/mypage")
 	public String viewMypage(HttpSession session) {
 		return "member/mypage";

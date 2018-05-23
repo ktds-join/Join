@@ -16,6 +16,57 @@
   <link href="<c:url value="static/img/apple-touch-icon.png"/>" rel="apple-touch-icon">
   <!-- Google Fonts -->
   <link href="<c:url value="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"/>" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="<c:url value="lib/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="<c:url value="css/style.css"/>" rel="stylesheet">
+
+
+<title>있음없음페이지</title>
+
+<style>
+body {
+  background: #fff;
+  color: #666666;
+  font-family: "Open Sans", sans-serif;
+}
+
+
+
+</style>
+</head>
+
+<body>
+	<!-- 헤더  -->
+	<header id = "header">
+		<!-- #로고 왼쪽으로 보내기 -->
+		<div class = "container">
+			<div id ="logo">이미지 넣기</div>	
+		</div>
+		
+		<nav id ="nav-menu-container">
+			<ul class ="nav-menu">
+				<li class ="menu-acitve"><a href="#intro">StartWith</a></li>
+				<li><a href ="epi.jsp">Epilogue</a></li>
+				<!-- <li><a href ="login.jsp">Login</a></li> -->
+				<!-- #menu-has-children -->
+				<li class = "menu-dropdown"><a href="">MyPage</a>
+					<div>마이페이지 관련 정보 입력 </div></li>
+			</ul>
+		</nav>
+		<span>${sessionScope.__MEMBER__.memberEmail}님 반갑습니다</span>
+		<a href="<c:url value="/logout"/>">[로그아웃]</a>
+		<a href="<c:url value="/login"/>">[로그인]</a>
+	</header>
+
+
+  <!-- Template Main Javascript File -->
+<%--   <script src="<c:url value="js/main.js"/>"></script>
+ --%>
+
+</body>
   <!-- Bootstrap CSS File -->
   <link href="<c:url value="static/lib/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
   <!-- Libraries CSS Files -->
@@ -56,7 +107,7 @@ $().ready(function(){
           <c:if test="${empty sessionScope.__MEMBER__}">
           <li class="menu"><a href="/Join/login">Login</a></li>
           </c:if>
-          <c:if test="${sessionScope.__MEMBER__}">
+          <c:if test="${not empty sessionScope.__MEMBER__}">
           <li class="menu-has-children"><a href="">Mypage</a>
           
             <ul>
