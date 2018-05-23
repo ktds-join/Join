@@ -8,6 +8,8 @@ public interface MemberService {
 	
 	public MemberVO readMember(MemberVO memberVO);
 	
+	public MemberVO readMemberById(int memberId);
+	
 	public void keepLogin(int memberId, String sessionId, Date next);
 	
 	public MemberVO checkMemberWithSessionKey(String sessionId);

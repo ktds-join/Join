@@ -32,6 +32,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public MemberVO readMemberById(int memberId) {
+		return memberDao.selectMemberById(memberId);
+	}
+	
+	@Override
 	public void keepLogin(int memberId, String sessionId, Date next) {
 		memberDao.keepLogin(memberId, sessionId, next);
 	}

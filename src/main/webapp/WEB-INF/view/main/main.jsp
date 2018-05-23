@@ -112,7 +112,10 @@ $().ready(function(){
           
             <ul>
               <li>
-              <div style ="background-color:red;height:400px;width:180px"><a href="#">it gonna be DIV</a></div>
+              	<div style ="background-color:red;height:400px;width:180px">
+              		<a href="#">it gonna be DIV</a>
+              		<img src="<c:url value="profile/${sessionScope.__MEMBER__.memberId}"/>"/>
+              	</div>
               </li>
               
             </ul>

@@ -125,7 +125,7 @@
 		});
 
 		$("#registBtn").click(function() {
-
+			
 			if ( $("#memberEmail").val() == "" ) {
 				alert("이메일을 입력하세요");
 				$("#memberEmail").focus();
@@ -149,60 +149,65 @@
 						$("#memberEmail").focus();
 						return false;
 					}
-
-					if ( $("#memberPassword").val() == "" ) {
-						alert("비밀번호를 입력하세요");
-						$("#memberPassword").focus();
-						$("#memberPassword").addClass("invalid");
-						return false;
-					}
-					
-					if ( $("#passwordConfirm").val() == "" ) {
-						alert("비밀번호 확인을 입력하세요");
-						$("#memberPassword").focus();
-						$("#memberPassword").addClass("invalid");
-						return false;
-					}
-					
-					if ( $("#memberName").val() == "" ) {
-						alert("이름을 입력하세요");
-						$("#memberName").focus();
-						$("#memberName").addClass("invalid");
-						return false;
-					}
-					
-					if ( $("#memberNickname").val() == "" ) {
-						alert("닉네임을 입력하세요");
-						$("#memberNickname").focus();
-						$("#memberNickname").addClass("invalid");
-						return false;
-					}
-					
-					if ( $("#memberNickname").hasClass("invalid") ) {
-						alert("작성한 닉네임은 사용할 수 없습니다.");
-						$("#memberNickname").focus();
-						return false;
-					}
 					else {
-						$.post("<c:url value="/api/exists/memberNickname"/>", {
-							memberNickname: $("memberNickname").val()
-						}, function(response) {
-							if( response.response ) {
-								$("#memberNickname").removeClass("valid");
-								$("#memberNicknamee").addClass("invalid");
-							}
-							else {
-								$("#memberNickname").removeClass("invalid");
-								$("#memberNickname").addClass("valid");
-								
-								$("#registForm").attr({
-									"method" : "post",
-									"action" : "<c:url value="/regist"/>"
-								}).submit();
-							}
-						})
-					}
 
+						if ( $("#memberPassword").val() == "" ) {
+							alert("비밀번호를 입력하세요");
+							$("#memberPassword").focus();
+							$("#memberPassword").addClass("invalid");
+							return false;
+						}
+					
+						if ( $("#passwordConfirm").val() == "" ) {
+							alert("비밀번호 확인을 입력하세요");
+							$("#memberPassword").focus();
+							$("#memberPassword").addClass("invalid");
+							return false;
+						}
+					
+						if ( $("#memberName").val() == "" ) {
+							alert("이름을 입력하세요");
+							$("#memberName").focus();
+							$("#memberName").addClass("invalid");
+							return false;
+						}
+						
+						if ( $("#memberNickname").val() == "" ) {
+							alert("닉네임을 입력하세요");
+							$("#memberNickname").focus();
+							$("#memberNickname").addClass("invalid");
+							return false;
+						}
+					
+						if ( $("#memberNickname").hasClass("invalid") ) {
+							alert("작성한 닉네임은 사용할 수 없습니다.");
+							$("#memberNickname").focus();
+							return false;
+						}
+						else {
+							$.post("<c:url value="/api/exists/memberNickname"/>", {
+								memberNickname : $("#memberNickname").val()
+							}, function(response) {
+								if( response.response ) {
+									alert("작성한 닉네임은 사용할수 없습니다.")
+									$("#memberNickname").removeClass("valid");
+									$("#memberNickname").addClass("invalid");
+									$("#memberNickname").focus();
+									return false;
+								}
+								else {
+									$("#memberNickname").removeClass("invalid");
+									$("#memberNickname").addClass("valid");
+									
+									$("#registForm").attr({
+										"method" : "post",
+										"action" : "<c:url value="/regist"/>"
+									}).submit();
+								}
+							});
+						}
+					}
+					
 				});
 
 			}
@@ -219,39 +224,52 @@
 	<div id="whole_wrapper">
 		<div id="cols">
 			<div id="wrapper">		
-				<form:form modelAttribute="registForm">
+				<form:form modelAttribute="registForm" enctype="multipart/form-data">
 					<div class="header">
 						<strong>회원가입</strong>
 					</div>
 					<div class="body">
 						<dl>
 							<dt><label for="memberEmail">아이디 (이메일)</label></dt>
-							<dd><input type="text" class="text" id="memberEmail" name="memberEmail"
-									   value="${registForm.memberEmail}"/></dd>
+							<dd>
+								<input type="text" class="text" id="memberEmail" name="memberEmail"
+									   value="${registForm.memberEmail}"/>
+								<form:errors id="memberEmail"/>
+							</dd>
 									   
 							<dt><label for="memberPassword">비밀번호</label></dt>
-							<dd><input type="password" class="text" id="memberPassword" name="memberPassword"
-									   value="${registForm.memberPassword}"/></dd>
+							<dd>
+								<input type="password" class="text" id="memberPassword" name="memberPassword"
+									   value="${registForm.memberPassword}"/>
+								<form:errors id="memberPassword"/>
+							</dd>
 							
 							<dt><label for="passwordConfirm">비밀번호 확인</label></dt>
 							<dd><input type="password" class="text" id="passwordConfirm" name="passwordConfirm"/></dd>
 							
 							<dt><label for="memberName">이름</label></dt>
-							<dd><input type="text" class="text" id="memberName" name="memberName"
-									   value="${registForm.memberName}"/></dd>
+							<dd>
+								<input type="text" class="text" id="memberName" name="memberName"
+									   value="${registForm.memberName}"/>
+								<form:errors id="memberName"/>
+							</dd>
 									   
 							<dt><label for="memberNickname">닉네임</label></dt>
-							<dd><input type="text" class="text" id="memberNickname" name="memberNickname"
-									   value="${registForm.memberNickname}"/></dd>
+							<dd>
+								<input type="text" class="text" id="memberNickname" name="memberNickname"
+									   value="${registForm.memberNickname}"/>
+								<form:errors id="memberNickname"/>
+							</dd>
 									   
 							<dt><label for="memberSex">성별</label></dt>
 							<dd>
 								<input type="radio" id="memberSexM" name="memberSex" value="M" checked="checked">남
 								<input type="radio" id="memberSexF" name="memberSex" value="F">여
 							</dd>
+							<dd style="display:none;"><input type="file" id="memberProfile" name="memberProfile"/></dd>
 						</dl>
 						<div class="btn">
-							<p><button type="submit" id="registBtn" class="btn_submit">회원가입</button></p>
+							<p><button type="button" id="registBtn" class="btn_submit">회원가입</button></p>
 						</div>
 					</div>
 				</form:form>
