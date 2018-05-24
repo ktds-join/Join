@@ -354,7 +354,7 @@
         <div class="row counters">
 
   				<div class="col-lg-3 col-6 text-center">
-            <span data-toggle="counter-up">274</span>
+            <span data-""counter-up">274</span>
             <p>Clients</p>
   				</div>
 

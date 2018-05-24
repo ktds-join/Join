@@ -1,20 +1,26 @@
 package com.join.member.vo;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVO {
 
 	private int memberId;
 
-	@NotEmpty(message="이메일을 입력해주세요!")
+	@NotEmpty(message = "이메일을 입력해주세요!")
 	private String memberEmail;
-	@NotEmpty(message="비밀번호를 입력해주세요!")
+	@NotEmpty(message = "비밀번호를 입력해주세요!")
 	private String memberPassword;
-	@NotEmpty(message="닉네임을 입력해주세요!")
+	@NotEmpty(message = "닉네임을 입력해주세요!")
 	private String memberNickname;
-	@NotEmpty(message="이름을 입력해주세요!")
+	@NotEmpty(message = "이름을 입력해주세요!")
 	private String memberName;
 	private String memberSex;
+	private MultipartFile memberProfile;
 	private String memberProfileName;
 	private String memberRegistDate;
 
@@ -25,7 +31,7 @@ public class MemberVO {
 	private int memberStyle5;
 
 	private boolean maintainSession;
-	
+
 	private String salt;
 
 	public int getMemberId() {
@@ -76,14 +82,25 @@ public class MemberVO {
 		this.memberSex = memberSex;
 	}
 
+	public MultipartFile getMemberProfile() {
+		return memberProfile;
+	}
+
+	public void setMemberProfile(MultipartFile memberProfile) {
+		this.memberProfile = memberProfile;
+	}
+
 	public String getMemberProfileName() {
-		if ( memberProfileName == null ) {
+		if (memberProfileName == null) {
 			memberProfileName = "";
 		}
 		return memberProfileName;
 	}
 
 	public void setMemberProfileName(String memberProfileName) {
+		if ( memberProfileName == null ) {
+			memberProfileName = "";
+		}
 		this.memberProfileName = memberProfileName;
 	}
 
@@ -134,7 +151,7 @@ public class MemberVO {
 	public void setMemberStyle5(int memberStyle5) {
 		this.memberStyle5 = memberStyle5;
 	}
-	
+
 	public boolean isMaintainSession() {
 		return maintainSession;
 	}
@@ -151,4 +168,39 @@ public class MemberVO {
 		this.salt = salt;
 	}
 	
+	public String save() {
+		
+		// 프로필 있을 경우
+		if ( memberProfile != null && !memberProfile.isEmpty() ) {
+			
+			memberProfileName = memberProfile.getOriginalFilename();
+			File newFile = new File("D:/uploadProfiles/" + memberProfile.getOriginalFilename());
+			
+			try {
+				memberProfile.transferTo(newFile);
+				return newFile.getAbsolutePath();
+			} catch (IllegalStateException ise) {
+				throw new RuntimeException(ise.getMessage(), ise);
+			} catch (IOException ioe) {
+				throw new RuntimeException(ioe.getMessage(), ioe);
+			}
+		}
+		// 처음 회원가입 시, default.jpg로 프로필 설정
+		else {
+			memberProfileName = "default.jpg";
+			File newFile = new File("D:/uploadProfiles/default");
+			
+			try {
+				memberProfile.transferTo(newFile);
+				return newFile.getAbsolutePath();
+			}
+			catch (IllegalStateException ise) {
+				throw new RuntimeException(ise.getMessage(), ise);
+			}
+			catch (IOException ioe) {
+				throw new RuntimeException(ioe.getMessage(), ioe);
+			}
+		}
+	}
+
 }

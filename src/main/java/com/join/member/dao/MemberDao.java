@@ -8,6 +8,8 @@ public interface MemberDao {
 
 	public MemberVO selectMember(MemberVO memberVO);
 	
+	public MemberVO selectMemberById(int memberId);
+	
 	public void keepLogin(int memberId, String sessionId, Date next);
 	
 	public MemberVO checkMemberWithSessionKey(String sessionId);
