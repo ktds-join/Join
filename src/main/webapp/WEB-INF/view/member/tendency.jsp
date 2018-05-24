@@ -43,8 +43,8 @@
 		
 			  
 		 
-		   <div class="range-slider">
-		  	<input id="memberStyle1" name="memberStyle2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
+		   <div class="range-slider">도심지
+		  	<input id="memberStyle1" name="memberStyle1" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
 		  </div>
 		 
 		   <div class="range-slider">

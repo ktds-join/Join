@@ -16,6 +16,11 @@ public class MemberDaoImplForOracle extends SqlSessionDaoSupport implements Memb
 	}
 	
 	@Override
+	public MemberVO selectMemberById(int memberId) {
+		return getSqlSession().selectOne("MemberDao.selectMemberById", memberId);
+	}
+	
+	@Override
 	public void keepLogin(int memberId, String sessionId, Date next) {
 		
 		Map<String, Object> map = new HashMap<String,Object>();

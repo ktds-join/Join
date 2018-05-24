@@ -10,8 +10,11 @@
 		<config>src/main/webapp/WEB-INF/spring/mainContext.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/controllerContext.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/rootContext.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/landmarkContext.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/memberContext.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/applicationContext.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

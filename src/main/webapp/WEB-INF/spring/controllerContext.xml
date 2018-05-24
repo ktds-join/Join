@@ -11,8 +11,15 @@
 		<property name="memberService" ref="memberService"/>
 	</bean>
 	
+<<<<<<< HEAD
 	<bean id = "mateController" class="com.join.mate.web.MateController">
 		<property name="mateService" ref="mateService"/>
 	</bean>
 	
 </beans>
+=======
+	<bean id = "landmarkController" class="com.join.landmark.web.LandmarkController">
+		<property name="landmarkService" ref="landmarkService"/>
+	</bean>
+</beans>
+>>>>>>> c56ae7cbb20c4758dfbb56f7487459d691c04a00
