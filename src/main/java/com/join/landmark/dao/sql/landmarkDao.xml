@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LandmarkDao">
+	<resultMap type = "LandmarkVO" id ="LandmarkVOMap">
+		<id column ="LANDMARK_ID" property = "landmarkId"/>
+		<result column ="LANDMARK_TITLE" property = "landmarkTitle"/>
+		<result column ="LANDMARK_BODY" property = "landmarkBody"/>
+		<result column ="LANDMARK_IMAGE_NAME" property = "landmarkImageName"/>
+		<result column ="LANDMARK_ADDRESS" property = "landmarkAddress"/>
+		<result column ="L_TRIP_CITY_ID" property = "tripCityId"/>
+		<result column ="L_TRIP_STYLE_ID" property = "tripStyleId"/>
+		
+		<association property="tripCityVO" javaType = "TripCityVO">
+			<id column = "TRIP_CITY_ID" property = "tripCityId"/>
+			<result column = "TRIP_CITY_TITLE" property = "tripCityTitle"/>
+			<result column = "TRIP_CITY_LATITUDE" property = "tripCityLatitude"/>
+			<result column = "TRIP_CITY_LONGITUDE" property = "tripCityLongitude"/>
+		</association>
+		
+		<association property="tripStyleVO" javaType = "TripStyleVO">
+			<id column = "TRIP_STYLE_ID" property = "tripStyleId"/>
+			<result column = "TRIP_STYLE_TITLE" property = "tripStyleTitle"/>
+		</association>
+		
+	</resultMap>
+	
+	<select id="selectAll" resultType = "LandmarkVO">
+		SELECT 	LANDMARK_ID
+				,LANDMARK_TITLE
+				,LANDMARK_BODY
+				,LANDMARK_IMAGE_NAME
+				,LANDMARK_ADDRESS
+				,TRIP_CITY_ID
+				,TRIP_STYLE_ID
+		FROM	LANDMARK
+	</select>
+	
+	<select id="selectFromCity" parameterType ="_int" resultMap = "LandmarkVOMap">
+		SELECT 	L.LANDMARK_ID 
+				, L.LANDMARK_TITLE 
+				, L.LANDMARK_BODY 
+				, L.LANDMARK_IMAGE_NAME 
+				, L.LANDMARK_ADDRESS 
+				, L.TRIP_CITY_ID L_TRIP_CITY_ID
+		FROM	LANDMARK L
+				, TRIP_CITY TC
+		WHERE	L.TRIP_CITY_ID = TC.TRIP_CITY_ID
+		AND		L.TRIP_CITY_ID = #{tripCityId}
+	</select>
+	
+	<select id="selectFromStyle" parameterType ="_int" resultMap = "LandmarkVOMap">
+		SELECT 	L.LANDMARK_ID
+				, L.LANDMARK_TITLE
+				, L.LANDMARK_BODY
+				, L.LANDMARK_IMAGE_NAME
+				, L.LANDMARK_ADDRESS
+				, L.TRIP_STYLE_ID L_TRIP_STYLE_ID
+		FROM	LANDMARK L
+				, TRIP_STYLE TS
+		WHERE	L.TRIP_STYLE_ID = TS.TRIP_STYLE_ID
+		AND		L.TRIP_STYLE_ID = #{tripStyleId}
+	</select>
+	
+	<select id = "selectTripPlace" parameterType ="_int" resultMap = "LandmarkVOMap">
+		SELECT 	L.LANDMARK_ID
+		        ,L.LANDMARK_TITLE
+		        ,L.LANDMARK_BODY
+		        ,L.LANDMARK_ADDRESS
+		        ,TC.TRIP_CITY_ID
+		        ,TC.TRIP_CITY_TITLE
+		        ,TS.TRIP_STYLE_ID
+		        ,TS.TRIP_STYLE_TITLE
+		FROM	LANDMARK	L
+		        ,TRIP_CITY	TC
+		        ,TRIP_STYLE	TS
+		WHERE	TC.TRIP_CITY_ID = L.TRIP_CITY_ID
+		AND		TS.TRIP_STYLE_ID = L.TRIP_STYLE_ID
+		<if test="requestIP != null and requestIP != ''">
+		AND     L.TRIP_CITY_ID = 1
+		</if>
+		AND     L.TRIP_STYLE_ID = 1;
+	
+	</select>
+	
+</mapper>
