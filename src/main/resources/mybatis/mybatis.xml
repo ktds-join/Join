@@ -7,9 +7,11 @@
 	<typeAliases>
 		<typeAlias type="com.join.main.vo.MainVO" alias="MainVO"/>
 		<typeAlias type="com.join.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.join.mate.vo.MateVO" alias="MateVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/join/main/dao/sql/mainDao.xml"/>
 		<mapper resource="com/join/member/dao/sql/memberDao.xml"/>
+		<mapper resource="com/join/mate/dao/sql/mateDao.xml"/>
 	</mappers>
 </configuration>

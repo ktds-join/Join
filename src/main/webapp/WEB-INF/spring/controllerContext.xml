@@ -11,7 +11,8 @@
 		<property name="memberService" ref="memberService"/>
 	</bean>
 	
-	<bean id = "groupController" class="com.join.group.web.GroupController">
-	
+	<bean id = "mateController" class="com.join.mate.web.MateController">
+		<property name="mateService" ref="mateService"/>
 	</bean>
+	
 </beans>

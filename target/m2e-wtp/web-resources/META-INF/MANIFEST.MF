@@ -1,13 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-Built-By: lucy
-=======
 Built-By: wonjunchoi
->>>>>>> 원준 merge
-=======
-Built-By: wonjunchoi
->>>>>>> Group으로 변경
 Build-Jdk: 1.8.0_161
 Created-By: Maven Integration for Eclipse
 

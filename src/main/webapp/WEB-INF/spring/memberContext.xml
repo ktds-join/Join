@@ -8,7 +8,6 @@
 		<property name="memberDao" ref="memberDaoForOracle"/>
 	</bean>
 		  
-	<!-- 디비연결 -->
 	<bean id="memberDaoForOracle" class="com.join.member.dao.MemberDaoImplForOracle">
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</bean>

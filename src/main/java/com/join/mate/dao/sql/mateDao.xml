@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MateDao">
+
+	<resultMap type="MateVO" id="MateVOMap">
+		<id column="MATE_ID" property="mateId" />
+		<result column="MATE_TITLE" property="mateTitle" />
+		<result column="MATE_START_DATE" property="mateStartDate" />
+		<result column="MATE_END_DATE" property="mateEndDate" />
+		<result column="MATE_REGIST_DATE" property="mateRegistDate" />
+		<result column="MATE_CAPACITY" property="mateCapacity" />
+		<result column="MATE_LICENSE" property="mateLicense" />
+		<result column="MATE_POINT" property="matePoint" />
+		<result column="MATE_STYLE_1" property="mateStyle1" />
+		<result column="MATE_STYLE_2" property="mateStyle2" />
+		<result column="MATE_STYLE_3" property="mateStyle3" />
+		<result column="MATE_STYLE_4" property="mateStyle4" />
+		<result column="MATE_STYLE_5" property="mateStyle5" />
+		<result column="TRIP_CITY_ID" property="tripCityId" />
+	
+		<association property="tripCityVO" javaType="TripCityVO">
+			<result column="TRIP_CITY_ID" property="tripCityId" />
+			<result column="TRIP_CITY_TITLE" property="tripCityTitle" />
+			<result column="TRIP_CITY_LATITUDE" property="tripCityLatitude" />
+			<result column="TRIP_CITY_LONGITUDE" property="tripCityLongitude" />
+		</association>
+	</resultMap>
+	
+	<select id="selectMateList" resultType="MateVOMap">
+		SELECT	M.MATE_ID
+				, M.MATE_TITLE
+				, M.MATE_START_DATE
+				, M.MATE_END_DATE
+				, M.MATE_REGIST_DATE
+				, M.MATE_CAPACITY
+				, M.MATE_LICENSE
+				, M.MATE_POINT
+				, M.MATE_STYLE_1
+				, M.MATE_STYLE_2
+				, M.MATE_STYLE_3
+				, M.MATE_STYLE_4
+				, M.MATE_STYLE_5
+				, M.TRIP_CITY_ID
+				, T.TRIP_CITY_TITLE
+				, T.TRIP_CITY_LATITUDE
+				, T.TRIP_CITY_LONGITUDE
+		FROM	MATE M
+				, TRIP_CITY T
+		WHERE	M.TRIP_CITY_ID = T.TRIP_CITY_ID
+	</select>
+	
+</mapper>

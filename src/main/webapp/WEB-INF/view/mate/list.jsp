@@ -25,37 +25,38 @@
 						<%-- <span class="account">accounts : ${communityAccount}</span> --%>
 						<a class="view_all" href="<c:url value="#"/>">전체보기</a>
 					</p>
-					<c:forEach items="${newCommunity}" var="newCommunity">
+					<c:forEach items="${mateList}" var="mateList">
 						<div class="box">
 							<div class="card">
 								<strong class="name">
-									<a href="<c:url value="/read/${newCommunity.communityId}"/>">${newCommunity.title}</a>
+									<a href="<c:url value="/mate/${mateList.mateId}"/>">${mateList.mateTitle}</a>
 								</strong>
 								<div class="course_info">
-									포함된 토픽 개수<strong> ${newCommunity.topicQuantity}</strong>
-									<br/>봤어요<strong> ${newCommunity.viewCount}</strong>
-									<br/>추천수<strong> ${newCommunity.recommendCount}</strong>
+									여행 출발일!<strong> ${mateList.mateStartDate}</strong>
+									<br/>여행 종료일!<strong> ${mateList.mateEndDate}</strong>
+									<br/>총인원<strong> ${mateList.mateCapacity}</strong>
 								</div>
 							</div>
-							<div class="name_card">
+							<!-- 수정중 -->
+							<%-- <div class="name_card">
 								<c:choose>
-									<c:when test="${ not empty newCommunity.memberVO}">
+									<c:when test="${ not empty mateList.memberVO}">
 										<span class="name">
-											${newCommunity.memberVO.nickname}
+											${mateList.memberVO.nickname}
 										</span>
 									</c:when>
 									<c:otherwise>
-										탈퇴한 회원
+										없어진 그룹
 									</c:otherwise>
 								</c:choose>
-							</div>
+							</div> --%>
 						</div>
 					</c:forEach>
 					<div class="box gate">
 						<div class="cover">+</div>
 						<div class="sign">
-							<strong>직접 코스를<br/>만들어 보세요</strong> 
-							<a class="btnCreateCourse" href="<c:url value="/write"/>">코스 만들기</a>
+							<strong>직접 그룹을<br/>만들어 보세요</strong> 
+							<a class="btnCreateCourse" href="<c:url value="/write"/>">그룹 만들기</a>
 						</div>
 					</div>
 				</div>

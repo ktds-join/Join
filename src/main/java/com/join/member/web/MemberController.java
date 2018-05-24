@@ -93,7 +93,6 @@ public class MemberController {
                  
                 Date date = new Date(System.currentTimeMillis());
                 memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
-                System.out.println(2);
             }
         }
         return "redirect:/main1";
