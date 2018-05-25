@@ -3,7 +3,6 @@ package com.join.member.web;
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -184,17 +183,10 @@ public class MemberController {
 		
 	}
 	
-<<<<<<< HEAD
-	//	마이페이지
-=======
->>>>>>> eebef6377e05ccf3bae954ff6552c29862baf372
-
 	// 마이페이지
 	@RequestMapping("/myPage")
 	public String viewMypage(HttpSession session) {
 		return "member/myPage";
 	}
-	
-
 
 }
