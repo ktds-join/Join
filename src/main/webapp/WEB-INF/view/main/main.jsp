@@ -37,7 +37,6 @@
 <!-- Main Stylesheet File -->
 <link href="<c:url value="static/css/style.css"/>" rel="stylesheet">
 
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 제이쿼리 -->
@@ -46,7 +45,13 @@
 
 <title>있음없음페이지</title>
 </head>
-
+<style>
+#navMypage{
+background-color: #fff; 
+height: 320px; 
+width: 220px;
+}
+</style>
 <body>
 
 	<!--==========================
@@ -71,12 +76,18 @@
 						<li class="menu-has-children"><a href="">Mypage</a>
 							<ul>
 								<li>
-									<div style="background-color: red; height: 400px; width: 180px">
-										<a href="<c:url value="#"/>"> it gonna be DIV </a>
+									<div id ="navMypage">
+										<h4>My Info</h4>
+										<!-- 일단 css 추가하려고 이미지 파일 올림 -->
+										<p class ="profileImgPart">
+										<img id = "profileImg" src="<c:url value ="/static/img/default.jpg"/>"/>
+										</p>
+										<p>${sessionScope.__MEMBER__.memberNickname}</p>
+										<p>${sessionScope.__MEMBER__.memberEmail}</p>
 												<!-- TODO : 여기에 프로필 사진 및 회원 정보 추가 -->
+												<%-- <img id = "profileImg" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/> --%>
 												<!-- Btn click -> modal -->
 												<!-- Modal -->
-												<img src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/>
 												<div class="container">
 													<!-- Trigger the modal with a button -->
  											   		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sol Modal</button>
