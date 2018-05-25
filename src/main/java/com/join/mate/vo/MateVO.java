@@ -1,5 +1,7 @@
 package com.join.mate.vo;
 
+import com.join.landmark.vo.TripCityVO;
+
 public class MateVO {
 
 	private int mateId;
@@ -20,6 +22,8 @@ public class MateVO {
 	private float mateStyle5;
 
 	private int tripCityId;
+
+	private TripCityVO tripCityVO;
 
 	public int getMateId() {
 		return mateId;
@@ -131,6 +135,14 @@ public class MateVO {
 
 	public void setTripCityId(int tripCityId) {
 		this.tripCityId = tripCityId;
+	}
+
+	public TripCityVO getTripCityVO() {
+		return tripCityVO;
+	}
+
+	public void setTripCityVO(TripCityVO tripCityVO) {
+		this.tripCityVO = tripCityVO;
 	}
 
 }

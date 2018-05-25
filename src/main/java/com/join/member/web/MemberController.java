@@ -175,33 +175,17 @@ public class MemberController {
 		
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
 		memberVO.setMemberId(member.getMemberId());
-<<<<<<< HEAD
-=======
 	
 		memberService.updateMemberStyle(memberVO);
 		
-		System.out.println(memberVO.getMemberStyle1());
-		System.out.println(memberVO.getMemberStyle2());
-		System.out.println(memberVO.getMemberStyle3());
-		System.out.println(memberVO.getMemberStyle4());
-		System.out.println(memberVO.getMemberStyle5());
->>>>>>> c56ae7cbb20c4758dfbb56f7487459d691c04a00
+		session.setAttribute(Member.MEMBER, memberVO);
 		
-		
-<<<<<<< HEAD
 		return "redirect:/list";
 		
 	}
 	
 	//	마이페이지
-=======
-		// 매칭하는room으로 이동 test : login
-		return "redirect:/main";
-	}
-	
-//	마이페이지
 
->>>>>>> c56ae7cbb20c4758dfbb56f7487459d691c04a00
 	@RequestMapping("/mypage")
 	public String viewMypage(HttpSession session) {
 		return "member/mypage";

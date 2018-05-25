@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 	
-	<select id="selectMateList" resultType="MateVOMap">
+	<select id="selectMateList" resultMap="MateVOMap">
 		SELECT	M.MATE_ID
 				, M.MATE_TITLE
 				, M.MATE_START_DATE

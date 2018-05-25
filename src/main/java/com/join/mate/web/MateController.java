@@ -25,6 +25,7 @@ public class MateController {
 	
 	@RequestMapping("/list")
 	public ModelAndView viewMypage(HttpSession session) {
+		
 
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
 		
@@ -34,8 +35,7 @@ public class MateController {
 		
 		List<MateVO> totalList = mateService.getMateList();
 		List<MateVO> mateList = new ArrayList<MateVO>();
-
-		//mateList.forEach(action);
+		
 		for ( MateVO mateVO : totalList ) {
 			int checkedNumber = 0;
 			if ( Math.abs( mateVO.getMateStyle1() - member.getMemberStyle1() ) <= 50 ) {
