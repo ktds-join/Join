@@ -263,6 +263,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 10px;
   color: #fff;
   background: #18d26e;
+  text-decoration:none;
 }
 
 #intro .btn-get-started:hover {
@@ -276,11 +277,18 @@ h1, h2, h3, h4, h5, h6 {
 #locationExist, #locationNotExist{
 	display:inline-block;
 }
-
+#tripStyle{
+	display:none;
+}
 
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
+#navMypage{
+background-color: #fff; 
+height: 320px; 
+width: 220px;
+}
 /* Nav Menu Essentials */
 .nav-menu, .nav-menu * {
   margin: 0;

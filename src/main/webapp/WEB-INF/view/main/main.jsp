@@ -6,13 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>startPage</title>
-<!-- sol madal  -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<!-- /sol madal  -->
-
-
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -42,16 +35,25 @@
 <!-- 제이쿼리 -->
 <script type="text/javascript"
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
-
 <title>있음없음페이지</title>
+<script type="text/javascript">
+$().ready(function(){
+	$(".btn-get-started").click(function(){
+		$(this).hide();
+		$("#locationStatus").show();
+	});
+	
+	$("#locationNotExist").click(function(){
+		$("#mainIntro").hide();
+		$("#tripStyle").show();
+	});
+	$("#myPageBtn").click(function(){
+		location.href="<c:url value="/myPage"/>";
+	});
+	
+});
+</script>
 </head>
-<style>
-#navMypage{
-background-color: #fff; 
-height: 320px; 
-width: 220px;
-}
-</style>
 <body>
 
 	<!--==========================
@@ -86,13 +88,7 @@ width: 220px;
 										<p>${sessionScope.__MEMBER__.memberEmail}</p>
 												<!-- TODO : 여기에 프로필 사진 및 회원 정보 추가 -->
 												<%-- <img id = "profileImg" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/> --%>
-												<!-- Btn click -> modal -->
-												<!-- Modal -->
-												<div class="container">
-													<!-- Trigger the modal with a button -->
- 											   		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sol Modal</button>
-												</div>
-												
+										<button type="button" id ="myPageBtn" class="btn btn-info btn-lg">myPage</button>	
 									</div>
 								</li>
 							</ul>
@@ -112,6 +108,7 @@ width: 220px;
   <!--==========================
     Intro Section
   ============================-->
+
   
 <!-- sol Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -139,13 +136,11 @@ width: 220px;
 <!-- / sol Modal -->
 
 
+
 	<section id="intro">
 		<div class="intro-container">
 			<div id="introBackground" class="carousel  slide carousel-fade"
 				data-ride="carousel">
-
-				<ol class="carousel-indicators"></ol>
-
 				<div class="carousel-inner" role="listbox">
 
 					<div class="carousel-item active">
@@ -153,15 +148,12 @@ width: 220px;
 							<img src="<c:url value="static/img/intro/beach.jpg"/>" alt="">
 						</div>
 						<div class="carousel-container">
-							<div class="carousel-content">
+							<div id = "mainIntro" class="carousel-content">
 								<h2>FIND YOUR TRAVEL MATE!</h2>
 								<p>We provide a trip that suits your travel preferences</p>
-
-								<a href="#featured-services" class="btn-get-started scrollto">Get
-									Started</a>
+								<a href="#" class="btn-get-started scrollto">Get Started</a>
 								<!-- 이 밑으로 어펜드가 될꺼야 -->
 								<div id="locationStatus">
-
 									<div id="locationExist">
 										<a href="#">있음</a>
 									</div>
@@ -169,6 +161,10 @@ width: 220px;
 										<a href="#">없음</a>
 									</div>
 								</div>
+							</div>
+							<!-- 여행 스타일 선택 div -->
+							<div id = "tripStyle" class="carousel-content">
+								<h2>sdkljflkajdlkg;jlk;ajfkgljakldsj</h2>
 							</div>
 						</div>
 					</div>
