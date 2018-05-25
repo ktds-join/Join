@@ -2,28 +2,24 @@ package com.join.member.web;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
-
-import javax.servlet.http.Cookie;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.util.WebUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 import com.join.member.constants.Member;
 import com.join.member.service.MemberService;
@@ -100,7 +96,6 @@ public class MemberController {
                  
                 Date date = new Date(System.currentTimeMillis());
                 memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
-                System.out.println(2);
             }
         }
         return "redirect:/main1";
@@ -182,24 +177,16 @@ public class MemberController {
 	
 		memberService.updateMemberStyle(memberVO);
 		
-		System.out.println(memberVO.getMemberStyle1());
-		System.out.println(memberVO.getMemberStyle2());
-		System.out.println(memberVO.getMemberStyle3());
-		System.out.println(memberVO.getMemberStyle4());
-		System.out.println(memberVO.getMemberStyle5());
+		session.setAttribute(Member.MEMBER, memberVO);
 		
+		return "redirect:/list";
 		
-		// 매칭하는room으로 이동 test : login
-		return "redirect:/main";
 	}
 	
-//	마이페이지
-
-	@RequestMapping("/mypage")
+	// 마이페이지
+	@RequestMapping("/myPage")
 	public String viewMypage(HttpSession session) {
-		return "member/mypage";
+		return "member/myPage";
 	}
-	
-
 
 }

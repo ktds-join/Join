@@ -1,0 +1,58 @@
+.content .update{
+	width:250px;
+	color:#999;
+	padding:25px 15px;
+	font-size:.85em;
+	display:inline-block;
+	}
+	
+.content .update p{
+	font-size:1.4em;
+	font-weight:normal;
+	padding:0 0 5px 3px;
+	margin-bottom:5px;
+	color:#000;
+	border-bottom:1px solid #ddd;
+	}
+	
+.content .update li{
+	border-bottom:1px solid #eee;
+	line-height:1.6em;
+	position:relative;
+	padding:7px 0;
+	margin-bottom:15px;
+	}
+	
+.content .update li span.ico{
+	display:block;
+	position:absolute;
+	top:10px;
+	left:0;
+	}
+	
+.content .update li span.ico.add_topic_everystudy_complete,div.wrap>div.content aside li span.ico.add_topic_everystudy_member,div.wrap>div.content aside li span.ico.add_topic_module_owner,div.wrap>div.content aside li span.ico.join_everystudy_register{
+	background-position:0 -75px;
+	}
+	
+.content .update li span.ico.mark_topic_marked{
+	background-position:0 -127px;
+	}
+	
+.content .update li span.ico.add_topic_module_owner,div.wrap>div.content aside li span.ico.complete_topic{
+	background-position:0 -1px;
+	}
+	
+.content .update li span.txt{
+	display:block;
+	margin-left:20px;
+	}
+	
+.content .update a{
+	color:#666;
+	}
+	
+.content .update a:hover{
+	color:#3c9;
+	}
+	
+

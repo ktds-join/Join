@@ -10,4 +10,12 @@
 	<bean id = "memberController" class="com.join.member.web.MemberController">
 		<property name="memberService" ref="memberService"/>
 	</bean>
+	
+	<bean id = "mateController" class="com.join.mate.web.MateController">
+		<property name="mateService" ref="mateService"/>
+	</bean>
+	
+	<bean id = "landmarkController" class="com.join.landmark.web.LandmarkController">
+		<property name="landmarkService" ref="landmarkService"/>
+	</bean>
 </beans>
