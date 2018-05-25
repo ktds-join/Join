@@ -193,11 +193,11 @@ public class MemberController {
 		return "redirect:/main";
 	}
 	
-//	마이페이지
 
-	@RequestMapping("/mypage")
+	// 마이페이지
+	@RequestMapping("/myPage")
 	public String viewMypage(HttpSession session) {
-		return "member/mypage";
+		return "member/myPage";
 	}
 	
 
