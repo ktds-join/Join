@@ -14,6 +14,13 @@
   z-index: 997;
 }
 </style>
+<script type="text/javascript">
+$().ready(function(){
+	$("#myPageBtn").click(function(){
+		location.href="<c:url value="/myPage"/>";
+	});
+});
+</script>
  <!--==========================
     Header
   ============================-->
@@ -44,12 +51,7 @@
 								<p>${sessionScope.__MEMBER__.memberEmail}</p>
 										<!-- TODO : 여기에 프로필 사진 및 회원 정보 추가 -->
 										<%-- <img id = "profileImg" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/> --%>
-										<!-- Btn click -> modal -->
-										<!-- Modal -->
-										<div class="container">
-											<!-- Trigger the modal with a button -->
-										   		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sol Modal</button>
-										</div>	
+								<button type="button" id ="myPageBtn" class="btn btn-info btn-lg">myPage</button>	
 							</div>
 						</li>
 					</ul>
