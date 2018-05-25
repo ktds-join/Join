@@ -124,6 +124,11 @@ width: 220px;
         </div>
         <div class="modal-body">
           <p>Some text in the modal.</p>
+          <p class ="profileImgPart">
+          	<img id = "profileImg" src="<c:url value ="/static/img/default.jpg"/>"/>
+          </p>
+          	계정 : ${sessionScope.__MEMBER__.memberEmail}
+          	이름 : ${sessionScope.__MEMBER__.memberName}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
