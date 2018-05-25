@@ -2,6 +2,7 @@ package com.join.member.vo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -173,8 +174,11 @@ public class MemberVO {
 		// 프로필 있을 경우
 		if ( memberProfile != null && !memberProfile.isEmpty() ) {
 			
-			memberProfileName = memberProfile.getOriginalFilename();
-			File newFile = new File("D:/uploadProfiles/" + memberProfile.getOriginalFilename());
+			// 파일 이름 중복을 피하기 위해 time를 파일명 앞에 붙임
+			Calendar cal = Calendar.getInstance();
+			long time = cal.getTimeInMillis();
+			memberProfileName = time + "_" + memberProfile.getOriginalFilename();
+			File newFile = new File("D:/uploadProfiles/" + time + "_" + memberProfile.getOriginalFilename());
 			
 			try {
 				memberProfile.transferTo(newFile);

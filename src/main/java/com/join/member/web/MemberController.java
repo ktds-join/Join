@@ -184,11 +184,15 @@ public class MemberController {
 		
 	}
 	
+<<<<<<< HEAD
 	//	마이페이지
+=======
+>>>>>>> eebef6377e05ccf3bae954ff6552c29862baf372
 
-	@RequestMapping("/mypage")
+	// 마이페이지
+	@RequestMapping("/myPage")
 	public String viewMypage(HttpSession session) {
-		return "member/mypage";
+		return "member/myPage";
 	}
 	
 

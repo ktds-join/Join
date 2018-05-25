@@ -6,13 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>startPage</title>
-<!-- sol madal  -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-<!-- /sol madal  -->
-
-
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -37,16 +30,30 @@
 <!-- Main Stylesheet File -->
 <link href="<c:url value="static/css/style.css"/>" rel="stylesheet">
 
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 제이쿼리 -->
 <script type="text/javascript"
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
-
 <title>있음없음페이지</title>
+<script type="text/javascript">
+$().ready(function(){
+	$(".btn-get-started").click(function(){
+		$(this).hide();
+		$("#locationStatus").show();
+	});
+	
+	$("#locationNotExist").click(function(){
+		$("#mainIntro").hide();
+		$("#tripStyle").show();
+	});
+	$("#myPageBtn").click(function(){
+		location.href="<c:url value="/myPage"/>";
+	});
+	
+});
+</script>
 </head>
-
 <body>
 
 	<!--==========================
@@ -71,17 +78,17 @@
 						<li class="menu-has-children"><a href="">Mypage</a>
 							<ul>
 								<li>
-									<div style="background-color: red; height: 400px; width: 180px">
-										<a href="<c:url value="#"/>"> it gonna be DIV </a>
+									<div id ="navMypage">
+										<h4>My Info</h4>
+										<!-- 일단 css 추가하려고 이미지 파일 올림 -->
+										<p class ="profileImgPart">
+										<img id = "profileImg" src="<c:url value ="/static/img/default.jpg"/>"/>
+										</p>
+										<p>${sessionScope.__MEMBER__.memberNickname}</p>
+										<p>${sessionScope.__MEMBER__.memberEmail}</p>
 												<!-- TODO : 여기에 프로필 사진 및 회원 정보 추가 -->
-												<!-- Btn click -> modal -->
-												<!-- Modal -->
-												<img src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/>
-												<div class="container">
-													<!-- Trigger the modal with a button -->
- 											   		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">sol Modal</button>
-												</div>
-												
+												<%-- <img id = "profileImg" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/> --%>
+										<button type="button" id ="myPageBtn" class="btn btn-info btn-lg">myPage</button>	
 									</div>
 								</li>
 							</ul>
@@ -101,6 +108,7 @@
   <!--==========================
     Intro Section
   ============================-->
+
   
 <!-- sol Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -113,6 +121,11 @@
         </div>
         <div class="modal-body">
           <p>Some text in the modal.</p>
+          <p class ="profileImgPart">
+          	<img id = "profileImg" src="<c:url value ="/static/img/default.jpg"/>"/>
+          </p>
+          	계정 : ${sessionScope.__MEMBER__.memberEmail}
+          	이름 : ${sessionScope.__MEMBER__.memberName}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -123,13 +136,11 @@
 <!-- / sol Modal -->
 
 
+
 	<section id="intro">
 		<div class="intro-container">
 			<div id="introBackground" class="carousel  slide carousel-fade"
 				data-ride="carousel">
-
-				<ol class="carousel-indicators"></ol>
-
 				<div class="carousel-inner" role="listbox">
 
 					<div class="carousel-item active">
@@ -137,15 +148,12 @@
 							<img src="<c:url value="static/img/intro/beach.jpg"/>" alt="">
 						</div>
 						<div class="carousel-container">
-							<div class="carousel-content">
+							<div id = "mainIntro" class="carousel-content">
 								<h2>FIND YOUR TRAVEL MATE!</h2>
 								<p>We provide a trip that suits your travel preferences</p>
-
-								<a href="#featured-services" class="btn-get-started scrollto">Get
-									Started</a>
+								<a href="#" class="btn-get-started scrollto">Get Started</a>
 								<!-- 이 밑으로 어펜드가 될꺼야 -->
 								<div id="locationStatus">
-
 									<div id="locationExist">
 										<a href="#">있음</a>
 									</div>
@@ -153,6 +161,10 @@
 										<a href="#">없음</a>
 									</div>
 								</div>
+							</div>
+							<!-- 여행 스타일 선택 div -->
+							<div id = "tripStyle" class="carousel-content">
+								<h2>sdkljflkajdlkg;jlk;ajfkgljakldsj</h2>
 							</div>
 						</div>
 					</div>
