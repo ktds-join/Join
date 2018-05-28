@@ -51,7 +51,7 @@
 						 	<div class="row">
 										<div class="span2 offset1 flyIn" style="display:inline-block;">
 											<div class="people"><!-- style="width: 120px; height: 90px; overflow: hidden" -->
-												<img class="team-thumb img-circle" src="static/img/tendency/island.png" alt="" style="width: 120px; height: auto;"/>
+												<img class="team-thumb img-circle" src="static/img/tendency/mountain.png" alt="" style="width: 120px; height: auto;"/>
 											</div>
 												<h4 style="text-align: center;">휴양지</h4> 
 										</div>
@@ -71,9 +71,9 @@
 							<div class="row">
 												<div class="span2 offset1 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/tendency/golf.png" alt="" style="width: 120px; height: auto;"/>
+														<img class="team-thumb img-circle" src="static/img/tendency/sailboat.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">레져</h4> 
+														<h4 style="text-align: center;">레져 엑티비티</h4> 
 												</div>
 													
 												 <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
@@ -82,7 +82,7 @@
 										
 												<div class="span2 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/img-1.jpg" alt="" style="width: 120px; height: auto;"/>
+														<img class="team-thumb img-circle" src="static/img/tendency/ming-dynasty-tombs.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
 														<h4 style="text-align: center;">랜드마크</h4>
 												</div>
@@ -92,7 +92,7 @@
 							<div class="row">
 												<div class="span2 offset1 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/img-1.jpg" alt="" style="width: 120px; height: auto;"/>
+														<img class="team-thumb img-circle" src="static/img/tendency/sun.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
 														<h4 style="text-align: center;">아침형</h4> 
 												</div>
@@ -105,18 +105,18 @@
 										
 												<div class="span2 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/img-1.jpg" alt="" style="width: 120px; height: auto;" />
+														<img class="team-thumb img-circle" src="static/img/tendency/moon.png" alt="" style="width: 120px; height: auto;" />
 													</div>
-														<h4 style="text-align: center;">야행형</h4>
+														<h4 style="text-align: center;">야행성</h4>
 												</div>
 									</div>
 							
 							<div class="row">
 												<div class="span2 offset1 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/img-1.jpg" alt="" style="width: 120px; height: auto;"/>
+														<img class="team-thumb img-circle" src="static/img/tendency/poor.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">저렴함</h4> 
+														<h4 style="text-align: center;">싸게 놀자</h4> 
 												</div>
 													
 												  
@@ -127,18 +127,18 @@
 										
 												<div class="span2 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/img-1.jpg" alt="" style="width: 120px; height: auto;"/>
+														<img class="team-thumb img-circle" src="static/img/tendency/rich.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">부유함</h4>
+														<h4 style="text-align: center;">비싸게 놀자</h4>
 												</div>
 									</div>
 							
 							<div class="row">
 												<div class="span2 offset1 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/img-1.jpg" alt="" style="width: 120px; height: auto;"/>
+														<img class="team-thumb img-circle" src="static/img/tendency/hot-dog.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">먹방</h4> 
+														<h4 style="text-align: center;">여행은 먹방</h4> 
 												</div>
 													
 												  <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
@@ -149,9 +149,9 @@
 										
 												<div class="span2 flyIn" style="display:inline-block;">
 													<div class="people">
-														<img class="team-thumb img-circle" src="static/img/img-1.jpg" alt="" style="width: 120px; height: auto;"/>
+														<img class="team-thumb img-circle" src="static/img/tendency/explorer.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">탐방</h4>
+														<h4 style="text-align: center;">여행은 공부</h4>
 												</div>
 									</div>
 					</div>
