@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: Sol
-=======
-Built-By: lucy
->>>>>>> c2a6f451729921dc9ad4f1509327bc2afb9cc5b3
 Build-Jdk: 1.8.0_161
 Created-By: Maven Integration for Eclipse
 
