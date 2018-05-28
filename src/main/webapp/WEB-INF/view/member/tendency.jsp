@@ -116,7 +116,7 @@
 													<div class="people">
 														<img class="team-thumb img-circle" src="static/img/tendency/poor.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">싸게 놀자</h4> 
+														<h4 style="text-align: center;">싸게 놀게</h4> 
 												</div>
 													
 												  
@@ -129,7 +129,7 @@
 													<div class="people">
 														<img class="team-thumb img-circle" src="static/img/tendency/rich.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">비싸게 놀자</h4>
+														<h4 style="text-align: center;">돈 좀 쓰게</h4>
 												</div>
 									</div>
 							
@@ -138,7 +138,7 @@
 													<div class="people">
 														<img class="team-thumb img-circle" src="static/img/tendency/hot-dog.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">여행은 먹방</h4> 
+														<h4 style="text-align: center;">여행도 먹방</h4> 
 												</div>
 													
 												  <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
