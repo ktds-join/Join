@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
 *, *:before, *:after {
 	-webkit-box-sizing: border-box;
@@ -14,29 +14,22 @@ h1 {
 	padding:100px;
 }
 
-.preBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
+.text_center{
+	text-align: center;
 }
 
-#preBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
+
+
+
+.btn_submit:hover {
+  background: #fff;
+  color: #18d26e;
 }
 
-.nextBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
-}
-
-#nextBtn {
-	background: #3b60d9;
-	color: #0a0a0a;
-	padding: 20px;
-}
+.body .btn p{
+	margin: 10px 0;
+    text-align: center;
+	}
 
 .range-slider {
 	margin: 60px 0 0 0%;
@@ -133,4 +126,4 @@ h1 {
 
 input::-moz-focus-inner, input::-moz-focus-outer {
 	border: 0;
-}
+} 

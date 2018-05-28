@@ -38,33 +38,126 @@
 
 <div class="container">
 	<div id="wrapper">
-		<form id="styleForm">
-			<h2>선호하는 여행 스타일을 선택해주세요!</h2>
+				<form id="styleForm" style="padding-left: 200px; padding-bottom: 20px;">
+				<br/>
+				<br/>
+							<h2 style="text-align: center; padding-right: 100px;">
+								선호하는 여행 스타일을 선택해주세요
+							</h2>
+							<br/>
+							<br/>
+<!-- 계정 변경 어떻게 됬는지 확인하려고 커밋 -->
+					<div id="wrapper">		  
+						 	<div class="row">
+										<div class="span2 offset1 flyIn" style="display:inline-block;">
+											<div class="people"><!-- style="width: 120px; height: 90px; overflow: hidden" -->
+												<img class="team-thumb img-circle" src="static/img/tendency/mountain.png" alt="" style="width: 120px; height: auto;"/>
+											</div>
+												<h4 style="text-align: center;">휴양지</h4> 
+										</div>
+											
+										<div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
+									  		<input id="memberStyle1" name="memberStyle1" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
+									 	</div>
+								
+										<div class="span2 flyIn" style="display:inline-block;">
+											<div class="people">
+												<img class="team-thumb img-circle" src="static/img/tendency/cityscape.png" alt="" style="width: 120px; height: auto;"/>
+											</div>
+												<h4 style="text-align: center;">도심지</h4>
+										</div>
+							</div>
+					
+							<div class="row">
+												<div class="span2 offset1 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/sailboat.png" alt="" style="width: 120px; height: auto;"/>
+													</div>
+														<h4 style="text-align: center;">레져 엑티비티</h4> 
+												</div>
+													
+												 <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
+											  	<input id="memberStyle2" name="memberStyle2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
+											 	 </div>
+										
+												<div class="span2 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/ming-dynasty-tombs.png" alt="" style="width: 120px; height: auto;"/>
+													</div>
+														<h4 style="text-align: center;">랜드마크</h4>
+												</div>
+									</div>
+							
 		
-			  
-		 
-		   <div class="range-slider">도심지
-		  	<input id="memberStyle1" name="memberStyle1" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-		  </div>
-		 
-		   <div class="range-slider">
-		  	<input id="memberStyle2" name="memberStyle2" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-		  </div>
-		  
-		  <div class="range-slider">
-			  <input id="memberStyle3" name="memberStyle3" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-		  </div>
-		  
-		  <div class="range-slider">
-			  <input id="memberStyle4" name="memberStyle4" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-		  </div>
-		  
-		  <div class="range-slider">
-			  <input id="memberStyle5" name="memberStyle5" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
-		<!--  <span id="memberStyle5" class="range-slider__value">0</span> --> 
-		  </div> 
-		  
+							<div class="row">
+												<div class="span2 offset1 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/sun.png" alt="" style="width: 120px; height: auto;"/>
+													</div>
+														<h4 style="text-align: center;">아침형</h4> 
+												</div>
+													
+												  
+												  <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
+													  <input id="memberStyle3" name="memberStyle3" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
+												  </div>
+						  
+										
+												<div class="span2 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/moon.png" alt="" style="width: 120px; height: auto;" />
+													</div>
+														<h4 style="text-align: center;">야행성</h4>
+												</div>
+									</div>
+							
+							<div class="row">
+												<div class="span2 offset1 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/poor.png" alt="" style="width: 120px; height: auto;"/>
+													</div>
+														<h4 style="text-align: center;">싸게 놀게</h4> 
+												</div>
+													
+												  
+												  <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
+													  <input id="memberStyle4" name="memberStyle4" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
+												  </div>
+						  
+										
+												<div class="span2 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/rich.png" alt="" style="width: 120px; height: auto;"/>
+													</div>
+														<h4 style="text-align: center;">돈 좀 쓰게</h4>
+												</div>
+									</div>
+							
+							<div class="row">
+												<div class="span2 offset1 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/hot-dog.png" alt="" style="width: 120px; height: auto;"/>
+													</div>
+														<h4 style="text-align: center;">여행은 먹방</h4> 
+												</div>
+													
+												  <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
+													  <input id="memberStyle5" name="memberStyle5" class="range-slider__range" type="range" value="100" min="0" max="200" step="50">
+												<!--  <span id="memberStyle5" class="range-slider__value">0</span> --> 
+												  </div> 	
+						  
+										
+												<div class="span2 flyIn" style="display:inline-block;">
+													<div class="people">
+														<img class="team-thumb img-circle" src="static/img/tendency/explorer.png" alt="" style="width: 120px; height: auto;"/>
+													</div>
+														<h4 style="text-align: center;">여행도 공부</h4>
+												</div>
+									</div>
+					</div>
+						
 		  </form>
+<<<<<<< HEAD
 		  
 			  <div class="button-1">
 			    <a href="<c:url value="/map"/>"> 뒤로가기 </a>
@@ -74,6 +167,16 @@
 		</div>
   	</div>
  </div>
+=======
+							<p>
+							<button type="button" id="prevbtn" class="btn_submit">이전으로</button>
+							<button type="button" id="nextbtn" class="btn_submit" style="float:right;">다음으로</button>
+							</p>
+	 </div>	
+</div>
+
+
+>>>>>>> e67787c9817c488e9f1bfaac8c73a0c0dd78cb12
 <!-- 삭제하지마셈 추가 -->
 <!-- 일단은 br로 사이 띄어놓겠음 -->
 	<br><br><br><br><br>
@@ -122,7 +225,7 @@ rangeSlider();
   
   <script type="text/javascript">
   	$().ready(function(){
-	  $("#nextBtn").click(function(){
+	  $("#nextbtn").click(function(){
 		 
 		  console.log("click");
 		  var style1 = $("#styleInput1").val($("#style1").text());

@@ -23,7 +23,7 @@
 				<div class="listwrap">
 					<p class="course" style="font-size:1.4em;font-weight:normal;padding:0 0 0 10px;" >
 						Matching List 
-						<%-- <span class="account">accounts : ${communityAccount}</span> --%>
+						<%-- <span class="account">accounts : ${mateAccount}</span> --%>
 						<a class="view_all" href="<c:url value="#"/>">전체보기</a>
 					</p>
 					<c:forEach items="${mateList}" var="mateList">
@@ -36,6 +36,11 @@
 									여행 출발일!<strong> ${mateList.mateStartDate}</strong>
 									<br/>여행 종료일!<strong> ${mateList.mateEndDate}</strong>
 									<br/>총인원<strong> ${mateList.mateCapacity}</strong>
+									<br/>그룹성향1<strong> ${mateList.mateStyle1}/200</strong>
+									<br/>그룹성향2<strong> ${mateList.mateStyle2}/200</strong>
+									<br/>그룹성향3<strong> ${mateList.mateStyle3}/200</strong>
+									<br/>그룹성향4<strong> ${mateList.mateStyle4}/200</strong>
+									<br/>그룹성향5<strong> ${mateList.mateStyle5}/200</strong>
 								</div>
 							</div>
 							<!-- 수정중 -->
