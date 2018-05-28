@@ -138,7 +138,7 @@
 													<div class="people">
 														<img class="team-thumb img-circle" src="static/img/tendency/hot-dog.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">여행도 먹방</h4> 
+														<h4 style="text-align: center;">여행은 먹방</h4> 
 												</div>
 													
 												  <div class="range-slider" style="display:inline-block; width:500px; padding-left: 60px;">
@@ -151,7 +151,7 @@
 													<div class="people">
 														<img class="team-thumb img-circle" src="static/img/tendency/explorer.png" alt="" style="width: 120px; height: auto;"/>
 													</div>
-														<h4 style="text-align: center;">여행은 공부</h4>
+														<h4 style="text-align: center;">여행도 공부</h4>
 												</div>
 									</div>
 					</div>
