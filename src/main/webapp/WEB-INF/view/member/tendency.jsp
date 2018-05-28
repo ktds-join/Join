@@ -67,7 +67,7 @@
 		  </form>
 		  
 			  <div class="button-1">
-			    <a href="<c:url value="/mapPage"/>"> 뒤로가기 </a>
+			    <a href="<c:url value="/map"/>"> 뒤로가기 </a>
 			    <a id="nextBtn"> 매칭하기 </a>
 		  <!-- <button type="button" class="preBtn" id="preBtn">이전으로</button>
 		  <button type="button" class="nextBtn" id="nextBtn">매칭하기</button> -->

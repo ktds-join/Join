@@ -171,17 +171,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/tendency", method=RequestMethod.POST)
-	public String doTendency(MemberVO memberVO, HttpSession session) {
-		
+	public String doTendency(MemberVO memberVO, HttpSession session) {	
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
 		memberVO.setMemberId(member.getMemberId());
-	
-		memberService.updateMemberStyle(memberVO);
-		
-		session.setAttribute(Member.MEMBER, memberVO);
-		
-		return "redirect:/mate/list";
-		
+		memberService.updateMemberStyle(memberVO);	
+		session.setAttribute(Member.MEMBER, memberVO);	
+		return "redirect:/mate/list";	
 	}
 	
 	// 마이페이지

@@ -2,14 +2,18 @@ package com.join.landmark.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.join.landmark.service.LandmarkService;
 import com.join.landmark.vo.LandmarkVO;
+import com.join.landmark.vo.TravelStyleVO;
 
 @Controller
 public class LandmarkController {
@@ -25,13 +29,28 @@ public class LandmarkController {
 		return "landmark/map";
 	} 
 	
-	// 메인에서 값을 받아온 거 담아놓기
+	// 걍 GET 
 	@RequestMapping(value = "/recommend", method = RequestMethod.GET)
 	public ModelAndView viewRecommendPage() {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("landmark/recommendList");	
 		List<LandmarkVO> landmarkList = landmarkService.getAll();
 		view.addObject("landmarkList", landmarkList);
+		return view;
+	} 
+	
+	// 메인에서 값을 받아온 거 담아놓기
+	@RequestMapping(value = "/recommend", method = RequestMethod.POST)
+	public ModelAndView doRecommendPage(@RequestParam("tripStyle") int styleId, @ModelAttribute("tripStyleForm") HttpServletRequest request) {
+
+		System.out.println(styleId);
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("landmark/recommendList");	
+		List<LandmarkVO> landmarkList = landmarkService.getAll();
+		view.addObject("landmarkList", landmarkList);
+		
+		
 		return view;
 	} 
 	
