@@ -46,7 +46,7 @@
 							</h2>
 							<br/>
 							<br/>
-
+<!-- 계정 변경 어떻게 됬는지 확인하려고 커밋 -->
 					<div id="wrapper">		  
 						 	<div class="row">
 										<div class="span2 offset1 flyIn" style="display:inline-block;">
