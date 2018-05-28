@@ -14,6 +14,7 @@
 <title>matchingList page</title>
 
 </head>
+
 <body>
 	<div class="content">
 		<div class="innerwrap">
@@ -56,7 +57,7 @@
 						<div class="cover">+</div>
 						<div class="sign">
 							<strong>직접 그룹을<br/>만들어 보세요</strong> 
-							<a class="btnCreateCourse" href="<c:url value="/write"/>">그룹 만들기</a>
+							<a class="btnCreateMate" href="<c:url value="/mate/write"/>">그룹 만들기</a>
 						</div>
 					</div>
 				</div>

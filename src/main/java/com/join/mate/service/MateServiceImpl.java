@@ -18,4 +18,9 @@ public class MateServiceImpl implements MateService {
 		return mateDao.selectMateList();
 	}
 
+	@Override
+	public boolean createMate(MateVO mateVO) {
+		return mateDao.insertMate(mateVO) > 0;
+	}
+
 }

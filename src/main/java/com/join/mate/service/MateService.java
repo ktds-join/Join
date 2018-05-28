@@ -7,5 +7,7 @@ import com.join.mate.vo.MateVO;
 public interface MateService {
 	
 	public List<MateVO> getMateList();
+	
+	public boolean createMate(MateVO mateVO);
 
 }
