@@ -179,7 +179,7 @@ public class MemberController {
 		
 		session.setAttribute(Member.MEMBER, memberVO);
 		
-		return "redirect:/list";
+		return "redirect:/mate/list";
 		
 	}
 	
