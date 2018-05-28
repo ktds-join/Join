@@ -1,16 +1,12 @@
 package com.join.main.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.join.main.service.MainService;
+import com.join.member.constants.Member;
 
 @Controller
 public class MainController {
@@ -25,18 +21,12 @@ public class MainController {
 		return "main/main";
 	}
 
-	
-	@RequestMapping("/yourStatus")
-	public String viewStartPage() {
-		return "main/startPage";
+	@RequestMapping("/main/checked/tripStyle")
+	public String viewCheckedStyle(HttpSession session) {
+		if ( session.getAttribute(Member.MEMBER) != null ) {
+			return "redirect:/recommend";
+		}
+		return "redirect:/login";
 	}
-	
-	@RequestMapping(value="/main1", method=RequestMethod.GET)
-	public String viewMain() {
-
-		return "main/main1";
-	}
-	
-
 	
 }
