@@ -19,8 +19,13 @@ public class LandmarkController {
 	public void setLandmarkService(LandmarkService landmarkService) {
 		this.landmarkService = landmarkService;
 	}
+	//있음 선택시 나올 지도 페이지 부분
+	@RequestMapping(value = "/map", method = RequestMethod.GET)
+	public String viewMapPage() {
+		return "landmark/map";
+	} 
 	
-	//전체 추천 여행지 리스트!!!
+	// 메인에서 값을 받아온 거 담아놓기
 	@RequestMapping(value = "/recommend", method = RequestMethod.GET)
 	public ModelAndView viewRecommendPage() {
 		ModelAndView view = new ModelAndView();

@@ -39,7 +39,7 @@ public class MemberController {
 	public String viewLoginPage(HttpSession session) {
 		
 		if ( session.getAttribute(Member.MEMBER) != null ) {
-			return "redirect:/main1";
+			return "redirect:/main";
 		}
 		return "member/login";
 	} 
@@ -49,13 +49,15 @@ public class MemberController {
 								HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 				
 		MemberVO loginMember =  memberService.readMember(memberVO);
-			
+		
+		
 		if ( loginMember != null ) {
 			
 			loginMember.setMaintainSession(memberVO.isMaintainSession());
 			session.setAttribute(Member.MEMBER, loginMember);
 			
 			if ( loginMember.isMaintainSession() ) {
+				
 				
 				Cookie cookie = new Cookie(Member.COOKIE, session.getId());
 				cookie.setPath("/");
@@ -98,7 +100,7 @@ public class MemberController {
                 memberService.keepLogin(memberVO.getMemberId(), session.getId(), date);
             }
         }
-        return "redirect:/main1";
+        return "redirect:/main";
     }
 
 
@@ -164,8 +166,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/tendency", method=RequestMethod.GET)
-	public String viewTendency() {
-		
+	public String viewTendency() {		
 		return "member/tendency";
 	}
 	
