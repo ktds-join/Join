@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +31,6 @@
 <!-- Main Stylesheet File -->
 <link href="<c:url value="static/css/style.css"/>" rel="stylesheet">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- 제이쿼리 -->
 <script type="text/javascript"
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
@@ -50,6 +49,32 @@ $().ready(function(){
 	$("#myPageBtn").click(function(){
 		location.href="<c:url value="/myPage"/>";
 	});
+
+	/* TODO 닫기 혹은 뒤로 가기 버튼으로 구현할라고 */
+	$("#closeBtn").click(function(){
+		$("#locationStatus").unbind('click');
+	});
+
+	/* 체크박스 전체선택 전체해제 */
+	$("#allElements").click(function(){
+		if($("#allElements").prop("checked")){
+			$("input[type=checkbox]").prop("checked",true);
+		}else{
+			$("input[type=checkbox]").prop("checked",false);
+		}
+	});
+	
+	
+	$("#selectedStyle").click(function(){
+		alert("여행지 추천을 받으시겠습니까?");
+		var tripStyleForm = $("#tripStyleForm");
+		
+		tripStyleForm.attr({
+			"method" : "post",
+			"action" :"<c:url value="/recommend"/>"
+		});
+		tripStyleForm.submit();
+	});
 	
 });
 </script>
@@ -59,7 +84,7 @@ $().ready(function(){
 	<!--==========================
     Header :: 시작페이지에선 구분 안하려고 함
   ============================-->
-	<header id="header" style="position: fixed">
+	<header id="header" style ="text-decoration:none;">
 		<div class="container-fluid">
 
 			<div id="logo" class="pull-left">
@@ -95,48 +120,17 @@ $().ready(function(){
 						</li>
 					</c:if>
 					
-									
-					 <li><a href="/epi">Epilogue</a></li> 
+					<li><a href="/epi">Epilogue</a></li> 
 
 				</ul>
 			</nav>
-  
-			<!-- #nav-menu-container -->
+  <!-- #nav-menu-container -->
 		</div>
 	</header>
 	
   <!--==========================
     Intro Section
   ============================-->
-
-  
-<!-- sol Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-          <p class ="profileImgPart">
-          	<img id = "profileImg" src="<c:url value ="/static/img/default.jpg"/>"/>
-          </p>
-          	계정 : ${sessionScope.__MEMBER__.memberEmail}
-          	이름 : ${sessionScope.__MEMBER__.memberName}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- / sol Modal -->
-
-
-
 	<section id="intro">
 		<div class="intro-container">
 			<div id="introBackground" class="carousel  slide carousel-fade"
@@ -155,16 +149,27 @@ $().ready(function(){
 								<!-- 이 밑으로 어펜드가 될꺼야 -->
 								<div id="locationStatus">
 									<div id="locationExist">
-										<a href="#">있음</a>
+										<a href="<c:url value="/map"/>">있음</a>
 									</div>
 									<div id="locationNotExist">
+										
 										<a href="#">없음</a>
 									</div>
+									<a href="#" id = "closeBtn"><img style = "width:20px;height:20px" src ="<c:url value ="/static/img/close.png"/>"/></a>
 								</div>
 							</div>
 							<!-- 여행 스타일 선택 div -->
 							<div id = "tripStyle" class="carousel-content">
-								<h2>sdkljflkajdlkg;jlk;ajfkgljakldsj</h2>
+									<!-- 선택 폼 -->
+									<form:form id="tripStyleForm">
+										<input type ="checkbox" id ="allElements" name="tripStyleAll" value = "0">all
+										<input type ="checkbox" id ="element" name="tripStyle1" value = "1">style1
+										<input type ="checkbox" id ="element" name="tripStyle2" value = "2">style2
+										<input type ="checkbox" id ="element" name="tripStyle3" value = "3">style3
+										<input type ="submit" id = "selectedStyle" value ="선택"/>
+									</form:form>
+										
+									<!--  -->
 							</div>
 						</div>
 					</div>

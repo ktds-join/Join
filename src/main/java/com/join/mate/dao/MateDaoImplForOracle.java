@@ -13,4 +13,9 @@ public class MateDaoImplForOracle extends SqlSessionDaoSupport implements MateDa
 		return getSqlSession().selectList("MateDao.selectMateList");
 	}
 
+	@Override
+	public int insertMate(MateVO mateVO) {
+		return getSqlSession().insert("MateDao.insertMate", mateVO);
+	}
+
 }

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.join.mate.service.MateService;
@@ -23,8 +24,8 @@ public class MateController {
 		this.mateService = mateService;
 	}
 	
-	@RequestMapping("/list")
-	public ModelAndView viewMypage(HttpSession session) {
+	@RequestMapping("/mate/list")
+	public ModelAndView viewMateListpage(HttpSession session) {
 		
 
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
@@ -65,5 +66,36 @@ public class MateController {
 		view.addObject("mateList",mateList);
 		return view;
 	}
+	
+	@RequestMapping(value = "/mate/write", method = RequestMethod.GET)
+	public ModelAndView viewWriteMatePage(HttpSession session) {
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("mate/write");
+		
+		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
+		view.addObject("member", member);
+		
+		return view;
+		
+	}
+	
+	@RequestMapping(value = "/mate/write", method = RequestMethod.POST)
+	public String makeWriteMatePage(MateVO mateVO) {
+		
+		boolean isSuccess = mateService.createMate(mateVO);
+		
+		if( isSuccess ) {
+			return "redirect:/mate/social";
+		}
+		return "redirect:/mate/write";
+	}
+	
+	@RequestMapping("/mate/social")
+	public String viewSocialPage() {
+		return "mate/social";
+	}
+	
+	
 
 }
