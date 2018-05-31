@@ -157,6 +157,17 @@
 					</div>
 						
 		  </form>
+<<<<<<< HEAD
+		  
+			  <div class="button-1">
+			    <a href="<c:url value="/map"/>"> 뒤로가기 </a>
+			    <a id="nextBtn"> 매칭하기 </a>
+		  <!-- <button type="button" class="preBtn" id="preBtn">이전으로</button>
+		  <button type="button" class="nextBtn" id="nextBtn">매칭하기</button> -->
+		</div>
+  	</div>
+ </div>
+=======
 							<p>
 							<button type="button" id="prevbtn" class="btn_submit">이전으로</button>
 							<button type="button" id="nextbtn" class="btn_submit" style="float:right;">다음으로</button>
@@ -165,6 +176,7 @@
 </div>
 
 
+>>>>>>> e67787c9817c488e9f1bfaac8c73a0c0dd78cb12
 <!-- 삭제하지마셈 추가 -->
 <!-- 일단은 br로 사이 띄어놓겠음 -->
 	<br><br><br><br><br>

@@ -9,4 +9,6 @@ public interface MateDao {
 	public List<MateVO> selectMateList();
 
 	public int insertMate(MateVO mateVO);
+
+	public MateVO selectCountMateList(int mateId);
 }

@@ -64,8 +64,16 @@ $().ready(function(){
 		}
 	});
 	
+	
 	$("#selectedStyle").click(function(){
 		alert("여행지 추천을 받으시겠습니까?");
+		var tripStyleForm = $("#tripStyleForm");
+		
+		tripStyleForm.attr({
+			"method" : "post",
+			"action" :"<c:url value="/recommend"/>"
+		});
+		tripStyleForm.submit();
 	});
 	
 });
@@ -153,13 +161,13 @@ $().ready(function(){
 							<!-- 여행 스타일 선택 div -->
 							<div id = "tripStyle" class="carousel-content">
 									<!-- 선택 폼 -->
-									<form id="tripStyleForm" method ="post" action ="/Join/main/checked/tripStyle">
-										<input type ="checkbox" id ="allElements" name="tripStyle" value = "1">all
-										<input type ="checkbox" id ="element" name="tripStyle" value = "2">style1
-										<input type ="checkbox" id ="element" name="tripStyle" value = "3">style2
-										<input type ="checkbox" id ="element" name="tripStyle" value = "4">style3
+									<form:form id="tripStyleForm">
+										<input type ="checkbox" id ="allElements" name="tripStyleAll" value = "0">all
+										<input type ="checkbox" id ="element" name="tripStyle1" value = "1">style1
+										<input type ="checkbox" id ="element" name="tripStyle2" value = "2">style2
+										<input type ="checkbox" id ="element" name="tripStyle3" value = "3">style3
 										<input type ="submit" id = "selectedStyle" value ="선택"/>
-									</form>
+									</form:form>
 										
 									<!--  -->
 							</div>

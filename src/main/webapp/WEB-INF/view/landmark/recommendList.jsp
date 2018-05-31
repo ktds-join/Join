@@ -18,7 +18,8 @@
 <div>
 <a href="<c:url value="/recommend/city/1"/>">서울</a>
 <a href="<c:url value="/recommend/city/2"/>">부산</a>
-<a href="<c:url value="/recommend/city/3"/>">제주</a>						
+<a href="<c:url value="/recommend/city/3"/>">제주</a>	
+					
 </div>
 
 <c:forEach items="${cityLM}" var="landmark">
@@ -36,5 +37,26 @@
 <c:forEach items="${styleLM}" var="landmark">
 <p>${landmark.landmarkImageName }</p>
 </c:forEach>
+
+<!-- checkbox -->
+<div id = "tripStyle" class="carousel-content">
+<!-- 선택 폼 -->
+<form id="recommendForm" method ="post" action ="/Join/main/checked/tripStyle">
+	<input type ="checkbox" id ="allElements" name="tripStyle" value = "1">all
+	<input type ="checkbox" id ="element" name="tripStyle" value = "2">style1
+	<input type ="checkbox" id ="element" name="tripStyle" value = "3">style2
+	<input type ="checkbox" id ="element" name="tripStyle" value = "4">style3
+
+	<input type ="checkbox" id ="allCities" name="tripCity" value = "1">all
+	<input type ="checkbox" id ="city" name="tripCity" value = "2">서울
+	<input type ="checkbox" id ="city" name="tripCity" value = "3">부산
+	<input type ="checkbox" id ="city" name="tripCity" value = "4">제주
+	
+	<input type ="submit" id = "selectedNew" value ="선택"/>
+</form>
+
+<!--  -->
+</div>
+
 </body>
 </html>

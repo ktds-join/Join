@@ -1,5 +1,6 @@
 package com.join.member.web;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.util.HashMap;
@@ -141,13 +142,23 @@ public class MemberController {
 	
 	@RequestMapping("/api/exists/memberNickname")
 	@ResponseBody
-	public Map<String, Boolean> apiIsExistsNickname(@RequestParam String memberNickname) {
-		boolean isExists = memberService.readCountMemberNickname(memberNickname);
-		
+	public Map<String, Boolean> apiIsExistsNickname(@RequestParam String memberNickname,
+													HttpSession session) {
 		Map<String, Boolean> response = new HashMap<String, Boolean>();
-		response.put("response", isExists);
+		MemberVO loginMember = (MemberVO) session.getAttribute(Member.MEMBER);
 		
-		return response;
+		// 본래 닉네임과 같을 경우
+		if ( loginMember != null && loginMember.getMemberNickname().equals(memberNickname) ) {
+			response.put("response", false);
+			return response;
+		}
+		else {
+			boolean isExists = memberService.readCountMemberNickname(memberNickname);
+			
+			response.put("response", isExists);
+			
+			return response;
+		}
 	}
 	
 	@RequestMapping("/profile/{memberId}")
@@ -171,23 +182,58 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/tendency", method=RequestMethod.POST)
-	public String doTendency(MemberVO memberVO, HttpSession session) {
-		
+	public String doTendency(MemberVO memberVO, HttpSession session) {	
 		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
 		memberVO.setMemberId(member.getMemberId());
-	
-		memberService.updateMemberStyle(memberVO);
-		
-		session.setAttribute(Member.MEMBER, memberVO);
-		
-		return "redirect:/mate/list";
-		
+		memberService.updateMemberStyle(memberVO);	
+		session.setAttribute(Member.MEMBER, memberVO);	
+		return "redirect:/mate/list";	
 	}
 	
 	// 마이페이지
 	@RequestMapping("/myPage")
 	public String viewMypage(HttpSession session) {
 		return "member/myPage";
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String doModifyAction(@ModelAttribute("modifyForm")
+								 @Valid MemberVO memberVO, Errors errors,
+								 HttpSession session) {
+		MemberVO loginMember = (MemberVO) session.getAttribute(Member.MEMBER);
+		MemberVO modifyMember = new MemberVO();
+		
+		modifyMember.setMemberId(loginMember.getMemberId());
+		memberVO.setMemberProfileName(loginMember.getMemberProfileName());
+
+		boolean isModified = false;
+		
+		if ( !loginMember.getMemberNickname().equals(memberVO.getMemberNickname()) ) {
+			modifyMember.setMemberNickname(memberVO.getMemberNickname());
+			isModified = true;
+		}
+		
+		if ( memberVO.getMemberProfile().getOriginalFilename() != "" ) {			
+			memberVO.save();
+		}
+		
+		if ( !loginMember.getMemberProfileName().equals(memberVO.getMemberProfileName()) ) {
+			// 수정 했을 때, 원래 프로필이 default가 아닐 경우 원래 프로필 파일을 삭제
+			if ( !loginMember.getMemberProfileName().equals("default.jpg") ) {
+				File file = new File("D:/uploadProfiles/" + loginMember.getMemberProfileName());
+				file.delete();
+			}
+			modifyMember.setMemberProfileName(memberVO.getMemberProfileName());
+			isModified = true;
+		}
+		
+		if ( isModified ) {
+			memberService.updateMember(modifyMember);
+			loginMember = memberService.readMemberById(loginMember.getMemberId());
+			session.setAttribute(Member.MEMBER, loginMember);
+		}
+		
+		return "redirect:/main";
 	}
 
 }

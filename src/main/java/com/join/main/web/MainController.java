@@ -21,12 +21,12 @@ public class MainController {
 		return "main/main";
 	}
 
-	@RequestMapping("/main/checked/tripStyle")
+	/*@RequestMapping("/main/checked/tripStyle")
 	public String viewCheckedStyle(HttpSession session) {
 		if ( session.getAttribute(Member.MEMBER) != null ) {
 			return "redirect:/recommend";
 		}
 		return "redirect:/login";
 	}
-	
+	*/
 }

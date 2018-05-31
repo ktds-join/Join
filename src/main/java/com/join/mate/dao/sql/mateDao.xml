@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="MATE_STYLE_4" property="mateStyle4" />
 		<result column="MATE_STYLE_5" property="mateStyle5" />
 		<result column="TRIP_CITY_ID" property="tripCityId" />
+		<result column="MATE_HOST_ID" property="mateHostId" />
 	
 		<association property="tripCityVO" javaType="TripCityVO">
 			<result column="TRIP_CITY_ID" property="tripCityId" />
@@ -66,6 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					, MATE_STYLE_3
 					, MATE_STYLE_4
 					, MATE_STYLE_5
+					, MATE_HOST_ID
 					)
 					VALUES (
 					MATE_ID_SEQ.NEXTVAL
@@ -81,7 +83,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					, #{mateStyle3}
 					, #{mateStyle4}
 					, #{mateStyle5}
+					, #{mateHostId}
 					)
 	</insert>
+	
+	<select id="selectCountMateList" parameterType="_int" resultMap="MateVOMap">
+		
+		SELECT	M.MATE_ID
+				, M.MATE_TITLE
+				, TO_CHAR(M.MATE_START_DATE , 'YYYY-MM-DD') MATE_START_DATE
+				, TO_CHAR(M.MATE_END_DATE , 'YYYY-MM-DD') MATE_END_DATE
+				, M.MATE_REGIST_DATE
+				, M.MATE_CAPACITY
+				, M.MATE_LICENSE
+				, M.MATE_POINT
+				, M.MATE_STYLE_1
+				, M.MATE_STYLE_2
+				, M.MATE_STYLE_3
+				, M.MATE_STYLE_4
+				, M.MATE_STYLE_5
+				, M.TRIP_CITY_ID
+				, T.TRIP_CITY_TITLE
+				, T.TRIP_CITY_LATITUDE
+				, T.TRIP_CITY_LONGITUDE
+				, M.MATE_HOST_ID
+		FROM 	MATE M
+				, TRIP_CITY T
+		WHERE	M.MATE_ID = #{mateId}
+		AND		M.TRIP_CITY_ID = T.TRIP_CITY_ID
+	
+	</select>
 	
 </mapper>
