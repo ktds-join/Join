@@ -23,5 +23,5 @@ public interface MemberService {
 	public boolean updateMemberStyle(MemberVO memberVO);
 	
 	public boolean updateMember(MemberVO memberVO);
-	
+
 }

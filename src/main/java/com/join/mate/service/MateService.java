@@ -12,4 +12,8 @@ public interface MateService {
 
 	public MateVO readMateById(int mateId);
 
+	public int readMateByMemberId(int mateHostId);
+
+	public boolean readCountMemberMate(int memberId);
+
 }

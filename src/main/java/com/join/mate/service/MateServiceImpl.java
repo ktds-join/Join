@@ -28,4 +28,20 @@ public class MateServiceImpl implements MateService {
 		return mateDao.selectCountMateList(mateId);
 	}
 
+	@Override
+	public int readMateByMemberId(int mateHostId) {
+		return mateDao.selectCountMate(mateHostId);
+	}
+
+	@Override
+	public boolean readCountMemberMate(int memberId) {
+		
+		if(mateDao.selectCountMemerMate(memberId) == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 }

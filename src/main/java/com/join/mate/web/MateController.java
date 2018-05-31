@@ -1,7 +1,9 @@
 package com.join.mate.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.join.mate.service.MateService;
@@ -91,6 +93,8 @@ public class MateController {
 	@RequestMapping(value = "/mate/write", method = RequestMethod.POST)
 	public String makeWriteMatePage(MateVO mateVO, HttpSession session, MemberVO memberVO) {
 		
+		int mateHostId = 0;
+		int mateId = 0;
 		//현재 만든 사람의 정보를 불러온다.
 		memberVO = (MemberVO) session.getAttribute(Member.MEMBER);			
 		//불러진 정보중 아이디를 넣는다.
@@ -98,7 +102,11 @@ public class MateController {
 		//DB에 hostId를 포함한 모든 정보를 넣는다.
 		boolean isSuccess = mateService.createMate(mateVO);
 		
-		int mateId = mateVO.getMateId();
+		mateHostId = memberVO.getMemberId();
+		
+		mateId = mateService.readMateByMemberId(mateHostId);
+		
+		System.out.println(mateId);
 		
 
 		//혹시모를 쿼리에 대한 IF문 유지
@@ -108,16 +116,20 @@ public class MateController {
 		return "redirect:/mate/write";
 	}
 	
-//	@RequestMapping("/mate/social")
-//	public String goSocialPage(MateVO mateVO, MemberVO memberVO, HttpSession session) {
-//		
-//		memberVO = (MemberVO) session.getAttribute( Member.MEMBER );
-//		
-//		mateVO.setMateHostId( memberVO.getMemberId() );
-//		int mateId = mateVO.getMateId();
-//		
-//		return "redirect:/mate/social" + mateId;
-//	}
+	@RequestMapping("/api/exists/mate")
+	@ResponseBody
+	public Map<String, Boolean> apiIsExistsMate(HttpSession session) {
+		
+		MemberVO memberVO = (MemberVO) session.getAttribute(Member.MEMBER);
+		int memberId = memberVO.getMemberId();
+		
+		boolean isCount = mateService.readCountMemberMate(memberId);
+		
+		Map<String, Boolean> response = new HashMap<String, Boolean>();
+		response.put("response", isCount);
+		
+		return response;
+	}
 	
 	@RequestMapping("/mate/social/{mateId}")
 	public ModelAndView viewSocialPage( @PathVariable int mateId, MateVO mateVO, HttpSession session, MemberVO memberVO ) {
