@@ -21,30 +21,36 @@
 </head>
 
 <body>
-
-	<c:if test="${ sessionScope.status == 'host' }">			
-			<h1> 호스트 </h1>
-	</c:if>
-	<c:if test="${ sessionScope.status == 'guest' }">			
-			<h1> 게스트 </h1>
-	</c:if>
-
-	<h1>${social.mateId}</h1>
-	<h1>${social.mateTitle}</h1>
-	<h1>${social.mateStartDate}</h1>
-	<h1>${social.mateEndDate}</h1>
-	<h1>${social.mateRegistDate}</h1>
-	<h1>${social.mateCapacity}</h1>
-	<h1>${social.mateLicense}</h1>
-	<h1>${social.matePoint}</h1>
-	<h1>${social.mateStyle1}</h1>
-	<h1>${social.mateStyle2}</h1>
-	<h1>${social.mateStyle3}</h1>
-	<h1>${social.mateStyle4}</h1>
-	<h1>${social.mateStyle5}</h1>
-	<h1>${social.tripCityId}</h1>
-	<h1>${social.tripCityVO}</h1>
-	<h1>${social.mateHostId}</h1>
+	<div>
+		<div>
+			<c:if test="${ sessionScope.status == 'host' }">			
+					<h1> 호스트 </h1>
+			</c:if>
+			<c:if test="${ sessionScope.status == 'guest' }">			
+					<h1> 게스트 </h1>
+			</c:if>
+		
+			<h1>${social.mateId}</h1>
+			<h1>${social.mateTitle}</h1>
+			<h1>${social.mateStartDate}</h1>
+			<h1>${social.mateEndDate}</h1>
+			<h1>${social.mateRegistDate}</h1>
+			<h1>${social.mateCapacity}</h1>
+			<h1>${social.mateLicense}</h1>
+			<h1>${social.matePoint}</h1>
+			<h1>${social.mateStyle1}</h1>
+			<h1>${social.mateStyle2}</h1>
+			<h1>${social.mateStyle3}</h1>
+			<h1>${social.mateStyle4}</h1>
+			<h1>${social.mateStyle5}</h1>
+			<h1>${social.tripCityId}</h1>
+			<h1>${social.tripCityVO}</h1>
+			<h1>${social.mateHostId}</h1>
+		</div>
+		<div style="width: 50%; height: 50%;">
+			<c:import url="http://localhost:3000/"></c:import>
+		</div>
+	</div>
 
 </body>
 </html>
