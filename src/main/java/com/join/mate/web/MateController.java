@@ -57,13 +57,16 @@ public class MateController {
 						checkedNumber++;
 						if (checkedNumber == 3) {
 							mateList.add(mateVO);
-						}
+						}     
 					}
 				}
 			}
 		}
 		
 		view.addObject("mateList",mateList);
+	/*
+	 * matePoint
+	 */
 		return view;
 	}
 	
@@ -83,8 +86,12 @@ public class MateController {
 	@RequestMapping(value = "/mate/write", method = RequestMethod.POST)
 	public String makeWriteMatePage(MateVO mateVO) {
 		
+		int matePoint;
+		
 		boolean isSuccess = mateService.createMate(mateVO);
 		
+		System.out.println(mateVO.getMateStyle1());
+			
 		if( isSuccess ) {
 			return "redirect:/mate/social";
 		}

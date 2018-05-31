@@ -81,18 +81,18 @@ $().ready(function(){
 
 			<div id="logo" class="pull-left">
 				<h1>
-					<a href="#intro" class="scrollto">JOIN</a>
+					<a href="<c:url value="/main"/>" class="scrollto">JOIN</a>
 				</h1>
 			</div>
 
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
-					<li class="menu-active"><a href="#intro">Home</a></li>
+					<li class="menu-active"><a href="<c:url value="/main"/>">Home</a></li>
 					<c:if test="${empty sessionScope.__MEMBER__}">
-						<li class="menu"><a href="/Join/login">Login</a></li>
+						<li class="menu"><a href="<c:url value="/login"/>">Login</a></li>
 					</c:if>
 					<c:if test="${not empty sessionScope.__MEMBER__}">
-						<li class="menu-has-children"><a href="">Mypage</a>
+						<li class="menu-has-children"><a href="<c:url value="/myPage"/>">Mypage</a>
 							<ul>
 								<li>
 									<div id ="navMypage">
@@ -112,7 +112,7 @@ $().ready(function(){
 						</li>
 					</c:if>
 					
-					<li><a href="/epi">Epilogue</a></li> 
+					<li><a href="#">Epilogue</a></li> 
 
 				</ul>
 			</nav>
