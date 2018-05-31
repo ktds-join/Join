@@ -60,5 +60,10 @@ public class MemberDaoImplForOracle extends SqlSessionDaoSupport implements Memb
 	public int updateMemberStyle(MemberVO memberVO) {
 		return getSqlSession().update("MemberDao.updateMemberStyle", memberVO);
 	}
+
+	@Override
+	public int updateMember(MemberVO memberVO) {
+		return getSqlSession().update("MemberDao.updateMember", memberVO);
+	}
 	
 }

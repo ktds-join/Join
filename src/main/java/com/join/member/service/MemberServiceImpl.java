@@ -76,4 +76,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.updateMemberStyle(memberVO) > 0;
 	}
 
+	@Override
+	public boolean updateMember(MemberVO memberVO) {
+		return memberDao.updateMember(memberVO) > 0;
+	}
+
 }
