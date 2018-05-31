@@ -7,7 +7,8 @@
 		<property name="sqlSessionTemplate" ref ="sqlSessionTemplate"/>
 	</bean>
 
-	<bean id ="mateService" class = "com.join.mate.service.MateServiceImpl">
+	<bean id="mateService" class="com.join.mate.service.MateServiceImpl">
 		<property name ="mateDao" ref="mateDaoOracle"/>
 	</bean>
+	
 </beans>

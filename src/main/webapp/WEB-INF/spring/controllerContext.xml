@@ -13,6 +13,7 @@
 	
 	<bean id = "mateController" class="com.join.mate.web.MateController">
 		<property name="mateService" ref="mateService"/>
+		<property name="memberService" ref="memberService"/>
 	</bean>
 	
 	<bean id = "landmarkController" class="com.join.landmark.web.LandmarkController">

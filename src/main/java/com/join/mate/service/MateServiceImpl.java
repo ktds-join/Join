@@ -23,4 +23,9 @@ public class MateServiceImpl implements MateService {
 		return mateDao.insertMate(mateVO) > 0;
 	}
 
+	@Override
+	public MateVO readMateById(int mateId) {
+		return mateDao.selectCountMateList(mateId);
+	}
+
 }

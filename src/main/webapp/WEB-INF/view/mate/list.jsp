@@ -30,7 +30,7 @@
 						<div class="box">
 							<div class="card">
 								<strong class="name">
-									<a href="<c:url value="/mate/${mateList.mateId}"/>">${mateList.mateTitle}</a>
+									<a href="<c:url value="/mate/social/${mateList.mateId}"/>">${mateList.mateTitle}</a>
 								</strong>
 								<div class="course_info">
 									여행 출발일!<strong> ${mateList.mateStartDate}</strong>

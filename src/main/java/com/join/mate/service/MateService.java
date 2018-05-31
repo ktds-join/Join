@@ -10,4 +10,6 @@ public interface MateService {
 	
 	public boolean createMate(MateVO mateVO);
 
+	public MateVO readMateById(int mateId);
+
 }

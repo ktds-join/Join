@@ -24,6 +24,8 @@ public class MateVO {
 	private int tripCityId;
 
 	private TripCityVO tripCityVO;
+	
+	private int mateHostId;
 
 	public int getMateId() {
 		return mateId;
@@ -145,4 +147,14 @@ public class MateVO {
 		this.tripCityVO = tripCityVO;
 	}
 
+	public final int getMateHostId() {
+		return mateHostId;
+	}
+
+	public final void setMateHostId(int mateHostId) {
+		this.mateHostId = mateHostId;
+	}
+
+	
+	
 }
