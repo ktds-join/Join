@@ -174,25 +174,25 @@ display:none;
 							</div>
 							<!-- 여행 스타일 선택 div -->
 							<div id = "tripStyle" class="carousel-content">
-									<!-- 선택 폼 -->
-									<form:form commandName ="selectedOptions">
+									
+									<form:form>
 										
-										<form:checkbox path="tripStyleId" id ="allElements" name="tripStyleAll" value = "style0"></form:checkbox>all
+										<%-- <form:checkbox path="tripStyleId" id ="allElements" name="tripStyleAll" value = "style0"></form:checkbox>all
 										<form:checkbox path="tripStyleId" id ="element" name="tripStyleId" value = "style1"></form:checkbox>1
 										<form:checkbox path="tripStyleId" id ="element" name="tripStyleId" value = "style2"></form:checkbox>2
-										<form:checkbox path="tripStyleId" id ="element" name="tripStyleId" value = "style3"></form:checkbox>3
-										<!-- <div class ="styleBlock"><div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "1">style1</div>
+										<form:checkbox path="tripStyleId" id ="element" name="tripStyleId" value = "style3"></form:checkbox>3 --%>
+										<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "1">style1</div>
 										<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "2">style2</div>
 										<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "3">style3</div>						
 
 										<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">부산</div>
 										<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">서울</div>
-										<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">제주</div> -->
+										<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">제주</div> 
 										
 																				
 										<input type ="submit" id = "selectedOptions" value ="선택"/>
 									</form:form>	
-									<!--  -->
+									
 							</div>
 						</div>
 					</div>

@@ -2,18 +2,13 @@ package com.join.landmark.web;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.join.landmark.service.LandmarkService;
 import com.join.landmark.vo.LandmarkVO;
-import com.join.landmark.vo.SelectedOptionsVO;
 
 @Controller
 public class LandmarkController {
@@ -40,14 +35,14 @@ public class LandmarkController {
 		return view;
 	} 
 	
-	// 메인에서 값을 받아온 거 담아놓기
+	/*// 메인에서 값을 받아온 거 담아놓기
 	@RequestMapping(value = "/recommend", method = RequestMethod.POST)
 	public ModelAndView doRecommendPage(@ModelAttribute	SelectedOptionsVO soVO) {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("landmark/recommendList");
 		view.addObject("selectList",soVO);
 		return view;
-	} 
+	} */
 	
 	/*@RequestMapping("/recommend/city/{tripCityId}")
 	public ModelAndView viewCityPage(@PathVariable int tripCityId, LandmarkVO landmarkVO) {

@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: lucy
 Build-Jdk: 1.8.0_161
-=======
-Built-By: SangGyu
-Build-Jdk: 1.8.0_171
->>>>>>> 9ce46ba498aaceb5a65bf642b7e99466402bb0cc
 Created-By: Maven Integration for Eclipse
 
