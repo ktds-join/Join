@@ -28,4 +28,9 @@ public class MateServiceImpl implements MateService {
 		return mateDao.selectCountMateList(mateId);
 	}
 
+	@Override
+	public boolean updateMatePoint(MateVO mateVO) {
+		return mateDao.updateMatePoint(mateVO) > 0;
+	}
+
 }

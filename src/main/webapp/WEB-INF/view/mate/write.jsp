@@ -49,8 +49,8 @@
 			</div>
 			<div>
 				<div>${member.memberNickname} 님은 면허를 갖고 계신가요</div>
-				<input type="radio" id="mateLicense" name="mateLicense" value="y"> 있음
-				<input type="radio" id="mateLicense" name="mateLicense" value="n" checked="checked"> 없음				
+				<input type="radio" id="mateLicense" name="mateLicense" value="y" checked="checked"> 있음
+				<input type="radio" id="mateLicense" name="mateLicense" value="n"> 없음				
 			</div>
 			<div>
 				<div>그룹의 목적지를 선택해 주세요</div>

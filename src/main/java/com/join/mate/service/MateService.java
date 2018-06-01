@@ -11,5 +11,7 @@ public interface MateService {
 	public boolean createMate(MateVO mateVO);
 
 	public MateVO readMateById(int mateId);
+	
+	public boolean updateMatePoint(MateVO mateVO);
 
 }
