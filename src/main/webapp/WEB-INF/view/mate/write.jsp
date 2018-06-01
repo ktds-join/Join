@@ -11,11 +11,28 @@
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function() {
+		
 		$("#writeBtn").click(function() {
-			$("#writeForm").attr({
-				"method" : "post",
-				"action" : "<c:url value="/mate/write"/>"
-			}).submit();
+			
+			$.post("<c:url value="/api/exists/mate"/>", {}
+			, function(response) {
+					if ( response.response ) {
+						
+						// 할 작업.
+						if( $("#mateTitle").val() != "" && $("#mateTitle").val() != null ) {
+							$("#writeForm").attr({
+								"method" : "post",
+								"action" : "<c:url value="/mate/write"/>"
+							}).submit();				
+						}
+						else {
+							alert("모두 작성해주세요");
+						}
+					} else {
+						
+						alert("회원님께서 이미 개설하신 방이 있습니다.");
+					}
+			});
 		});
 	});
 </script>
@@ -43,11 +60,11 @@
 			<div>
 				<div>${member.memberNickname} 님은 면허를 갖고 계신가요</div>
 				<input type="radio" id="mateLicense" name="mateLicense" value="y"> 있음
-				<input type="radio" id="mateLicense" name="mateLicense" value="n"> 없음				
+				<input type="radio" id="mateLicense" name="mateLicense" value="n" checked="checked"> 없음				
 			</div>
 			<div>
 				<div>그룹의 목적지를 선택해 주세요</div>
-				<input type="radio" id="tripCityId" name="tripCityId" value="1"> 서울
+				<input type="radio" id="tripCityId" name="tripCityId" value="1" checked="checked"> 서울
 				<input type="radio" id="tripCityId" name="tripCityId" value="2"> 부산
 				<input type="radio" id="tripCityId" name="tripCityId" value="3"> 제주
 			</div>

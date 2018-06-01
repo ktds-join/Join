@@ -31,6 +31,69 @@
 <script type="text/javascript">
 	$().ready(function() {
 		
+		$("#upload").click(function() {
+			$("#memberProfile").click();
+		});
+		
+		$("#memberProfile").on('change', function () {
+		     //Get count of selected files
+		     var countFiles = $(this)[0].files.length;
+		     
+		     var imgPath = $(this)[0].value;
+		     var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+		     var imageHolder = $("#imageHolder");
+		     imageHolder.empty();
+
+		     if ( extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg" ) {
+		         if ( typeof (FileReader) != "undefined" ) {
+
+		             //loop for each file selected for uploaded.
+		             for ( var i = 0; i < countFiles; i++ ) {
+
+		                 var reader = new FileReader();
+		                 reader.onload = function (e) {
+		                     $("<img/>", {
+		                         "src" : e.target.result,
+		                         "width" : "146px",
+		                     	 "height" : "146px",
+		                     	 "id" : "profileImg"
+		                     }).appendTo(imageHolder);
+		                 }
+		                 $(".originProfile").hide();
+		                 imageHolder.show();
+		                 reader.readAsDataURL($(this)[0].files[i]);
+		             }
+
+		         } else {
+		             alert("This browser does not support FileReader.");
+		         }
+		     } else {
+		         alert("Pls select only images");
+		     }
+		 });
+		
+		$("#modifyBtn").click(function() {
+			if ( $("#memberNickname").val() == "" ) {
+				alert("닉네임을 입력해 주세요.");
+				$("#memberNickname").focus();
+				return false;
+			}
+			$.post("<c:url value="/api/exists/memberNickname"/>", {
+				memberNickname : $("#memberNickname").val()
+			}, function(response) {
+				if ( response.response ) {
+					alert("이 닉네임은 사용할 수 없습니다.");
+					$("#memberNickname").focus();
+					return false;
+				}
+				else {
+					$("#modifyForm").attr({
+						"method" : "post",
+						"action" : "<c:url value="/modify"/>"
+					}).submit();
+				}
+			});
+		});
 	});
 </script>
 </head>
@@ -39,8 +102,62 @@
 <!-- header :: navbar 부분 -->
 	<jsp:include page="/WEB-INF/view/template/navbar.jsp" />
 	
-	<div>
-	<h2>상규 여기다가 구현해 대강해~~~~</h2>
+	<div id="whole_wrapper">
+		<div id="cols">
+			<div id="wrapper">		
+				<form:form modelAttribute="modifyForm" enctype="multipart/form-data">
+					<div class="header">
+						<strong>회원 정보 수정</strong>
+					</div>
+					<div class="body">
+						<dl>
+							<dt><label for="memberProfile">프로필 사진</label></dt>
+							<dd class ="profileImgPart">
+								<!-- <img id="profileImg" src="<c:url value ="/static/img/default.jpg"/>"/> -->
+								<img id="profileImg" class="originProfile" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>" width="146px" height="146px"/>
+								<div id="imageHolder"></div>
+								<div class="btn">
+									<input type="button" class="btn_submit" id="upload" value="파일 업로드"/>
+									<input type="file" id="memberProfile" name="memberProfile" style="opacity:0;"/>
+								</div>
+							</dd>
+							
+							<dt><label for="memberEmail">아이디 (이메일)</label></dt>
+							<dd>
+								${sessionScope.__MEMBER__.memberEmail}
+							</dd>
+							
+							<dt><label for="memberName">이름</label></dt>
+							<dd>
+								${sessionScope.__MEMBER__.memberName}
+							</dd>
+									   
+							<dt><label for="memberNickname">닉네임</label></dt>
+							<dd>
+								<input type="text" class="text" id="memberNickname" name="memberNickname"
+									   value="${sessionScope.__MEMBER__.memberNickname}"/>
+								<form:errors id="memberNickname"/>
+							</dd>
+									   
+							<dt><label for="memberSex">성별</label></dt>
+							<dd>
+								<c:choose>
+									<c:when test="${sessionScope.__MEMBER__.memberSex eq 'M'}">
+										남
+									</c:when>
+									<c:otherwise>
+										여
+									</c:otherwise>
+								</c:choose>
+							</dd>
+						</dl>
+						<div class="btn">
+							<p><button type="button" id="modifyBtn" class="btn_submit">수정</button></p>
+						</div>
+					</div>
+				</form:form>
+			</div>
+		</div>
 	</div>
 	
 	<!-- 일단은 br로 사이 띄어놓겠음 -->

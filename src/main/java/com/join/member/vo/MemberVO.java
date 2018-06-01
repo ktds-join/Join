@@ -24,6 +24,7 @@ public class MemberVO {
 	private MultipartFile memberProfile;
 	private String memberProfileName;
 	private String memberRegistDate;
+	private String memberModifyDate;
 
 	private int memberStyle1;
 	private int memberStyle2;
@@ -113,6 +114,14 @@ public class MemberVO {
 		this.memberRegistDate = memberRegistDate;
 	}
 
+	public String getMemberModifyDate() {
+		return memberModifyDate;
+	}
+
+	public void setMemberModifyDate(String memberModifyDate) {
+		this.memberModifyDate = memberModifyDate;
+	}
+
 	public int getMemberStyle1() {
 		return memberStyle1;
 	}
@@ -170,7 +179,7 @@ public class MemberVO {
 	}
 	
 	public String save() {
-		
+
 		// 프로필 있을 경우
 		if ( memberProfile != null && !memberProfile.isEmpty() ) {
 			
@@ -179,7 +188,6 @@ public class MemberVO {
 			long time = cal.getTimeInMillis();
 			memberProfileName = time + "_" + memberProfile.getOriginalFilename();
 			File newFile = new File("D:/uploadProfiles/" + time + "_" + memberProfile.getOriginalFilename());
-			
 			try {
 				memberProfile.transferTo(newFile);
 				return newFile.getAbsolutePath();
@@ -193,7 +201,6 @@ public class MemberVO {
 		else {
 			memberProfileName = "default.jpg";
 			File newFile = new File("D:/uploadProfiles/default");
-			
 			try {
 				memberProfile.transferTo(newFile);
 				return newFile.getAbsolutePath();
@@ -205,6 +212,7 @@ public class MemberVO {
 				throw new RuntimeException(ioe.getMessage(), ioe);
 			}
 		}
+		
 	}
 
 }
