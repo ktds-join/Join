@@ -129,13 +129,7 @@ display:none;
 						</li>
 						<li class="menu"><a href="<c:url value="/logout"/>">Logout</a></li>
 					</c:if>
-<<<<<<< HEAD
-					
-					<li><a href="#">Epilogue</a></li> 
-
-=======
-					<li><a href="/epi">Epilogue</a></li>
->>>>>>> 96e9c4d05387f8e82cabd573c7b4398c87452c4d
+					<li><a href="#">Epilogue</a></li>
 				</ul>
 			</nav>
   <!-- #nav-menu-container -->

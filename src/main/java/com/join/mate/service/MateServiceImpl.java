@@ -29,10 +29,11 @@ public class MateServiceImpl implements MateService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public boolean updateMatePoint(MateVO mateVO) {
 		return mateDao.updateMatePoint(mateVO) > 0;
-=======
+	}
+	
+	@Override
 	public int readMateByMemberId(int mateHostId) {
 		return mateDao.selectCountMate(mateHostId);
 	}
@@ -46,7 +47,6 @@ public class MateServiceImpl implements MateService {
 		else {
 			return false;
 		}
->>>>>>> 96e9c4d05387f8e82cabd573c7b4398c87452c4d
 	}
 
 }
