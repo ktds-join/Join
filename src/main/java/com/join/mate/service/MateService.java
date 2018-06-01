@@ -14,4 +14,8 @@ public interface MateService {
 	
 	public boolean updateMatePoint(MateVO mateVO);
 
+	public int readMateByMemberId(int mateHostId);
+
+	public boolean readCountMemberMate(int memberId);
+
 }

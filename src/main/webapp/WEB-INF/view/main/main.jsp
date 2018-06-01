@@ -44,7 +44,6 @@ $().ready(function(){
 	
 	$("#locationNotExist").click(function(){
 		$("#mainIntro").hide();
-		$("#tripStyle").show();
 	});
 	$("#myPageBtn").click(function(){
 		location.href="<c:url value="/myPage"/>";
@@ -64,20 +63,30 @@ $().ready(function(){
 		}
 	});
 	
+	$("#needToLogin").click(function(){
+		alert("여행지 추천을 받으려면 로그인이 필요합니다.");
+	});
 	
-	$("#selectedStyle").click(function(){
-		alert("여행지 추천을 받으시겠습니까?");
+	$("#needToSelect").click(function(){
+		$("#tripStyle").show();
+	});
+	
+	$("#selectedOptions").click(function(){
 		var tripStyleForm = $("#tripStyleForm");
-		
 		tripStyleForm.attr({
 			"method" : "post",
-			"action" :"<c:url value="/recommend"/>"
+			"action" : "<c:url value="/recommend"/>"
 		});
 		tripStyleForm.submit();
 	});
 	
 });
 </script>
+<style>
+.cityBlock{
+display:none;
+}
+</style>
 </head>
 <body>
 
@@ -118,10 +127,15 @@ $().ready(function(){
 								</li>
 							</ul>
 						</li>
+						<li class="menu"><a href="<c:url value="/logout"/>">Logout</a></li>
 					</c:if>
+<<<<<<< HEAD
 					
 					<li><a href="#">Epilogue</a></li> 
 
+=======
+					<li><a href="/epi">Epilogue</a></li>
+>>>>>>> 96e9c4d05387f8e82cabd573c7b4398c87452c4d
 				</ul>
 			</nav>
   <!-- #nav-menu-container -->
@@ -151,25 +165,40 @@ $().ready(function(){
 									<div id="locationExist">
 										<a href="<c:url value="/map"/>">있음</a>
 									</div>
-									<div id="locationNotExist">
-										
-										<a href="#">없음</a>
+									<div id="locationNotExist">	
+									<c:if test="${empty sessionScope.__MEMBER__}">
+										<a href="<c:url value="/login"/>" id = "needToLogin">없음</a>
+									</c:if>
+									
+									<c:if test="${not empty sessionScope.__MEMBER__}">
+										<a href="#" id ="needToSelect">없음</a>
+									</c:if>
+									
 									</div>
 									<a href="#" id = "closeBtn"><img style = "width:20px;height:20px" src ="<c:url value ="/static/img/close.png"/>"/></a>
 								</div>
 							</div>
 							<!-- 여행 스타일 선택 div -->
 							<div id = "tripStyle" class="carousel-content">
-									<!-- 선택 폼 -->
-									<form:form id="tripStyleForm">
-										<input type ="checkbox" id ="allElements" name="tripStyleAll" value = "0">all
-										<input type ="checkbox" id ="element" name="tripStyle1" value = "1">style1
-										<input type ="checkbox" id ="element" name="tripStyle2" value = "2">style2
-										<input type ="checkbox" id ="element" name="tripStyle3" value = "3">style3
-										<input type ="submit" id = "selectedStyle" value ="선택"/>
-									</form:form>
+									
+									<form:form>
 										
-									<!--  -->
+										<%-- <form:checkbox path="tripStyleId" id ="allElements" name="tripStyleAll" value = "style0"></form:checkbox>all
+										<form:checkbox path="tripStyleId" id ="element" name="tripStyleId" value = "style1"></form:checkbox>1
+										<form:checkbox path="tripStyleId" id ="element" name="tripStyleId" value = "style2"></form:checkbox>2
+										<form:checkbox path="tripStyleId" id ="element" name="tripStyleId" value = "style3"></form:checkbox>3 --%>
+										<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "1">style1</div>
+										<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "2">style2</div>
+										<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "3">style3</div>						
+
+										<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">부산</div>
+										<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">서울</div>
+										<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">제주</div> 
+										
+																				
+										<input type ="submit" id = "selectedOptions" value ="선택"/>
+									</form:form>	
+									
 							</div>
 						</div>
 					</div>

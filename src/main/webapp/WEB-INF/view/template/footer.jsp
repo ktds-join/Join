@@ -10,7 +10,7 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-info">
-            <h3>Join</h3>
+            <h3>JOIN</h3>
             <p>Join [ enJoy kOrea wIth theNew ] 은 여행 스타일에 따른 여행지를 추천해주고, 본인 성향에 맞는 동행자를 매칭시켜주는 서비스를 제공한다.</p>
           </div>
 

@@ -1,7 +1,9 @@
 package com.join.mate.web;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.ResponseBody;
+>>>>>>> 96e9c4d05387f8e82cabd573c7b4398c87452c4d
 import org.springframework.web.servlet.ModelAndView;
 
 import com.join.mate.service.MateService;
@@ -93,6 +99,8 @@ public class MateController {
 	@RequestMapping(value = "/mate/write", method = RequestMethod.POST)
 	public String makeWriteMatePage(MateVO mateVO, HttpSession session, MemberVO memberVO) {
 		
+		int mateHostId = 0;
+		int mateId = 0;
 		//현재 만든 사람의 정보를 불러온다.
 		memberVO = (MemberVO) session.getAttribute(Member.MEMBER);			
 		//불러진 정보중 아이디를 넣는다.
@@ -115,6 +123,7 @@ public class MateController {
 			matePoint += 40;
 		}
 		
+<<<<<<< HEAD
 		gap = Math.abs( mateVO.getMateStyle2() - memberVO.getMemberStyle2() );
 		
 		if ( gap == 0 ) {
@@ -170,6 +179,13 @@ public class MateController {
 		} else if ( gap <= 200 ) {
 			matePoint += 0;
 		}
+=======
+		mateHostId = memberVO.getMemberId();
+		
+		mateId = mateService.readMateByMemberId(mateHostId);
+		
+		System.out.println(mateId);
+>>>>>>> 96e9c4d05387f8e82cabd573c7b4398c87452c4d
 		
 		if( isSuccess ) {
 				mateService.updateMatePoint(mateVO);
@@ -178,6 +194,24 @@ public class MateController {
 		return "redirect:/mate/write";
 	}
 	
+<<<<<<< HEAD
+=======
+	@RequestMapping("/api/exists/mate")
+	@ResponseBody
+	public Map<String, Boolean> apiIsExistsMate(HttpSession session) {
+		
+		MemberVO memberVO = (MemberVO) session.getAttribute(Member.MEMBER);
+		int memberId = memberVO.getMemberId();
+		
+		boolean isCount = mateService.readCountMemberMate(memberId);
+		
+		Map<String, Boolean> response = new HashMap<String, Boolean>();
+		response.put("response", isCount);
+		
+		return response;
+	}
+	
+>>>>>>> 96e9c4d05387f8e82cabd573c7b4398c87452c4d
 	@RequestMapping("/mate/social/{mateId}")
 	public ModelAndView viewSocialPage( @PathVariable int mateId, MateVO mateVO, HttpSession session, MemberVO memberVO ) {
 

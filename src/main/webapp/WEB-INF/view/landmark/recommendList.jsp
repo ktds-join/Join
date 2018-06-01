@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +11,11 @@
 <body>
 리스트 보여주기
 <hr>
-<a href="<c:url value="/recommend/all"/>">전체</a>
+<%-- <a href="<c:url value="/recommend"/>">전체</a> --%>
 <c:forEach items="${landmarkList}" var="list">
 <p>${list.landmarkTitle }</p>
 </c:forEach>
-<hr>
+<%-- <hr>
 <div>
 <a href="<c:url value="/recommend/city/1"/>">서울</a>
 <a href="<c:url value="/recommend/city/2"/>">부산</a>
@@ -36,26 +37,30 @@
 
 <c:forEach items="${styleLM}" var="landmark">
 <p>${landmark.landmarkImageName }</p>
+</c:forEach> --%>
+
+<!-- 컨트롤러에서 받아오기 -->
+<c:forEach var = "styleList" items="${selectList.tripStyleId}">
+${styleList }
 </c:forEach>
 
-<!-- checkbox -->
+<!-- 여행 스타일 선택 div -->
 <div id = "tripStyle" class="carousel-content">
-<!-- 선택 폼 -->
-<form id="recommendForm" method ="post" action ="/Join/main/checked/tripStyle">
-	<input type ="checkbox" id ="allElements" name="tripStyle" value = "1">all
-	<input type ="checkbox" id ="element" name="tripStyle" value = "2">style1
-	<input type ="checkbox" id ="element" name="tripStyle" value = "3">style2
-	<input type ="checkbox" id ="element" name="tripStyle" value = "4">style3
+		<!-- 선택 폼 -->
+		<form:form id="tripStyleForm">
+			<div class ="styleBlock"><input type ="checkbox" id ="allElements" name="tripStyleAll" value = "0">all</div>
+			<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "1">style1</div>
+			<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "2">style2</div>
+			<div class ="styleBlock"><input type ="checkbox" id ="element" name="tripStyleId" value = "3">style3</div>						
 
-	<input type ="checkbox" id ="allCities" name="tripCity" value = "1">all
-	<input type ="checkbox" id ="city" name="tripCity" value = "2">서울
-	<input type ="checkbox" id ="city" name="tripCity" value = "3">부산
-	<input type ="checkbox" id ="city" name="tripCity" value = "4">제주
-	
-	<input type ="submit" id = "selectedNew" value ="선택"/>
-</form>
-
-<!--  -->
+			<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "1">서울</div>
+			<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "2">부산</div>
+			<div class ="cityBlock"><input type ="checkbox" id ="element" name="tripCityId" value = "3">제주</div>
+			
+													
+			<input type ="submit" id = "selectedOptions" value ="선택"/>
+		</form:form>	
+		<!--  -->
 </div>
 
 </body>
