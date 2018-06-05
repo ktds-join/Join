@@ -163,7 +163,7 @@ footer, header, hgroup{
 	margin: 10px 0;
     text-align: center;
 	}
-/* regist.css */
+/* regist.css 유효성검사부분
 .body input.invalid{
 	background-color: #ecb9d1;
 	color: #000040;
@@ -182,6 +182,16 @@ input.invalid{
 input.valid{
 	background-color: #a2eca7;
 	color: #74a879;
+} */
+input {
+	margin-bottom: 5px;
+}
+input.invalid{
+	border:1px solid red;
+}
+
+input.valid{
+	border:1px solid #666;
 }
 /* regist.css */
 

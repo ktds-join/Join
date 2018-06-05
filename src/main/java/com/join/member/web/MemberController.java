@@ -48,7 +48,8 @@ public class MemberController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String doLoginAction(@ModelAttribute("loginForm") @Valid MemberVO memberVO, Errors errors, 
 								HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-				
+
+		String referer = request.getHeader("Referer");
 		MemberVO loginMember =  memberService.readMember(memberVO);
 		
 		
@@ -74,7 +75,7 @@ public class MemberController {
 										session.getId(), sessionLimit);
 			}
 			
-			return "redirect:/main";
+			return "redirect:"+ referer;
 		}
 		
 		return "member/login";	
@@ -167,7 +168,7 @@ public class MemberController {
 								   HttpServletResponse response) {
 		MemberVO loginMember = memberService.readMemberById(memberId);
 		String memberProfileName = loginMember.getMemberProfileName();
-		DownloadUtil downloadUtil = new DownloadUtil("D:/uploadProfiles/" + memberProfileName);
+		DownloadUtil downloadUtil = new DownloadUtil("C:/uploadProfiles/" + memberProfileName);
 		
 		try {
 			downloadUtil.download(request, response, memberProfileName);
@@ -220,7 +221,7 @@ public class MemberController {
 		if ( !loginMember.getMemberProfileName().equals(memberVO.getMemberProfileName()) ) {
 			// 수정 했을 때, 원래 프로필이 default가 아닐 경우 원래 프로필 파일을 삭제
 			if ( !loginMember.getMemberProfileName().equals("default.jpg") ) {
-				File file = new File("D:/uploadProfiles/" + loginMember.getMemberProfileName());
+				File file = new File("C:/uploadProfiles/" + loginMember.getMemberProfileName());
 				file.delete();
 			}
 			modifyMember.setMemberProfileName(memberVO.getMemberProfileName());
