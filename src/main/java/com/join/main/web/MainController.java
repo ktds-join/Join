@@ -21,6 +21,10 @@ public class MainController {
 		return "main/main";
 	}
 
+	@RequestMapping("/index")
+	public String viewIndex(HttpSession session) {
+		return "main/index";
+	}
 }
 
 

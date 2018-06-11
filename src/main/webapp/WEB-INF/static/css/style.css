@@ -631,6 +631,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   position: relative;
 }
 
+
 #about::before {
   content: '';
   position: absolute;
@@ -656,10 +657,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #about .about-col .img {
   position: relative;
-}
-
-#about .about-col .img img {
-  border-radius: 4px 4px 0 0;
 }
 
 #about .about-col .icon {

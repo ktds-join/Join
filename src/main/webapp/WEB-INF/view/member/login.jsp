@@ -87,7 +87,7 @@
 					</div>
 					<div class="footer">
 						<a href="#">비밀번호 찾기</a>
-						&nbsp | &nbsp 
+						&nbsp; | &nbsp; 
 						<a href="<c:url value="/regist"/>">회원가입</a>
 					</div>
 				</form:form>
