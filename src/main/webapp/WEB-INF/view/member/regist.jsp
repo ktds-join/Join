@@ -29,7 +29,7 @@
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		
+
 		$("#memberEmail").keyup(function() {
 			var value = $(this).val();
 			if ( value != "" ) {
@@ -123,10 +123,53 @@
 				$(this).addClass("invalid");
 			}
 		});
-
+*/
 		$("#registBtn").click(function() {
 			
-			if ( $("#memberEmail").val() == "" ) {
+			if ($("#memberEmail").val() == "") {
+				$("#errorId").slideDown(300);
+				$("#memberEmail").focus();
+				return false;
+			} else {
+				$("#errorId").slideUp(300);
+			}
+
+			if ($("#password").val() == "") {
+				$("#errorPassword").slideDown(300);
+				$("#password").focus();
+				return false;
+			} else {
+				$("#errorPassword").slideUp(300);
+			}
+			
+
+			if ($("#passwordConfirm").val() == "") {
+				$("#errorPassword").slideDown(300);
+				$("#passwordConfirm").focus();
+				return false;
+			} else {
+				$("#errorPassword").slideUp(300);
+			}
+			
+
+			if ($("#memberName").val() == "") {
+				$("#errorPassword").slideDown(300);
+				$("#memberName").focus();
+				return false;
+			} else {
+				$("#errorPassword").slideUp(300);
+			}
+			
+
+			if ($("#memberNickname").val() == "") {
+				$("#errorPassword").slideDown(300);
+				$("#memberNickname").focus();
+				return false;
+			} else {
+				$("#errorPassword").slideUp(300);
+			}
+			
+/* 			if ( $("#memberEmail").val() == "" ) {
 				alert("이메일을 입력하세요");
 				$("#memberEmail").focus();
 				$("#memberEmail").addClass("invalid");
@@ -198,19 +241,16 @@
 								else {
 									$("#memberNickname").removeClass("invalid");
 									$("#memberNickname").addClass("valid");
-									
+									 */
 									$("#registForm").attr({
 										"method" : "post",
 										"action" : "<c:url value="/regist"/>"
 									}).submit();
-								}
-							});
-						}
-					}
-					
+								};
+					};
 				});
 
-			}
+			};
 
 		});
 	});
@@ -234,6 +274,7 @@
 							<dd>
 								<input type="text" class="text" id="memberEmail" name="memberEmail"
 									   value="${registForm.memberEmail}"/>
+								<div id="errorId" style="display: none;">아이디를 입력하세요!</div>
 								<form:errors id="memberEmail"/>
 							</dd>
 									   
