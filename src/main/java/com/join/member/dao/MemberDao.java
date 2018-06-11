@@ -24,4 +24,6 @@ public interface MemberDao {
 	
 	public int updateMemberStyle(MemberVO memberVO);
 	
+	public int updateMember(MemberVO memberVO);
+
 }

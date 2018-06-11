@@ -112,13 +112,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE	MEMBER_ID = #{memberId}
 	</update>
 	
-	<update id="updateMember" parameterType="MemberVO">
-		UPDATE	MEMBER
-		SET		MEMBER_NICKNAME = #{memberNickname}
-				,MEMBER_PROFILE_NAME = #{memberProfileName}
-		WHERE	MEMBER_ID = #{memberId}
-	</update>
-	
 	<update id="updateMemberStyle" parameterType="MemberVO">
 		UPDATE	MEMBER
 		SET		MEMBER_STYLE_1 = #{memberStyle1}
@@ -127,6 +120,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				,MEMBER_STYLE_4 = #{memberStyle4}
 				,MEMBER_STYLE_5 = #{memberStyle5}
 		WHERE 	MEMBER_ID = #{memberId}
+	</update>
+	
+	<update id="updateMember" parameterType="MemberVO">
+		UPDATE	MEMBER
+		SET		MEMBER_MODIFY_DATE = SYSDATE
+				<if test="memberNickname != null and memberNickname != ''">
+				, MEMBER_NICKNAME = #{memberNickname}
+				</if>
+				<if test="memberProfileName != null and memberProfileName != ''">
+				,MEMBER_PROFILE_NAME = #{memberProfileName}
+				</if>
+		WHERE	MEMBER_ID = #{memberId}
 	</update>
 	
 </mapper>

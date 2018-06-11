@@ -50,8 +50,9 @@
 						</li>
 					</ul>
 				</li>
+				<li class="menu"><a href="<c:url value="/logout"/>">Logout</a></li>
 			</c:if>
-          <li><a href="/epi">Epilogue</a></li>
+          <li><a href="#">Epilogue</a></li>
           
         </ul>
       </nav><!-- #nav-menu-container -->

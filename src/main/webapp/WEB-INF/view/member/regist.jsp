@@ -29,27 +29,53 @@
 <script type="text/javascript" src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function() {
+<<<<<<< HEAD
 
 		$("#memberEmail").keyup(function() {
+=======
+		
+		/* 이메일 정규 표현식 */
+		function email_check( email ) {    
+		    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		    return (email != '' && email != 'undefined' && regex.test(email)); 
+		}
+		
+		$("#memberEmail").blur(function(){
+>>>>>>> e68e0ccf1ce6bd06b83d23b59d82b0cfe3bcd252
 			var value = $(this).val();
-			if ( value != "" ) {
+			if(value == '' || value == 'undefined')
+				return;
+			if(!email_check(value)){
+				$("#email-check").text('');
+				$("#email-check").html('이메일 형식이 아닙니다.');
+				$(this).focus();
+				return false;
+			}
+			else{
+				$("#email-check").text('');
+			}
+			
+			if($("#memberEmail").hasClass("invalid")){
+				$("#email-check").text('');
+				$("#email-check").html('작성한 이메일은 사용할 수 없습니다.');
+				
+				$("#email").focus();
+				return false;
+			}
+			else{
 				$.post("<c:url value="/api/exists/memberEmail"/>", {
-					memberEmail : value
+					memberEmail : $("#memberEmail").val()
 				}, function(response) {
-					if ( response.response ) {
-						$("#memberEmail").removeClass("valid");
-						$("#memberEmail").addClass("invalid");
-					} else {
-						$("#memberEmail").removeClass("invalid");
-						$("#memberEmail").addClass("valid");
-					}
+
+				if ( response.response ) {
+					alert("작성한 이메일은 사용할 수 없습니다.")
+					$("#email").focus();
+					return false;
+				}
 				});
-			} else {
-				$(this).removeClass("valid");
-				$(this).addClass("invalid");
 			}
 		});
-
+		
 		$("#memberPassword").keyup(function() {
 			var value = $(this).val();
 			if ( value != "" ) {
@@ -84,11 +110,14 @@
 				$(this).addClass("invalid");
 				$("#memberPassword").removeClass("valid");
 				$("#memberPassword").addClass("invalid");
+				$("#pwdChk").text('');
+				$("#pwdChk").html('비밀번호가 다릅니다.');
 			} else {
 				$(this).removeClass("invalid");
 				$(this).addClass("valid");
 				$("#memberPassword").removeClass("invalid");
 				$("#memberPassword").addClass("valid");
+				$("#pwdChk").text('');
 
 			}
 		});
@@ -122,6 +151,28 @@
 				$(this).removeClass("valid");
 				$(this).addClass("invalid");
 			}
+			
+			if($("#memberNickname").hasClass("invalid")){
+				$("#nick-check").text('');
+				$("#nick-check").html('작성한 닉네임은 사용할 수 없습니다.');
+				
+				$("#memberNickname").focus();
+				return false;
+			}
+			else{
+				$.post("<c:url value="/api/exists/memberNickname"/>", {
+					memberNickname : $("#memberNickname").val()
+				}, function(response) {
+					if( response.response ) {
+						alert("작성한 닉네임은 사용할수 없습니다.")
+						$("#memberNickname").removeClass("valid");
+						$("#memberNickname").addClass("invalid");
+						$("#memberNickname").focus();
+						return false;
+					}
+				});
+			}
+			
 		});
 */
 		$("#registBtn").click(function() {
@@ -176,6 +227,7 @@
 				return false;
 			}
 
+<<<<<<< HEAD
 			if ( $("#memberEmail").hasClass("invalid") ) {
 				alert("작성한 이메일은 사용할수 없습니다.");
 				$("#memberEmail").focus();
@@ -252,7 +304,48 @@
 
 			};
 
+=======
+
+			if ( $("#memberPassword").val() == "" ) {
+				alert("비밀번호를 입력하세요");
+				$("#memberPassword").focus();
+				$("#memberPassword").addClass("invalid");
+				return false;
+			}
+		
+			if ( $("#passwordConfirm").val() == "" ) {
+				alert("비밀번호 확인을 입력하세요");
+				$("#memberPassword").focus();
+				$("#memberPassword").addClass("invalid");
+				return false;
+			}
+		
+			if ( $("#memberName").val() == "" ) {
+				alert("이름을 입력하세요");
+				$("#memberName").focus();
+				$("#memberName").addClass("invalid");
+				return false;
+			}
+			
+			if ( $("#memberNickname").val() == "" ) {
+				alert("닉네임을 입력하세요");
+				$("#memberNickname").focus();
+				$("#memberNickname").addClass("invalid");
+				return false;
+			}
+		
+			if ( $("#memberNickname").hasClass("invalid") ) {
+				alert("작성한 닉네임은 사용할 수 없습니다.");
+				$("#memberNickname").focus();
+				return false;
+			}
+			$("#registForm").attr({
+				"method" : "post",
+				"action" : "<c:url value="/regist"/>"
+			}).submit();
+>>>>>>> e68e0ccf1ce6bd06b83d23b59d82b0cfe3bcd252
 		});
+	
 	});
 </script>
 </head>
@@ -276,6 +369,7 @@
 									   value="${registForm.memberEmail}"/>
 								<div id="errorId" style="display: none;">아이디를 입력하세요!</div>
 								<form:errors id="memberEmail"/>
+								<div id="email-check" style="float:left;color:red"></div>
 							</dd>
 									   
 							<dt><label for="memberPassword">비밀번호</label></dt>
@@ -286,7 +380,9 @@
 							</dd>
 							
 							<dt><label for="passwordConfirm">비밀번호 확인</label></dt>
-							<dd><input type="password" class="text" id="passwordConfirm" name="passwordConfirm"/></dd>
+							<dd><input type="password" class="text" id="passwordConfirm" name="passwordConfirm"/>
+							<div id ="pwdChk" style="float:left;color:red"></div>
+							</dd>
 							
 							<dt><label for="memberName">이름</label></dt>
 							<dd>
