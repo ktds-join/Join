@@ -19,13 +19,13 @@ public class LandmarkController {
 		this.landmarkService = landmarkService;
 	}
 	//있음 선택시 나올 지도 페이지 부분
-	@RequestMapping(value = "/map", method = RequestMethod.GET)
+	@RequestMapping(value = "/recommend", method = RequestMethod.GET)
 	public String viewMapPage() {
-		return "landmark/map";
+		return "landmark/recommend";
 	} 
 	
 	// 걍 GET 
-	@RequestMapping(value = "/recommend", method = RequestMethod.GET)
+	@RequestMapping(value = "/recommendList", method = RequestMethod.GET)
 	public ModelAndView viewRecommendPage() {
 		ModelAndView view = new ModelAndView();
 		view.setViewName("landmark/recommendList");	

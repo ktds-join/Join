@@ -157,7 +157,7 @@ display:none;
 								<!-- 이 밑으로 어펜드가 될꺼야 -->
 								<div id="locationStatus">
 									<div id="locationExist">
-										<a href="<c:url value="/map"/>">있음</a>
+										<a href="<c:url value="/recommend"/>">있음</a>
 									</div>
 									<div id="locationNotExist">	
 									<c:if test="${empty sessionScope.__MEMBER__}">
