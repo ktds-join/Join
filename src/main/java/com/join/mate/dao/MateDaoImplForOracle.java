@@ -27,6 +27,7 @@ public class MateDaoImplForOracle extends SqlSessionDaoSupport implements MateDa
 	public int updateMatePoint(MateVO mateVO) {
 		return getSqlSession().update("MateDao.updateMatePoint", mateVO);
 	}
+	
 	@Override
 	public int selectCountMate(int mateHostId) {
 		return getSqlSession().selectOne("MateDao.selectCountMate", mateHostId);

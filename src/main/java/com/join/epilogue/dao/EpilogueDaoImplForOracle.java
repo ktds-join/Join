@@ -1,0 +1,25 @@
+package com.join.epilogue.dao;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.join.epilogue.vo.EpiloguePictureVO;
+import com.join.epilogue.vo.EpilogueVO;
+
+public class EpilogueDaoImplForOracle extends SqlSessionDaoSupport implements EpilogueDao {
+
+	@Override
+	public int insertEpilogue(EpilogueVO epilogueVO) {
+		return getSqlSession().insert("EpilogueDao.insertEpilogue", epilogueVO);
+	}
+
+	@Override
+	public int insertEpiloguePictures(EpiloguePictureVO epiloguePictureVO) {
+		return getSqlSession().insert("EpilogueDao.insertEpiloguePictures", epiloguePictureVO);
+	}
+
+	@Override
+	public int selectEpilogueId() {
+		return getSqlSession().selectOne("EpilogueDao.selectEpilogueId");
+	}
+
+}

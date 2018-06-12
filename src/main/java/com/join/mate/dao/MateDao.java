@@ -17,4 +17,5 @@ public interface MateDao {
 	public int selectCountMate(int mateHostId);
 
 	public int selectCountMemerMate(int memberId);
+
 }

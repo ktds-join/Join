@@ -119,6 +119,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET		MATE_POINT = #{matePoint}
 		WHERE	MATE_ID = #{mateId}
 	</update>
+
 	<select id="selectCountMate" parameterType="_int" resultType="_int">
 		
 		SELECT	M.MATE_ID
