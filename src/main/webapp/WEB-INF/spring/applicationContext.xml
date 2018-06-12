@@ -25,6 +25,8 @@
 			<mvc:exclude-mapping path="/login" />
 			<mvc:exclude-mapping path="/regist" />
 			<mvc:exclude-mapping path="/main" />
+			<mvc:exclude-mapping path="/epi" />
+			<mvc:exclude-mapping path="/epiWrite" />
 			<mvc:exclude-mapping path="/api/exists/memberEmail"/>
 			<mvc:exclude-mapping path="/api/exists/memberNickname"/>
 			<mvc:exclude-mapping path="/static/**" />
@@ -46,9 +48,7 @@
 		<property name="maxUploadSize" value="104857600"/>
 	</bean>
 	
-
 	<!-- context 분리 -->
 	<import resource="controllerContext.xml"/>
-	
 
 </beans>

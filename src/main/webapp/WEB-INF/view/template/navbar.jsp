@@ -51,7 +51,7 @@
 					</ul>
 				</li>
 			</c:if>
-          <li><a href="/epi">Epilogue</a></li>
+          <li><a href="<c:url value="/epi"/>">Epilogue</a></li>
           
         </ul>
       </nav><!-- #nav-menu-container -->

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EpilogueDao">
+	<resultMap type = "EpilogueVO" id ="epilogueVOMap">
+		<id column ="EPILOGUE_ID" property = "epilogueId"/>
+		<result column="EPILOGUE_TITLE" property="epilogueTitle"/>
+		<result column="EPILOGUE_BODY" property="epilogueBody"/>
+		<result column="EPILOGUE_GRADE" property="epilogueGrade"/>
+		<result column="EPILOGUE_WRITE_DATE" property="epilogueWriteDate"/>
+		
+		<association property="epiloguePictureVO" javaType="EpiloguePictureVO">
+			<id column="EPILOGUE_PICTURE_ID" property="epiloguePictureId"/>
+			<result column="EPILOGUE_PICTURE_NAME" property="epiloguePictureName" />
+			<result column="EPILOGUE_ID" property="epilogueId"/>
+		</association>
+		
+		<association property="mateVO" javaType="MateVO">
+			<id column="MATE_ID" property="mateId" />
+			
+		</association>
+	</resultMap>
+	
+	<insert id="insertEpilogue" parameterType="EpilogueVO">
+		INSERT	INTO EPILOGUE (
+			EPILOGUE_ID
+			,	EPILOGUE_TITLE
+			,	EPILOGUE_BODY
+			,	EPILOGUE_GRADE
+			,	EPILOGUE_WRITE_DATE
+		)
+		VALUES	(
+			#{epilogueId}
+			,	#{epilogueTitle}
+			,	#{epilogueBody}
+			,	#{epilogueGrade}
+			,	SYSDATE
+		)
+	</insert>
+	
+	<insert id="insertEpiloguePictures" parameterType="EpiloguePictureVO">
+		INSERT	INTO	EPILOGUE_PICUTRE (
+			EPILOGUE_PICTURE_ID
+			,	EPILOGUE_PICTURE_NAME
+			,	EPILOGUE_ID
+		)
+		VALUES	(
+			EPILOGUE_PICTURE_ID_SEQ.NEXTVAL
+			,	#{epiloguePictureName}
+			,	#{epilogueId}
+		)
+	</insert>
+	
+	<select id="selectEpilogueId" resultType="_int">
+		SELECT	EPILOGUE_ID_SEQ.NEXTVAL
+		FROM	DUAL
+	</select>
+</mapper>
