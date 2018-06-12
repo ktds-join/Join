@@ -187,7 +187,7 @@ public class MemberVO {
 			Calendar cal = Calendar.getInstance();
 			long time = cal.getTimeInMillis();
 			memberProfileName = time + "_" + memberProfile.getOriginalFilename();
-			File newFile = new File("D:/uploadProfiles/" + time + "_" + memberProfile.getOriginalFilename());
+			File newFile = new File("C:/uploadProfiles/" + time + "_" + memberProfile.getOriginalFilename());
 			try {
 				memberProfile.transferTo(newFile);
 				return newFile.getAbsolutePath();
@@ -200,7 +200,7 @@ public class MemberVO {
 		// 처음 회원가입 시, default.jpg로 프로필 설정
 		else {
 			memberProfileName = "default.jpg";
-			File newFile = new File("D:/uploadProfiles/default");
+			File newFile = new File("C:/uploadProfiles/default");
 			try {
 				memberProfile.transferTo(newFile);
 				return newFile.getAbsolutePath();

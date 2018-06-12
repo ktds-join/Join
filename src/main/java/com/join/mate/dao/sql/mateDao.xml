@@ -114,4 +114,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</select>
 	
+	<update id="updateMatePoint" parameterType="_int">
+		UPDATE	MATE
+		SET		MATE_POINT = #{matePoint}
+		WHERE	MATE_ID = #{mateId}
+	</update>
+
+	<select id="selectCountMate" parameterType="_int" resultType="_int">
+		
+		SELECT	M.MATE_ID
+		FROM 	MATE M
+		WHERE	M.MATE_HOST_ID = #{mateHostId}
+	
+	</select>
+	
+	<select id="selectCountMemerMate" parameterType="_int" resultType="_int">
+		
+		SELECT	COUNT(MATE_HOST_ID)
+		FROM	MATE
+		WHERE	MATE_HOST_ID = #{memberId}
+	
+	</select>
+	
 </mapper>

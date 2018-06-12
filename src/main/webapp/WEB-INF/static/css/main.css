@@ -3,10 +3,6 @@
 	margin: auto;
 	}
 	
-.content .innerwrap .course .box{
-	height:180px;
-	}
-	
 .content .innerwrap .course .box .card strong.name{
 	display:block;
 	font-size:1.2em;
@@ -29,7 +25,7 @@
     position: relative;
 	}
 	
-.content .innerwrap .course .box:hover strong.name a{
+.content .innerwrap .course .box:hover .card strong.name a{
 	color:#2ecc71;
 	}
 	
@@ -66,10 +62,6 @@
 	padding:21px 15px;
 	}
 	
-.content .innerwrap .listwrap .view_all{
-    padding-left: 465px;
-    font-size: 12px;
-	}
 	
 .content .innerwrap .listwrap .account{
 	font-size:12px;
@@ -200,7 +192,7 @@
 	border-radius:4px;
 	}
 	
-.content .innerwrap .listwrap .box .name_card{
+/*  .content .innerwrap .listwrap .box .name_card{
 	position:absolute;
 	width:100%;left:0;bottom:0;
 	padding:15px 15px;
@@ -228,3 +220,4 @@
 	margin-right:5px;
 	border:2px solid #fff;
 	}
+*/

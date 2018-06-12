@@ -1,5 +1,7 @@
 package com.join.landmark.vo;
 
+import java.util.List;
+
 public class LandmarkVO {
 
 	private int landmarkId;
@@ -14,6 +16,15 @@ public class LandmarkVO {
 	private TripCityVO tripCityVO;
 	private TripStyleVO tripStyleVO;
 	
+	//
+	private List<SelectedOptionsVO> selectedList;
+	public List<SelectedOptionsVO> getSelectedList() {
+		return selectedList;
+	}
+	public void setSelectedList(List<SelectedOptionsVO> selectedList) {
+		this.selectedList = selectedList;
+	}
+	//
 	public int getLandmarkId() {
 		return landmarkId;
 	}

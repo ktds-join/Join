@@ -164,12 +164,10 @@ body { padding: 60px; }
  input::-moz-focus-inner, input::-moz-focus-outer {
  border: 0;
 }
->>>>>>> tendency-sol
 </style>
 </head>
 
 <body>
-<<<<<<< HEAD
 	<!-- 헤더  -->
 	<header id = "header">
 		<!-- #로고 왼쪽으로 보내기 -->

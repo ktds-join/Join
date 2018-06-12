@@ -11,4 +11,11 @@ public interface MateDao {
 	public int insertMate(MateVO mateVO);
 
 	public MateVO selectCountMateList(int mateId);
+	
+	public int updateMatePoint(MateVO mateVO);
+
+	public int selectCountMate(int mateHostId);
+
+	public int selectCountMemerMate(int memberId);
+
 }

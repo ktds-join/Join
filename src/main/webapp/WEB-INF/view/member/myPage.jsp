@@ -35,6 +35,43 @@
 			$("#memberProfile").click();
 		});
 		
+		$("#memberProfile").on('change', function () {
+		     //Get count of selected files
+		     var countFiles = $(this)[0].files.length;
+		     
+		     var imgPath = $(this)[0].value;
+		     var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+		     var imageHolder = $("#imageHolder");
+		     imageHolder.empty();
+
+		     if ( extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg" ) {
+		         if ( typeof (FileReader) != "undefined" ) {
+
+		             //loop for each file selected for uploaded.
+		             for ( var i = 0; i < countFiles; i++ ) {
+
+		                 var reader = new FileReader();
+		                 reader.onload = function (e) {
+		                     $("<img/>", {
+		                         "src" : e.target.result,
+		                         "width" : "146px",
+		                     	 "height" : "146px",
+		                     	 "id" : "profileImg"
+		                     }).appendTo(imageHolder);
+		                 }
+		                 $(".originProfile").hide();
+		                 imageHolder.show();
+		                 reader.readAsDataURL($(this)[0].files[i]);
+		             }
+
+		         } else {
+		             alert("This browser does not support FileReader.");
+		         }
+		     } else {
+		         alert("Pls select only images");
+		     }
+		 });
+		
 		$("#modifyBtn").click(function() {
 			if ( $("#memberNickname").val() == "" ) {
 				alert("닉네임을 입력해 주세요.");
@@ -77,7 +114,8 @@
 							<dt><label for="memberProfile">프로필 사진</label></dt>
 							<dd class ="profileImgPart">
 								<!-- <img id="profileImg" src="<c:url value ="/static/img/default.jpg"/>"/> -->
-								<img id="profileImg" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>" width="146px" height="146px"/>
+								<img id="profileImg" class="originProfile" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>" width="146px" height="146px"/>
+								<div id="imageHolder"></div>
 								<div class="btn">
 									<input type="button" class="btn_submit" id="upload" value="파일 업로드"/>
 									<input type="file" id="memberProfile" name="memberProfile" style="opacity:0;"/>
