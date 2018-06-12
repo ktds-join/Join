@@ -129,7 +129,11 @@ display:none;
 						</li>
 						<li class="menu"><a href="<c:url value="/logout"/>">Logout</a></li>
 					</c:if>
+<<<<<<< HEAD
 					<li><a href="#">Epilogue</a></li> 
+=======
+					<li><a href="#">Epilogue</a></li>
+>>>>>>> 0a70c7ae3cc3a18ee2bf0c068c66842fa1057b8c
 				</ul>
 			</nav>
   <!-- #nav-menu-container -->
@@ -157,7 +161,7 @@ display:none;
 								<!-- 이 밑으로 어펜드가 될꺼야 -->
 								<div id="locationStatus">
 									<div id="locationExist">
-										<a href="<c:url value="/map"/>">있음</a>
+										<a href="<c:url value="/recommend"/>">있음</a>
 									</div>
 									<div id="locationNotExist">	
 									<c:if test="${empty sessionScope.__MEMBER__}">

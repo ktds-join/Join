@@ -889,8 +889,8 @@
   <script src="<c:url value="static/lib/isotope/isotope.pkgd.min.js"/>"></script>
   <script src="<c:url value="static/lib/lightbox/js/lightbox.min.js"/>"></script>
   <script src="<c:url value="static/lib/touchSwipe/jquery.touchSwipe.min.js"/>"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="<c:url value="contactform/contactform.js"/>"></script>
+  <!-- Contact Form JavaScript File
+  <script src="<c:url value="static/contactform/contactform.js"/>"></script> -->
 
   <!-- Template Main Javascript File -->
   <script src="<c:url value="static/js/main.js"/>"></script>

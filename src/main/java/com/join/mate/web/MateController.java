@@ -229,8 +229,4 @@ public class MateController {
 		}
 		
 	}
-	
-	
-	
-
 }
