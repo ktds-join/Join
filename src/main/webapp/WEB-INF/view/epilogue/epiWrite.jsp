@@ -82,7 +82,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 		<div id="contentForm">
 			<div class="input-group input-group-sm" role="group" aria-label="...">
 			<div class="btn-group btn-group-sm" role="group" aria-label="..." >
-				<a href="<c:url value="/epi"/>"><input class="btn btn-default" type="button" id="epiListBtn" value="뒤로"  /></a>
+				<a href="<c:url value="/epilogue"/>"><input class="btn btn-default" type="button" id="epiListBtn" value="뒤로"  /></a>
 			</div>
 			<div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin-left: 89%;">
 				<input class="btn btn-default" type="button" id="epiWriteBtn" value="등록"  />

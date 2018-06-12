@@ -105,6 +105,7 @@ display:none;
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-active"><a href="<c:url value="/main"/>">Home</a></li>
+					<li><a href="<c:url value ="/epilogue"/>">Epilogue</a></li>
 					<c:if test="${empty sessionScope.__MEMBER__}">
 						<li class="menu"><a href="<c:url value="/login"/>">Login</a></li>
 					</c:if>
@@ -129,7 +130,6 @@ display:none;
 						</li>
 						<li class="menu"><a href="<c:url value="/logout"/>">Logout</a></li>
 					</c:if>
-					<li><a href="#">Epilogue</a></li>
 				</ul>
 			</nav>
   <!-- #nav-menu-container -->

@@ -26,7 +26,7 @@ public class EpilogueController {
 		this.epilogueService = epilogueService;
 	}
 	
-	@RequestMapping("/epi")
+	@RequestMapping("/epilogue")
 	public String viewEpilogueListPage() {
 		return "epilogue/epiList";
 	}
@@ -63,7 +63,7 @@ public class EpilogueController {
 		boolean isEpiloguePicture = epilogueService.createEpiloguePictures(epiloguePictureVO);
 		
 		if (isEpilogue && isEpiloguePicture) {
-			return new ModelAndView("redirect:/epi");
+			return new ModelAndView("redirect:/epilogue");
 		}
 		
 		

@@ -25,7 +25,7 @@
 			<mvc:exclude-mapping path="/login" />
 			<mvc:exclude-mapping path="/regist" />
 			<mvc:exclude-mapping path="/main" />
-			<mvc:exclude-mapping path="/epi" />
+			<mvc:exclude-mapping path="/epilogue" />
 			<mvc:exclude-mapping path="/epiWrite" />
 			<mvc:exclude-mapping path="/api/exists/memberEmail"/>
 			<mvc:exclude-mapping path="/api/exists/memberNickname"/>
