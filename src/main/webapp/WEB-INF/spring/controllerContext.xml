@@ -19,4 +19,8 @@
 	<bean id = "landmarkController" class="com.join.landmark.web.LandmarkController">
 		<property name="landmarkService" ref="landmarkService"/>
 	</bean>
+	
+	<bean id = "epilogueController" class="com.join.epilogue.web.EpilogueController">
+		<property name="epilogueService" ref="epilogueService" />
+	</bean>
 </beans>

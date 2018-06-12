@@ -11,11 +11,15 @@
 		<typeAlias type="com.join.landmark.vo.LandmarkVO" alias="LandmarkVO"/>
 		<typeAlias type="com.join.landmark.vo.TripCityVO" alias="TripCityVO"/>
 		<typeAlias type="com.join.landmark.vo.TripStyleVO" alias="TripStyleVO"/>
+		<typeAlias type="com.join.epilogue.vo.EpilogueVO" alias="EpilogueVO"/>
+		<typeAlias type="com.join.epilogue.vo.EpiloguePictureVO" alias="EpiloguePictureVO"/>
+		<typeAlias type="com.join.epilogue.vo.EpilogueSearchVO" alias="EpilogueSearchVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/join/main/dao/sql/mainDao.xml"/>
 		<mapper resource="com/join/member/dao/sql/memberDao.xml"/>
 		<mapper resource="com/join/mate/dao/sql/mateDao.xml"/>
 		<mapper resource="com/join/landmark/dao/sql/landmarkDao.xml"/>
+		<mapper resource="com/join/epilogue/dao/sql/epilogueDao.xml"/>
 	</mappers>
 </configuration>
