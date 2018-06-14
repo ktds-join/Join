@@ -11,5 +11,4 @@
 	<bean id="memberDaoForOracle" class="com.join.member.dao.MemberDaoImplForOracle">
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</bean>
-
 </beans>
