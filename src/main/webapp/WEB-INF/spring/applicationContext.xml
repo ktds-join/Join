@@ -21,7 +21,7 @@
 		<!-- 개발중에 필요한거 뺏으면 다시넣으세요 -->
 			<!-- <mvc:exclude-mapping path="/list" />
 			<mvc:exclude-mapping path="/tendency" /> -->
-			<mvc:exclude-mapping path="/recommend" />			
+			<mvc:exclude-mapping path="/tripCity" />			
 			<mvc:exclude-mapping path="/login" />
 			<mvc:exclude-mapping path="/regist" />
 			<mvc:exclude-mapping path="/main" />
