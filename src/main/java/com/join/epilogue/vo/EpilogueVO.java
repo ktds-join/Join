@@ -1,5 +1,7 @@
 package com.join.epilogue.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.join.mate.vo.MateVO;
@@ -7,6 +9,7 @@ import com.join.mate.vo.MateVO;
 public class EpilogueVO {
 	
 	private int epilogueId;
+	@NotEmpty(message = "제목 입력은 필수입니다!")
 	private String epilogueTitle;
 	private String epilogueBody;
 	private float epilogueGrade;

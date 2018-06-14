@@ -1,5 +1,7 @@
 package com.join.epilogue.service;
 
+import java.util.List;
+
 import com.join.epilogue.dao.EpilogueDao;
 import com.join.epilogue.vo.EpiloguePictureVO;
 import com.join.epilogue.vo.EpilogueVO;
@@ -25,6 +27,11 @@ public class EpilogueServiceImpl implements EpilogueService {
 	@Override
 	public int selectEpilogueId() {
 		return epilogueDao.selectEpilogueId();
+	}
+
+	@Override
+	public List<EpilogueVO> readAllEpilogues() {
+		return epilogueDao.selectAllEpilogues();
 	}
 	
 	

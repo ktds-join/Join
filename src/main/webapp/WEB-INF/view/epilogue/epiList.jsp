@@ -109,7 +109,7 @@
 	<div id="container">
 		<div align="right">
 			<div id="list" style="font-size: 11pt;">
-				${pageExplorer.totalCount}건의 게시글이 검색되었습니다.
+				${epilogueList.size()}건의 게시글이 검색되었습니다.
 			</div>
 			<table class="table table-striped table-bordered table-hover">
 				<thead>
@@ -121,7 +121,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach items="${pageExplorer.list}" var="epilogue">
+				<c:forEach items="${epilogueList}" var="epilogue">
 					<tr>
 						<td>${epilogue.epilogueId}</td>
 						<td><a href="<c:url value="/read/${epilogue.epilogueId}"/>">${epilogue.epilogueTitle}</a>
@@ -143,14 +143,14 @@
 						<td>${epilogue.epilogueWriteDate}</td>
 					</tr>
 					</c:forEach>
-					<c:if test="${empty pageExplorer.list}">
-					<tr>
-						<td colspan="5">등록된 게시글이 없습니다.</td>
-					</tr>
+					<c:if test="${empty epilogueList}">
+						<tr>
+							<td colspan="4">등록된 게시글이 없습니다.</td>
+						</tr>
 					</c:if>
 				</tbody>
 			</table>
-			
+			<!--
 			<form id="searchForm" onsubmit="movePage('0')">
 				${pageExplorer.make()}
 				<div id="list" style="font-size: 10pt;">
@@ -163,7 +163,7 @@
 							value="${search.searchKeyword}" />
 					<a href="<c:url value="/reset"/>" >검색 초기화</a>
 				</div>
-			</form>
+			</form>-->
 			
 			<div id="write">
 				<a href="<c:url value="/epiWrite"/>">글쓰기</a>

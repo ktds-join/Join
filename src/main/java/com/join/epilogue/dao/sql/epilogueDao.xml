@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,	EPILOGUE_WRITE_DATE
 		)
 		VALUES	(
-			#{epilogueId}
+			EPILOGUE_ID_SEQ.NEXTVAL
 			,	#{epilogueTitle}
 			,	#{epilogueBody}
 			,	#{epilogueGrade}
@@ -56,4 +56,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT	EPILOGUE_ID_SEQ.NEXTVAL
 		FROM	DUAL
 	</select>
+	
+	<select id="selectAllEpilogues" resultType="EpilogueVO">
+		SELECT	EPILOGUE_ID epilogueId
+				, EPILOGUE_TITLE epilogueTitle
+				, EPILOGUE_BODY epilogueBody
+				, EPILOGUE_GRADE epilogueGrade
+				, TO_CHAR(EPILOGUE_WRITE_DATE, 'YYYY.MM.DD') epilogueWriteDate
+		FROM	EPILOGUE
+	</select>
+	
 </mapper>

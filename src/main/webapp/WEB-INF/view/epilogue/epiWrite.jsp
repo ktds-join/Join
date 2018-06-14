@@ -81,13 +81,13 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 	 <form:form modelAttribute="epilogueForm" enctype="multipart/form-data">
 		<div id="contentForm">
 			<div class="input-group input-group-sm" role="group" aria-label="...">
-			<div class="btn-group btn-group-sm" role="group" aria-label="..." >
-				<a href="<c:url value="/epilogue"/>"><input class="btn btn-default" type="button" id="epiListBtn" value="뒤로"  /></a>
-			</div>
-			<div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin-left: 89%;">
-				<input class="btn btn-default" type="button" id="epiWriteBtn" value="등록"  />
-			</div>
-			<div style="margin-left:40%; margin-bottom:1%; ">
+				<div class="btn-group btn-group-sm" role="group" aria-label="..." >
+					<a href="<c:url value="/epilogue"/>"><input class="btn btn-default" type="button" id="epiListBtn" value="뒤로"  /></a>
+				</div>
+				<div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin-left: 89%;">
+					<input class="btn btn-default" type="button" id="epiWriteBtn" value="등록"  />
+				</div>
+				<div style="margin-left:40%; margin-bottom:1%; ">
 					<h5 style="margin-left:25%; margin-bottom:0;">나의 별점</h5>
 					<span class="star-input">
 						<span class="input">
@@ -101,53 +101,44 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 					    	<label for="p4">4</label>
 					    	<input type="radio" name="epilogueGrade" value="5" id="p5">
 					    	<label for="p5">5</label>
-					  </span>
-					  <output for="star-input"><b>0</b>점</output>						
-				</span>
-			</div>
-			<table class="table table-striped table-bordered">
-				<thead>
-					<tr>
-					<th style="padding-top: 15px" style="text-align: center;">제목</th> 
-						<td>
-							<input type="text" id="epilogueTitle" name="epilogueTitle" value="${epilogue.epilogueTitle}"  class="form-control" aria-describedby="basic-addon1"/>
-						</td>
-					</tr>
-				</thead>
-				<div>
-					<form:errors path="epilogueTitle" />
+					    </span>
+					  	<output for="star-input"><b>0</b>점</output>						
+					</span>
 				</div>
-				
-				<tbody>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th style="padding-top: 15px; text-align: center;">제목</th> 
+							<td>
+								<input type="text" id="epilogueTitle" name="epilogueTitle" value="${epilogue.epilogueTitle}"  class="form-control" aria-describedby="basic-addon1"/>
+								<form:errors path="epilogueTitle"/>
+							</td>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td colspan="2">
+								<div>
+									<textarea class="form-control" rows="20" cols="50" id="epilogueBody" name="epilogueBody" style="resize: none;">${epilogue.epilogueBody}</textarea>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+					<!-- 
 					<tr>
-						<td colspan="2">
+						<th>첨부파일</th>
+						<td>
 							<div>
-								<textarea class="form-control" rows="20" cols="50" id="epilogueBody" name="epilogueBody" style="resize:none;">${epilogue.epilogueBody}</textarea>
+								<input type="file" id="epilogue.epiloguePictureVO.epiFile" name="epilogue.epiloguePictureVO.epiFile" class="btn btn-default" />
 							</div>
 						</td>
-					</tr>
-				</tbody>
-				
-				<tr>
-					<th>첨부파일</th>
-					<td>
-						<div>
-							<input type="file" id="epilogue.epiloguePictureVO.epiFile" name="epilogue.epiloguePictureVO.epiFile" class="btn btn-default" />
-						</div>
-					</td>
-				</tr>
-			</table>
-				</div>
-				
-				<div>
-					<input type="hidden" id="mateId" name="mateId"
-						value="${sessionScope.__COOKIE__.mateId}" />
-				</div>
-			
-				<div>
-					<form:errors path="epilogueWriteDate" />
-				</div>
-			
+					</tr>-->
+				</table>
+			</div>
+			<!-- <div>
+				<input type="hidden" id="mateId" name="mateId" value="${sessionScope.__COOKIE__.mateId}" />
+			</div> -->
 		</div>
 	</form:form>
 

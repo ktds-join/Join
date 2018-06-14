@@ -1,5 +1,7 @@
 package com.join.epilogue.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -26,9 +28,21 @@ public class EpilogueController {
 		this.epilogueService = epilogueService;
 	}
 	
-	@RequestMapping("/epilogue")
-	public String viewEpilogueListPage() {
-		return "epilogue/epiList";
+	@RequestMapping("/epiList")
+	public ModelAndView viewEpilogueListPage(HttpSession session) {
+		
+		ModelAndView view = new ModelAndView();
+		
+		if ( session.getAttribute(Member.MEMBER) == null ) {
+			view.setViewName("redirect:/login");
+			return view;
+		}
+		
+		List<EpilogueVO> epilogueList = epilogueService.readAllEpilogues();
+		view.addObject("epilogueList", epilogueList);
+		view.setViewName("epilogue/epiList");
+		
+		return view;
 	}
 	
 	@RequestMapping(value="/epiWrite", method=RequestMethod.GET)
@@ -39,33 +53,24 @@ public class EpilogueController {
 	@RequestMapping(value="/epiWrite", method=RequestMethod.POST)
 	public ModelAndView doWriteEpilogue(@ModelAttribute("epilogueForm") @Valid EpilogueVO epilogue,
 					Errors errors, EpiloguePictureVO epiloguePictureVO, HttpSession session, HttpServletRequest request) {
-		System.out.println(epilogue.getEpiloguePictureVO().getEpiFile()+ "");
 		
-		if( session.getAttribute(Member.MEMBER) == null) {
+		if ( session.getAttribute(Member.MEMBER) == null ) {
 			return new ModelAndView("redirect:/login");
 		}
 		
-		if(errors.hasErrors()) {
+		if( errors.hasErrors() ) {
 			ModelAndView view = new ModelAndView();
 			view.setViewName("epilogue/epiWrite");
 			view.addObject("epilogue", epilogue);
 			return view;
 		}
 		
-		float grade = epilogue.getEpilogueGrade();
-		epilogue.setEpilogueGrade(grade);
+		boolean isSuccess = epilogueService.createEpilogue(epilogue);
+		//boolean isEpiloguePicture = epilogueService.createEpiloguePictures(epiloguePictureVO);
 		
-		// vo 저장
-		epilogue.setEpilogueId(epilogue.getEpilogueId());
-		epiloguePictureVO.setEpilogueId(epiloguePictureVO.getEpilogueId());
-		
-		boolean isEpilogue = epilogueService.createEpilogue(epilogue);
-		boolean isEpiloguePicture = epilogueService.createEpiloguePictures(epiloguePictureVO);
-		
-		if (isEpilogue && isEpiloguePicture) {
-			return new ModelAndView("redirect:/epilogue");
+		if ( isSuccess ) {
+			return new ModelAndView("redirect:/epiList");
 		}
-		
 		
 		return new ModelAndView("redirect:/epiWrite");
 	}

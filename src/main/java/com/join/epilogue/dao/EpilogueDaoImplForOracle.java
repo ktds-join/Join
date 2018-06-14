@@ -1,5 +1,7 @@
 package com.join.epilogue.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import com.join.epilogue.vo.EpiloguePictureVO;
@@ -20,6 +22,11 @@ public class EpilogueDaoImplForOracle extends SqlSessionDaoSupport implements Ep
 	@Override
 	public int selectEpilogueId() {
 		return getSqlSession().selectOne("EpilogueDao.selectEpilogueId");
+	}
+
+	@Override
+	public List<EpilogueVO> selectAllEpilogues() {
+		return getSqlSession().selectList("EpilogueDao.selectAllEpilogues");
 	}
 
 }

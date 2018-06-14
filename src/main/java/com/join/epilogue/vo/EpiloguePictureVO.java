@@ -24,6 +24,9 @@ public class EpiloguePictureVO {
 	}
 	
 	public String getEpiloguePictureName() {
+		if ( epiloguePictureName == null ) {
+			epiloguePictureName = "";
+		}
 		return epiloguePictureName;
 	}
 	
