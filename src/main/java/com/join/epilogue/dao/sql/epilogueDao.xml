@@ -3,12 +3,21 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="EpilogueDao">
-	<resultMap type = "EpilogueVO" id ="epilogueVOMap">
+	<resultMap type = "EpilogueVO" id ="EpilogueVOMap">
 		<id column ="EPILOGUE_ID" property = "epilogueId"/>
+		<result column="MEMBER_ID" property="memberId"/>
 		<result column="EPILOGUE_TITLE" property="epilogueTitle"/>
 		<result column="EPILOGUE_BODY" property="epilogueBody"/>
 		<result column="EPILOGUE_GRADE" property="epilogueGrade"/>
 		<result column="EPILOGUE_WRITE_DATE" property="epilogueWriteDate"/>
+		
+		<association property="memberVO" javaType="MemberVO">
+			<id column="M_ID" property="memberId"/>
+			<result column="MEMBER_EMAIL" property="memberEmail"/>
+			<result column="MEMBER_NICKNAME" property="memberNickname"/>
+			<result column="MEMBER_NAME" property="memberName"/>
+			<result column="MEMBER_REGIST_DATE" property="memberRegistDate"/>			
+		</association>
 		
 		<association property="epiloguePictureVO" javaType="EpiloguePictureVO">
 			<id column="EPILOGUE_PICTURE_ID" property="epiloguePictureId"/>
@@ -25,17 +34,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertEpilogue" parameterType="EpilogueVO">
 		INSERT	INTO EPILOGUE (
 			EPILOGUE_ID
-			,	EPILOGUE_TITLE
-			,	EPILOGUE_BODY
-			,	EPILOGUE_GRADE
-			,	EPILOGUE_WRITE_DATE
+			, MEMBER_ID
+			, EPILOGUE_TITLE
+			, EPILOGUE_BODY
+			, EPILOGUE_GRADE
+			, EPILOGUE_WRITE_DATE
 		)
 		VALUES	(
 			EPILOGUE_ID_SEQ.NEXTVAL
-			,	#{epilogueTitle}
-			,	#{epilogueBody}
-			,	#{epilogueGrade}
-			,	SYSDATE
+			, #{memberId}
+			, #{epilogueTitle}
+			, #{epilogueBody}
+			, #{epilogueGrade}
+			, SYSDATE
 		)
 	</insert>
 	
@@ -57,13 +68,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM	DUAL
 	</select>
 	
-	<select id="selectAllEpilogues" resultType="EpilogueVO">
-		SELECT	EPILOGUE_ID epilogueId
-				, EPILOGUE_TITLE epilogueTitle
-				, EPILOGUE_BODY epilogueBody
-				, EPILOGUE_GRADE epilogueGrade
-				, TO_CHAR(EPILOGUE_WRITE_DATE, 'YYYY.MM.DD') epilogueWriteDate
-		FROM	EPILOGUE
+	<select id="selectAllEpilogues" resultMap="EpilogueVOMap">
+		SELECT	E.EPILOGUE_ID
+				, E.EPILOGUE_TITLE
+				, E.EPILOGUE_BODY
+				, E.EPILOGUE_GRADE
+				, TO_CHAR(E.EPILOGUE_WRITE_DATE, 'YYYY.MM.DD') EPILOGUE_WRITE_DATE
+				, M.MEMBER_ID M_ID
+				, M.MEMBER_EMAIL
+				, M.MEMBER_NICKNAME
+				, M.MEMBER_NAME
+				, M.MEMBER_REGIST_DATE
+		FROM	EPILOGUE E
+				, MEMBER M
+		WHERE	E.MEMBER_ID = M.MEMBER_ID(+)
+	</select>
+	
+	<select id="selectEpilogue" parameterType="_int" resultMap="EpilogueVOMap">
+		SELECT	E.EPILOGUE_ID
+				, E.EPILOGUE_TITLE
+				, E.EPILOGUE_BODY
+				, E.EPILOGUE_GRADE
+				, TO_CHAR(E.EPILOGUE_WRITE_DATE, 'YYYY.MM.DD') EPILOGUE_WRITE_DATE
+				, M.MEMBER_ID M_ID
+				, M.MEMBER_EMAIL
+				, M.MEMBER_NICKNAME
+				, M.MEMBER_NAME
+				, M.MEMBER_REGIST_DATE
+		FROM	EPILOGUE E
+				, MEMBER M
+		WHERE	E.MEMBER_ID = M.MEMBER_ID(+)
+		AND		E.EPILOGUE_ID = #{epilogueId}
 	</select>
 	
 </mapper>

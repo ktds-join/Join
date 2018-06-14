@@ -124,16 +124,15 @@
 				<c:forEach items="${epilogueList}" var="epilogue">
 					<tr>
 						<td>${epilogue.epilogueId}</td>
-						<td><a href="<c:url value="/read/${epilogue.epilogueId}"/>">${epilogue.epilogueTitle}</a>
+						<td><a href="<c:url value="/epiDetail/${epilogue.epilogueId}"/>">${epilogue.epilogueTitle}</a>
 							<c:if test="${not empty epiloguePictureVO.epiloguePictureName}">
 								<img src="<c:url value="/static/img/file.png"/>" alt="${epilogue.epiloguePictureName}"  style="width:15px;"/>
 							</c:if>
 						</td>
 						<td>
 							<c:choose>
-								<c:when test="${not empty epilogue.mateVO}">
-									<!-- nickname(email) -->
-									${epilogue.mateVO.mateId}
+								<c:when test="${not empty epilogue.memberVO}">
+									${epilogue.memberVO.memberEmail}
 								</c:when>
 								<c:otherwise>
 									탈퇴한 회원

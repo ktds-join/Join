@@ -15,4 +15,6 @@ public interface EpilogueDao {
 	
 	public List<EpilogueVO> selectAllEpilogues();
 	
+	public EpilogueVO selectEpilogue(int epilogueId);
+	
 }

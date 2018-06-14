@@ -15,4 +15,6 @@ public interface EpilogueService {
 	
 	public List<EpilogueVO> readAllEpilogues();
 	
+	public EpilogueVO readEpilogue(int epilogueId);
+	
 }

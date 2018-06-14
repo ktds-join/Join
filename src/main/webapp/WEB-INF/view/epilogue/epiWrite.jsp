@@ -82,7 +82,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 		<div id="contentForm">
 			<div class="input-group input-group-sm" role="group" aria-label="...">
 				<div class="btn-group btn-group-sm" role="group" aria-label="..." >
-					<a href="<c:url value="/epilogue"/>"><input class="btn btn-default" type="button" id="epiListBtn" value="뒤로"  /></a>
+					<a href="<c:url value="/epiList"/>"><input class="btn btn-default" type="button" id="epiListBtn" value="뒤로"  /></a>
 				</div>
 				<div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin-left: 89%;">
 					<input class="btn btn-default" type="button" id="epiWriteBtn" value="등록"  />
@@ -135,6 +135,9 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 						</td>
 					</tr>-->
 				</table>
+			</div>
+			<div>
+				<input type="hidden" id="memberId" name="memberId" value="${sessionScope.__MEMBER__.memberId}"/>
 			</div>
 			<!-- <div>
 				<input type="hidden" id="mateId" name="mateId" value="${sessionScope.__COOKIE__.mateId}" />

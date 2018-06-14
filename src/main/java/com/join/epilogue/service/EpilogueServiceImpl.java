@@ -33,6 +33,11 @@ public class EpilogueServiceImpl implements EpilogueService {
 	public List<EpilogueVO> readAllEpilogues() {
 		return epilogueDao.selectAllEpilogues();
 	}
+
+	@Override
+	public EpilogueVO readEpilogue(int epilogueId) {
+		return epilogueDao.selectEpilogue(epilogueId);
+	}
 	
 	
 }

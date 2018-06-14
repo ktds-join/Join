@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -73,5 +74,17 @@ public class EpilogueController {
 		}
 		
 		return new ModelAndView("redirect:/epiWrite");
+	}
+	
+	@RequestMapping("/epiDetail/{epilogueId}")
+	public ModelAndView viewEpilogueDetailPage(@PathVariable int epilogueId) {
+		
+		EpilogueVO epilogue = epilogueService.readEpilogue(epilogueId);
+	
+		ModelAndView view = new ModelAndView();
+		view.setViewName("epilogue/epiDetail");
+		view.addObject("epilogue", epilogue);
+		
+		return view;
 	}
 }

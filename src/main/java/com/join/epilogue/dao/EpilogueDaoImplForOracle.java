@@ -29,4 +29,9 @@ public class EpilogueDaoImplForOracle extends SqlSessionDaoSupport implements Ep
 		return getSqlSession().selectList("EpilogueDao.selectAllEpilogues");
 	}
 
+	@Override
+	public EpilogueVO selectEpilogue(int epilogueId) {
+		return getSqlSession().selectOne("EpilogueDao.selectEpilogue", epilogueId);
+	}
+
 }
