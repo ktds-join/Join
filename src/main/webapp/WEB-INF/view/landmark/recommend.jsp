@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인 페이지</title>
+<title>여행지 추천 페이지</title>
 <link rel="stylesheet" type="text/css"
 		href="<c:url value="/static/css/member.css"/>" />
 <!-- 추가 -->
@@ -29,73 +29,44 @@
 <!-- 추가 -->	
 <script type="text/javascript"
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
+<script type="text/javascript">
+$().ready(function(){
+	$("input[na
+		me=tripId]:checked").each(function(){
+		var test = $(this).val();
+		alert("Dd : "+test);
+	});
+});
+</script>
 </head>
 <body>
 <br><br><br><!-- 나중에 수정해야됨.... -->
-<!-- header :: navbar 부분 -->
+	<!-- header :: navbar 부분 -->
 	<jsp:include page="/WEB-INF/view/template/navbar.jsp" />
-		
-		<!--==========================
-      About Us Section
-    ============================-->
-    <section id="about">
-      <div class="container">
+		<br><br><br>
+	<!-- 여행 스타일 선택 div -->
+	
+		<!-- 선택 폼 -->
+		<form:form id="tripStyleForm">
+			<input type ="checkbox" id ="allElements" name="tripId" value = "0">all
+			<input type ="checkbox" id ="element" name="tripId" value = "1">style1
+			<input type ="checkbox" id ="element" name="tripId" value = "2">style2
+			<input type ="checkbox" id ="element" name="tripId" value = "3">style3						
 
-        <header class="section-header">
-          <h3>map --> tendency</h3>
-			<a id ="moveToTendency" href = "/Join/tendency">성향선택페이지로 이동</a>
-          <p>--</p>
-        </header>
-
-        <div class="row about-cols">
-
-          <div class="col-md-4 wow fadeInUp">
-            <div class="about-col">
-              <div class="img">
-                <img src="<c:url value="static/img/cities/seoul.jpg"/>" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-              </div>
-              <h2 class="title"><a href="#">SEOUL</a></h2>
-              <p>새벽까지 서울의 밤은 결코 멈추지 않는다. <br>남대문시장의 혼잡함 속에서 쇼핑을 하고, 북촌에서 과거의 한 장면에 빠져보자. 이태원으로 자리를 옮겨 지쳐 쓰러질 때까지 파티를 즐기는 것도 좋다. 호떡으로 허기를 달랜 후에는 다시 전력을 다해 이 도시를 즐길 준비를 하자!</p>
-            </div>
-          </div>
-
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="about-col">
-              <div class="img">
-                <img src="<c:url value="static/img/cities/busan.jpg"/>" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-list-outline"></i></div>
-              </div>
-              <h2 class="title"><a href="#">BUSAN</a></h2>
-              <p>
-                아름다운 바다와 풍부한 볼거리, 부산<br> 
-대한민국 제2의 도시인 부산에는 해수욕장뿐만 아니라 아름다운 자연 경관을 즐기며 걸을 수 있는 산책로, 부산의 옛 모습을 엿볼 수 있는 골목까지 있어 여행에서 생각하는 모든 볼거리가 모여있는 곳이다.</p>
-            </div>
-          </div>
-
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="about-col">
-              <div class="img">
-                <img src="<c:url value="static/img/cities/jeju.png"/>" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
-              </div>
-              <h2 class="title"><a href="#">JEJU</a></h2>
-              <p>
-                불과 물이 빚어낸 화산섬 제주도는 대한민국 최남단에 위치한 세계적인 휴양지<br>
-                많은 사람들이 제주도로 휴가를 떠나지만 그곳에서 꿈꾸는 휴가는 모두 제 각각이고 아주 다양하다. 한라산 등반, 스쿠버 다이빙, 산사에서의 템플스테이, 올레길 산책, 식도락 여행 등</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- #about -->
-
-	<!-- 여기에 지도 넣을까봥 
-	모달을 3개 정도 만들어서 클릭하면 지역에 대한 지도를 보여주고 우리가 가지고 있는 랜드마크 -->
-	<!--  -->
-	<h2>다음 지도 API</h2>
-	<jsp:include page="/WEB-INF/view/landmark/map.jsp" />
+			<input type ="checkbox" id ="element" name="tripId" value = "1">서울
+			<input type ="checkbox" id ="element" name="tripId" value = "2">부산
+			<input type ="checkbox" id ="element" name="tripId" value = "3">제주
+			
+													
+			<input type ="submit" id = "selectedOptions" value ="선택"/>
+		</form:form>		
+	
+	<hr>
+	
+	<c:forEach items="${landmarkList}" var="list">
+	<p>${list.landmarkTitle }</p>
+	</c:forEach>
+	<br><br><br><br>
 	<!-- footer -->
 	<jsp:include page="/WEB-INF/view/template/footer.jsp" />
 	  <!-- JavaScript Libraries -->
