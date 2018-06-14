@@ -42,7 +42,7 @@
 				<br/>
 				<br/>
 							<h2 style="text-align: center; padding-right: 100px;">
-								선호하는 여행 스타일을 선택해주세요
+							${sessionScope.__MEMBER__.memberNickname} 님, 선호하는 여행 스타일을 선택해주세요
 							</h2>
 							<br/>
 							<br/>

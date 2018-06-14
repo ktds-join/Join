@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.join.member.constants.Member;
@@ -178,8 +179,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/tendency", method=RequestMethod.GET)
-	public String viewTendency() {		
-		return "member/tendency";
+	public ModelAndView viewTendency(HttpSession session) {		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("member/tendency");
+		MemberVO member = (MemberVO) session.getAttribute(Member.MEMBER);
+		view.addObject("member", member);
+		
+		return view;
 	}
 	
 	@RequestMapping(value="/tendency", method=RequestMethod.POST)

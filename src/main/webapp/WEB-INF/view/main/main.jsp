@@ -38,23 +38,26 @@
 <script type="text/javascript">
 $().ready(function(){
 	$(".btn-get-started").click(function(){
+		location.href="<c:url value="/tripCity"/>";
+	});
+	/* $(".btn-get-started").click(function(){
 		$(this).hide();
 		$("#locationStatus").show();
 	});
 	
 	$("#locationNotExist").click(function(){
 		$("#mainIntro").hide();
-	});
+	}); */
 	$("#myPageBtn").click(function(){
 		location.href="<c:url value="/myPage"/>";
 	});
 
-	/* TODO 닫기 혹은 뒤로 가기 버튼으로 구현할라고 */
+	/* TODO 닫기 혹은 뒤로 가기 버튼으로 구현할라고 
 	$("#closeBtn").click(function(){
 		$("#locationStatus").unbind('click');
 	});
 
-	/* 체크박스 전체선택 전체해제 */
+	/* 체크박스 전체선택 전체해제 
 	$("#allElements").click(function(){
 		if($("#allElements").prop("checked")){
 			$("input[type=checkbox]").prop("checked",true);
@@ -79,7 +82,7 @@ $().ready(function(){
 		});
 		tripStyleForm.submit();
 	});
-	
+		*/
 });
 </script>
 <style>
@@ -117,13 +120,13 @@ display:none;
 										<h4>My Info</h4>
 										<!-- 일단 css 추가하려고 이미지 파일 올림 -->
 										<p class ="profileImgPart">
-										<img id = "profileImg" src="<c:url value ="/static/img/default.jpg"/>"/>
+										<%-- <img id = "profileImg" src="<c:url value ="/static/img/default.jpg"/>"/> --%>
+										<img id = "profileImg" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>" width="146px" height="146px"/> 
 										</p>
+										
 										<p>${sessionScope.__MEMBER__.memberNickname}</p>
 										<p>${sessionScope.__MEMBER__.memberEmail}</p>
-												<!-- TODO : 여기에 프로필 사진 및 회원 정보 추가 -->
-												<%-- <img id = "profileImg" src="<c:url value="/profile/${sessionScope.__MEMBER__.memberId}"/>"/> --%>
-										<button type="button" id ="myPageBtn" class="btn btn-info btn-lg">myPage</button>	
+												<button type="button" id ="myPageBtn" class="btn btn-info btn-lg">myPage</button>	
 									</div>
 								</li>
 							</ul>
