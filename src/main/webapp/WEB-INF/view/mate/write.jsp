@@ -61,9 +61,9 @@
    <br><br><br><!-- 나중에 수정해야됨.... -->
    <jsp:include page="/WEB-INF/view/template/navbar.jsp" />
 	<div class="col-md-2" style="display:inline-block;vertical-align:top"></div>
-	<div class="col-md-3" style="display:inline-block;vertical-align:top;padding-top:50px"><h2>그룹 만들기</h2></div>
+	<div class="col-md-3" style="display:inline-block;vertical-align:top;padding-top:80px"><h2>그룹 만들기</h2></div>
       <div class="col-md-5" style="display:inline-block;vertical-align:top">
-      <form id="writeForm" style ="width:450px;margin:auto;padding-top:50px">    
+      <form id="writeForm" style ="width:450px;margin:auto;padding-top:80px">    
          <div>
             <div>${member.memberNickname} 님의 새로운 그룹의 이름을 정해주세요</div>
             <input type="text" id="mateTitle" class="form-control" name="mateTitle" />
@@ -92,14 +92,14 @@
             <input type="radio" id="tripCityId" name="tripCityId" value="3"> 제주</div>
          </div>
          <div>
-            <div>${member.memberNickname} 님이 선택하신 성향은 아래와 같습니다 그룹을 만들기전 성향을 바꾸고 싶으면 바꾸던가 시발</div>
+            <div>${member.memberNickname} 님이 선택하신 성향은 아래와 같습니다.<br>그룹을 만들기전 성향을 바꾸고 싶으면 바꾸세요.</div>
             <div class="form-control"><div>휴양지<input type="range" id="mateStyle1" name="mateStyle1" min="0" max="200" step="50" value="${member.memberStyle1}" />도심지</div>
             <div>레져<input type="range" id="mateStyle2" name="mateStyle2" min="0" max="200" step="50" value="${member.memberStyle2}" />랜드마크</div>
             <div>아침형<input type="range" id="mateStyle3" name="mateStyle3" min="0" max="200" step="50" value="${member.memberStyle3}" />야행성</div>
             <div>저렴함<input type="range" id="mateStyle4" name="mateStyle4" min="0" max="200" step="50" value="${member.memberStyle4}" />부유함</div>
             <div>먹방<input type="range" id="mateStyle5" name="mateStyle5" min="0" max="200" step="50" value="${member.memberStyle5}" />탐방</div></div>
          </div>
-         <input type="button" id="writeBtn" value="글쓰기" />
+         <input type="button" style="float:right;margin-top:10px" id="writeBtn" value="글쓰기" />
       </form>
    </div>
    <!-- 일단은 br로 사이 띄어놓겠음 -->

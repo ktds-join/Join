@@ -72,7 +72,7 @@ public class MateController {
 				}
 			}
 		}
-		
+		view.addObject("member", member);
 		view.addObject("mateList",mateList);
 	/*
 	 * matePoint

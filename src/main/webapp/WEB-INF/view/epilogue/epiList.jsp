@@ -132,7 +132,7 @@
 						<td>
 							<c:choose>
 								<c:when test="${not empty epilogue.memberVO}">
-									${epilogue.memberVO.memberEmail}
+									${epilogue.memberVO.memberNickname}
 								</c:when>
 								<c:otherwise>
 									탈퇴한 회원

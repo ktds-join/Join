@@ -9,6 +9,7 @@
 
 	<mvc:resources location="/WEB-INF/static/" mapping="/static/**" />
 	<mvc:resources location="/WEB-INF/static/" mapping="mate/static/**" />
+	<mvc:resources location="/WEB-INF/static/" mapping="epiDetail/static/**" />
 	
 	<mvc:interceptors>
 		<mvc:interceptor>

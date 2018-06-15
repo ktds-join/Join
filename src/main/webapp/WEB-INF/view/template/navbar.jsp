@@ -28,7 +28,7 @@
       <nav id="nav-menu-container"> 
         <ul class="nav-menu">
           <li class="menu-active"><a href="<c:url value="/main"/>">Home</a></li>
-          <li><a href="<c:url value="/epilogue"/>">Epilogue</a></li>
+          <li><a href="<c:url value="/epiList"/>">Epilogue</a></li>
           <c:if test="${empty sessionScope.__MEMBER__}">
           <li class="menu"><a href="<c:url value="/login"/>">Login</a></li>
           </c:if>
